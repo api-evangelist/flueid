@@ -1,0 +1,49 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.flueid.com/security + openapi/flueid-pro-openapi.yml
+standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: 'openapi: 3.0.1 document published at https://api.pro.flueid.com/swagger/v1/swagger.json'
+- id: soc2-type2
+  conforms: true
+  evidence: 'flueid.com/security: "Flueid achieved the SSAE SOC 2 Type 1 and 2 certifications from an
+    industry-leading audit firm within 18 months of launching Flueid Decision. We replicated the SOC controlled
+    framework for Flueid Transact and Flueid Pro."'
+- id: fips-140-2-level-3
+  conforms: true
+  evidence: 'flueid.com/security: "Our Flueid Decision platform leverages the Federal Information Processing
+    Standards (FIPS) 140-2 Security Level 3 certification through AWS KMS HSMs." Applies to Flueid Decision,
+    not the Flueid Pro API.'
+- id: nist-csf
+  conforms: true
+  evidence: 'flueid.com/security: "Aligned with current NIST CSF standards."'
+- id: ccpa
+  conforms: true
+  evidence: flueid.com/privacy carries a California Consumer Privacy Act of 2018 (CCPA) section.
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in the contract; authentication is a Cognito-issued bearer token.
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration served on any Flueid host (404 on api.pro.flueid.com;
+    SPA HTML shell on www/pro/decision).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json media type and no 4xx/5xx responses in the contract.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: No /.well-known/security.txt served on any Flueid host.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: 'No Sunset or Deprecation header support documented; three operations carry deprecated: true
+    with no policy.'
+- id: iso27001
+  conforms: false
+  evidence: Not claimed on the published security page.
+- id: fhir-r4
+  conforms: false
+- id: mismo
+  conforms: false
+  evidence: Flueid operates in the mortgage/title domain where MISMO is the data standard, but no MISMO
+    conformance claim appears on any public Flueid page and no MISMO schema shapes appear in the contract.

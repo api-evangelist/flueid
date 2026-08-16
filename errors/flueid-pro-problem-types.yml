@@ -1,0 +1,15 @@
+generated: '2026-08-16'
+method: derived
+source: openapi/flueid-pro-openapi.yml
+format: undocumented
+problem_count: 0
+summary: The Flueid Pro OpenAPI declares a single 200 response on every one of its 132 operations. Not
+  one 4xx or 5xx response, error schema, or application/problem+json media type is present in the published
+  contract, and Flueid publishes no public error reference page. An integrator cannot learn the failure
+  surface of this API from anything Flueid publishes.
+documented_status_codes:
+- '200'
+rfc9457: false
+problems: []
+gap: No error catalog can be derived without fabricating one. This is a recorded absence, not a missing
+  pipeline step.

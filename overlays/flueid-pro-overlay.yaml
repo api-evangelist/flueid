@@ -1,0 +1,50 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Flueid Pro API
+  version: 1.0.0
+extends: openapi/flueid-pro-openapi.yml
+x-generated: '2026-08-16'
+x-method: generated
+x-source: openapi/_original/flueid-pro-openapi-original.json
+actions:
+- target: $.info
+  update:
+    description: The Flueid Pro API backs the Flueid Pro property research, title order and lead-discovery
+      workspace. Base URL https://api.pro.flueid.com. Every operation accepts an optional api-version
+      query parameter defaulting to "1.0".
+    contact:
+      name: Flueid Support
+      email: support@flueid.com
+      url: https://www.flueid.com/contact
+    x-apievangelist-profile: https://apis.io/provider/flueid
+    x-apievangelist-harvested: https://api.pro.flueid.com/swagger/v1/swagger.json
+- target: $.servers
+  update:
+  - url: https://api.pro.flueid.com
+    description: Flueid Pro production API
+  x-note: The harvested document declares no servers[]. The host is the one the document is served from
+    and the one the Flueid Pro client bundle calls; non-production tiers api-test / api-beta / api-staging.pro.flueid.com
+    are referenced in the same bundle but are not documented by Flueid.
+- target: $.components.securitySchemes
+  update:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'API Evangelist annotation, not a Flueid declaration: the published contract defines
+        no securitySchemes. The Flueid Pro client authenticates with an AWS Cognito-issued JWT sent as
+        Authorization: Bearer <token>.'
+- target: $.tags
+  update:
+  - name: PropertyData
+    description: Property search, detail, history, tax rolls, comparables, valuations and document images.
+  - name: Orders
+    description: Title order detail, search, status and document retrieval.
+  - name: NewOrders
+    description: New closing-services order intake, contacts, options and duplicate checking.
+  - name: Farms
+    description: Farm (geographic territory) definition, filters, uploads and reporting.
+  - name: Partners
+    description: Partner company profile, divisions, branding and order settings.
+  - name: Account
+    description: User profile, roles, permissions and company settings.

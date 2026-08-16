@@ -1,0 +1,272 @@
+generated: '2026-08-16'
+method: probed
+source: live GET of each /.well-known/ path on every Flueid host
+hosts:
+- api.pro.flueid.com
+- pro.flueid.com
+- www.flueid.com
+- flueid.com
+- decision.flueid.com
+hits: 0
+summary: Flueid serves no /.well-known/ discovery document on any host. The API host api.pro.flueid.com
+  returns a hard 404 on all eight paths. The four marketing/app hosts return HTTP 200 for every path,
+  but the body is the create-react-app index.html shell in each case — an SPA catch-all, not a document.
+  No WellKnown, SecurityTxt or AgentCard pointer is emitted, because a 200 carrying an HTML shell is an
+  absence, not a presence.
+documents:
+- host: api.pro.flueid.com
+  path: /.well-known/security.txt
+  status: 404
+  file: null
+- host: api.pro.flueid.com
+  path: /.well-known/openid-configuration
+  status: 404
+  file: null
+- host: api.pro.flueid.com
+  path: /.well-known/oauth-authorization-server
+  status: 404
+  file: null
+- host: api.pro.flueid.com
+  path: /.well-known/oauth-protected-resource
+  status: 404
+  file: null
+- host: api.pro.flueid.com
+  path: /.well-known/api-catalog
+  status: 404
+  file: null
+- host: api.pro.flueid.com
+  path: /.well-known/ai-plugin.json
+  status: 404
+  file: null
+- host: api.pro.flueid.com
+  path: /.well-known/agent-card.json
+  status: 404
+  file: null
+- host: api.pro.flueid.com
+  path: /.well-known/agent.json
+  status: 404
+  file: null
+- host: pro.flueid.com
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: pro.flueid.com
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: pro.flueid.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: pro.flueid.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: pro.flueid.com
+  path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: pro.flueid.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: pro.flueid.com
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: pro.flueid.com
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: www.flueid.com
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: flueid.com
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/security.txt
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/openid-configuration
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/oauth-authorization-server
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/oauth-protected-resource
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/api-catalog
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/ai-plugin.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/agent-card.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document
+- host: decision.flueid.com
+  path: /.well-known/agent.json
+  status: 200
+  content_type: text/html
+  file: null
+  result: miss
+  reason: single-page-app catch-all returned the React index.html shell, not a document

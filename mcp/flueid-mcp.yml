@@ -1,0 +1,683 @@
+generated: '2026-08-16'
+method: derived
+status: candidate
+source: openapi/flueid-pro-openapi.yml
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: searched
+note: Flueid publishes NO MCP server. Searched the Flueid site, npm, PyPI and the public MCP registries;
+  nothing exists, hosted or stdio. The tools below are a CANDIDATE surface derived one-to-one from the
+  132 published Flueid Pro OpenAPI operations to show what an MCP server over this API would expose. They
+  are not shipped by Flueid and no MCPServer pointer is emitted in apis.yml.
+server:
+  name: flueid-pro
+  transport: null
+  url: null
+tool_count: 132
+tools:
+- name: search_users
+  description: Gets the list of users matching the supplied filters.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/SearchUsers
+  deprecated: false
+- name: validate_user
+  description: Validates the User against Cognito and DocumentDB.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/ValidateUser
+  deprecated: false
+- name: partner_user_roles
+  description: Gets a list of all possible roles for a user belonging to a partner company.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/PartnerUserRoles
+  deprecated: false
+- name: real_estate_user_roles
+  description: Gets a list of all possible roles for a user belonging to a real estate company.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/RealEstateUserRoles
+  deprecated: false
+- name: finance_user_roles
+  description: Gets a list of all possible roles for a user belonging to a finance company.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/FinanceUserRoles
+  deprecated: false
+- name: search_officers_or_account_execs
+  description: Searches for account executives matching the supplied Partner ID and search text.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/SearchOfficersOrAccountExecs
+  deprecated: false
+- name: pull_up_card_content
+  description: Gets the content for the mobile app pull-up card.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/PullUpCardContent
+  deprecated: false
+- name: user_settings
+  description: Gets user settings
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/UserSettings
+  deprecated: false
+- name: get_user_profile
+  description: Gets the User Profile information.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/GetUserProfile
+  deprecated: false
+- name: get_user_profile_by_id
+  description: Gets the User Profile information.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/GetUserProfileById
+  deprecated: false
+- name: update_user_basic_profile
+  description: Updates the user's basic profile information.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/UpdateUserBasicProfile
+  deprecated: false
+- name: update_user_company_settings
+  description: Updates the user's company settings.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/UpdateUserCompanySettings
+  deprecated: true
+- name: update_user_photo
+  description: Updates the user's profile photo and returns the new url.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/UpdateUserPhoto
+  deprecated: false
+- name: update_user_company_logo
+  description: Updates the user's company logo image and returns the new url.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/UpdateUserCompanyLogo
+  deprecated: false
+- name: update_terms_acceptance
+  description: Updates the user's acceptance of the terms and conditions.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/UpdateTermsAcceptance
+  deprecated: false
+- name: update_partner_association
+  description: Updates the user's partner association.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/UpdatePartnerAssociation
+  deprecated: false
+- name: search_assistant_users
+  description: Searches for related business users
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Account/SearchAssistantUsers
+  deprecated: false
+- name: update_user_assistants
+  description: Update Assistants list for user
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/UpdateUserAssistants
+  deprecated: false
+- name: send_users_to_data_warehouse
+  description: Sends users to data warehouse
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/SendUsersToDataWarehouse
+  deprecated: false
+- name: sign_up_user
+  description: Accepts the user sign-up information.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/SignUpUser
+  deprecated: false
+- name: approve_user
+  description: Approves the signed-up user.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/ApproveUser
+  deprecated: false
+- name: update_user_status
+  description: Updates the user's status.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/UpdateUserStatus
+  deprecated: false
+- name: resend_temp_password
+  description: Resends the email with the temporary password.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/ResendTempPassword
+  deprecated: false
+- name: reset_password
+  description: Resets the user's password.
+  category: Account
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Account/ResetPassword
+  deprecated: false
+- name: get_active_partners
+  description: Gets a list of active partners for the logged in user
+  category: AccountPartner
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/AccountPartner/GetActivePartners
+  deprecated: false
+- name: set_current_partner
+  description: Changes the currently selected partner to a new one from the active list
+  category: AccountPartner
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/AccountPartner/SetCurrentPartner
+  deprecated: false
+- name: client_company_divisions
+  description: Gets the hierarchy of divisions and branches for a specific client company.
+  category: ClientCompanies
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/ClientCompanies/ClientCompanyDivisions
+  deprecated: false
+- name: all_client_companies
+  description: Gets a list of all client companies for the specified partner, for binding to a dropdown.
+  category: ClientCompanies
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/ClientCompanies/AllClientCompanies
+  deprecated: false
+- name: search_client_companies
+  description: Gets the list of client companies matching the supplied filters.
+  category: ClientCompanies
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/ClientCompanies/SearchClientCompanies
+  deprecated: false
+- name: client_company
+  description: Gets the information for a specific client company.
+  category: ClientCompanies
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/ClientCompanies/ClientCompany
+  deprecated: false
+- name: save_client_company
+  description: Saves the client company information.
+  category: ClientCompanies
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/ClientCompanies/SaveClientCompany
+  deprecated: false
+- name: get_hyper_linked_documents
+  description: Gets all hyperlinked documents from the s3 bucket for this Partner and OrderNumber.
+  category: Documents
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Documents/GetHyperLinkedDocuments
+  deprecated: false
+- name: search_farm_geo_points
+  description: Finds properties within a defined polygon.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/SearchFarmGeoPoints
+  deprecated: false
+- name: search_farm_props
+  description: Finds properties within a defined polygon.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/SearchFarmProps
+  deprecated: false
+- name: farm_overview
+  description: Gets the farm overview information.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/FarmOverview
+  deprecated: false
+- name: save_farm
+  description: Saves the farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/SaveFarm
+  deprecated: false
+- name: get_farm
+  description: Gets the farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Farms/GetFarm
+  deprecated: false
+- name: get_all_farms
+  description: Gets all farms for the user.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Farms/GetAllFarms
+  deprecated: false
+- name: save_farm_property
+  description: Saves the farm property.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/SaveFarmProperty
+  deprecated: false
+- name: rename_farm
+  description: Changes the name of the farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/RenameFarm
+  deprecated: false
+- name: delete_farm
+  description: Deletes the farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/DeleteFarm
+  deprecated: false
+- name: farm_filters
+  description: Gets any global filters or filters saved by the user.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Farms/FarmFilters
+  deprecated: false
+- name: save_farm_filter
+  description: Saves the farm filter.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/SaveFarmFilter
+  deprecated: false
+- name: delete_farm_filter
+  description: Deletes the farm filter.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/DeleteFarmFilter
+  deprecated: false
+- name: farm_report
+  description: Gets an Excel report for the farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Farms/FarmReport
+  deprecated: false
+- name: upload_excel_farm
+  description: Accepts a spreadsheet of properties and processes it to create a new farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/UploadExcelFarm
+  deprecated: false
+- name: fix_not_found_property_for_farm
+  description: Fixes unfound property from the farm upload.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/FixNotFoundPropertyForFarm
+  deprecated: false
+- name: add_property_to_farm
+  description: Add Property to the farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/AddPropertyToFarm
+  deprecated: false
+- name: delete_property_from_farm
+  description: Remove Property from the farm.
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/DeletePropertyFromFarm
+  deprecated: false
+- name: mark_farm_upload_viewed
+  description: Marks a Upload Farm as viewed
+  category: Farms
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Farms/MarkFarmUploadViewed
+  deprecated: false
+- name: create_order
+  description: Creates a new order for closing services.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/CreateOrder
+  deprecated: false
+- name: retrieve_order_submission
+  description: Creates a new order based on the previous order settings
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/NewOrders/RetrieveOrderSubmission
+  deprecated: false
+- name: check_duplicate_order
+  description: Checks if the property is already involved in a current in-process order.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/CheckDuplicateOrder
+  deprecated: false
+- name: search_related_biz_src_users
+  description: Searches for related business source users.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/NewOrders/SearchRelatedBizSrcUsers
+  deprecated: false
+- name: search_order_contact
+  description: Searches for order contact based on role.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/NewOrders/SearchOrderContact
+  deprecated: false
+- name: default_order_contacts
+  description: Gets the default order contacts for this business source user.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/DefaultOrderContacts
+  deprecated: false
+- name: business_source_roles
+  description: Gets the roles that this business source can play on an order.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/NewOrders/BusinessSourceRoles
+  deprecated: false
+- name: related_assistants
+  description: Gets related assistant users.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/NewOrders/RelatedAssistants
+  deprecated: false
+- name: related_officers
+  description: Gets related officer users.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/RelatedOfficers
+  deprecated: false
+- name: company_account_managers
+  description: Gets related Account Manager users.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/CompanyAccountManagers
+  deprecated: false
+- name: order_type_options
+  description: Gets the order type options for the new order.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/OrderTypeOptions
+  deprecated: false
+- name: order_contact_options
+  description: Gets the order contact options for the new order.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/OrderContactOptions
+  deprecated: false
+- name: order_details_options
+  description: Gets the settings to indicate which sections of data should be collected for an order.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/OrderDetailsOptions
+  deprecated: false
+- name: calculate_close_date
+  description: Gets a default estimated closing date.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/CalculateCloseDate
+  deprecated: false
+- name: company_title_officers
+  description: Get all active Title Officers in the company.
+  category: NewOrders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/NewOrders/CompanyTitleOfficers
+  deprecated: false
+- name: get_order_document_list
+  description: Retrieves the global list of documents
+  category: OrderDocumentSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/OrderDocumentSettings/GetOrderDocumentList
+  deprecated: false
+- name: save_order_document
+  description: Saves the document type
+  category: OrderDocumentSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/OrderDocumentSettings/SaveOrderDocument
+  deprecated: false
+- name: delete_order_document
+  description: Deletes the document type
+  category: OrderDocumentSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/OrderDocumentSettings/DeleteOrderDocument
+  deprecated: false
+- name: save_order_document_type_setting
+  description: Saves the document type
+  category: OrderDocumentSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/OrderDocumentSettings/SaveOrderDocumentTypeSetting
+  deprecated: false
+- name: delete_order_document_type_setting
+  description: Deletes the document type
+  category: OrderDocumentSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/OrderDocumentSettings/DeleteOrderDocumentTypeSetting
+  deprecated: false
+- name: order_history
+  description: GET /api/OrderEvents/OrderHistory
+  category: OrderEvents
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/OrderEvents/OrderHistory
+  deprecated: false
+- name: post_document
+  description: Accepts an event containing a document.
+  category: OrderEvents
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/OrderEvents/PostDocument
+  deprecated: false
+- name: get_all_lookup_codes_for_company
+  description: Returns a list of all Lookup codes for a company by company id, division id, branch id
+  category: OrderOptions
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/OrderOptions/GetAllLookupCodesForCompany
+  deprecated: false
+- name: save_entity_lookup_codes
+  description: Saves a list of Order Roles and Lookup Codes
+  category: OrderOptions
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/OrderOptions/SaveEntityLookupCodes
+  deprecated: false
+- name: search_orders
+  description: Gets a list of orders that are viewable by the user.
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/SearchOrders
+  deprecated: false
+- name: order_detail
+  description: Gets the full detail of the order.
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Orders/OrderDetail
+  deprecated: false
+- name: run_full_update
+  description: Performs a full update on the order.
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/RunFullUpdate
+  deprecated: false
+- name: run_date_down_update
+  description: Performs a datedown update on the order.
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/RunDateDownUpdate
+  deprecated: false
+- name: get_document
+  description: Gets the order document.
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/GetDocument
+  deprecated: false
+- name: update_order_status
+  description: Updates an existing orders status.
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/UpdateOrderStatus
+  deprecated: false
+- name: get_decision_order_data
+  description: Gets the decision order(needed in case of modifications)
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Orders/GetDecisionOrderData
+  deprecated: false
+- name: modify_decision_order_data
+  description: Gets the decision order(needed in case of modifications)
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/ModifyDecisionOrderData
+  deprecated: false
+- name: decision_replace_buyers
+  description: Gets the decision order(needed in case of modifications)
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/DecisionReplaceBuyers
+  deprecated: false
+- name: download_trailing_document
+  description: Download Order Trailing Document
+  category: Orders
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Orders/DownloadTrailingDocument
+  deprecated: false
+- name: partner_order_settings
+  description: Gets partner order settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PartnerOrderSettings/PartnerOrderSettings
+  deprecated: false
+- name: set_partner_order_settings
+  description: Sets Partner Order Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PartnerOrderSettings/SetPartnerOrderSettings
+  deprecated: false
+- name: txm_settings
+  description: Gets TXM Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PartnerOrderSettings/TxmSettings
+  deprecated: false
+- name: set_txm_settings
+  description: Sets TXM Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PartnerOrderSettings/SetTxmSettings
+  deprecated: false
+- name: decision_settings
+  description: Gets TXM Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PartnerOrderSettings/DecisionSettings
+  deprecated: false
+- name: set_decision_settings
+  description: Sets TXM Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PartnerOrderSettings/SetDecisionSettings
+  deprecated: false
+- name: d4a_settings
+  description: Gets D4A Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PartnerOrderSettings/D4aSettings
+  deprecated: false
+- name: set_d4a_settings
+  description: Sets D4A Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PartnerOrderSettings/SetD4aSettings
+  deprecated: false
+- name: hil_settings
+  description: Gets TXM Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PartnerOrderSettings/HilSettings
+  deprecated: false
+- name: set_hil_settings
+  description: Sets Hil Settings for a Partner.
+  category: PartnerOrderSettings
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PartnerOrderSettings/SetHilSettings
+  deprecated: false
+- name: search_partners
+  description: Gets the list of partners matching the supplied filters.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Partners/SearchPartners
+  deprecated: false
+- name: partner
+  description: Gets the information for a specific partner company.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Partners/Partner
+  deprecated: false
+- name: partner_divisions
+  description: Gets the hierarchy of divisions and branches for a specific partner company.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Partners/PartnerDivisions
+  deprecated: false
+- name: all_partners
+  description: Gets a list of all partner companies for binding to a dropdown.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Partners/AllPartners
+  deprecated: false
+- name: partner_branding_by_url
+  description: Gets Partner Branding data by sign in url
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Partners/PartnerBrandingByUrl
+  deprecated: false
+- name: save_partner
+  description: Saves the partner information.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Partners/SavePartner
+  deprecated: false
+- name: save_partner_order_settings
+  description: Saves the partner order settings.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Partners/SavePartnerOrderSettings
+  deprecated: true
+- name: partner_order_settings
+  description: Gets order settings for this partner.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Partners/PartnerOrderSettings
+  deprecated: true
+- name: partner_order_options
+  description: Gets order options for partner.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Partners/PartnerOrderOptions
+  deprecated: false
+- name: save_partner_order_options
+  description: Gets order options for partner.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Partners/SavePartnerOrderOptions
+  deprecated: false
+- name: upload_partner_logo
+  description: Uploads the partner logo image and returns the new url.
+  category: Partners
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Partners/UploadPartnerLogo
+  deprecated: false
+- name: save_and_return_permission
+  description: Upsert a single permission for the passed in EntityType and EntityId and returns the effective
+    permission boolean
+  category: Permissions
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Permissions/SaveAndReturnPermission
+  deprecated: false
+- name: get_entity_permissions
+  description: Get Permissions for the passed in Entity by Permission Group.
+  category: Permissions
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Permissions/GetEntityPermissions
+  deprecated: false
+- name: get_effective_permissions_display
+  description: Gets effective permisison display for a single user and permission name at all entity levels
+  category: Permissions
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Permissions/GetEffectivePermissionsDisplay
+  deprecated: false
+- name: property_search_suggestions
+  description: Gets suggestions matching the passed search text, within a certain geographic area.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/PropertySearchSuggestions
+  deprecated: false
+- name: properties_nearby
+  description: Gets all properties within a defined geographic box.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/PropertiesNearby
+  deprecated: false
+- name: property_by_id
+  description: Gets a single property by id.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/PropertyById
+  deprecated: false
+- name: properties_by_ids
+  description: Gets a single property by id.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/PropertiesByIds
+  deprecated: false
+- name: property_detail
+  description: Fetches the full property details by property ID.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/PropertyDetail
+  deprecated: false
+- name: property_history
+  description: Fetches the full property history by property ID.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/PropertyHistory
+  deprecated: false
+- name: bookmark_property
+  description: Bookmarks the specified property.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/BookmarkProperty
+  deprecated: false
+- name: un_bookmark_property
+  description: Removes the bookmark from the specified property.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/UnBookmarkProperty
+  deprecated: false
+- name: sales_comps
+  description: Searches for sales comparables matching the supplied criteria.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/SalesComps
+  deprecated: false
+- name: market_analysis
+  description: Gets the market analysis based on the given zipcode.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/MarketAnalysis
+  deprecated: false
+- name: property_profile_report_base64
+  description: Requests the property profile in PDF format.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/PropertyProfileReportBase64
+  deprecated: false
+- name: all_tracked_properties
+  description: Gets all properties tracked by the user.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/AllTrackedProperties
+  deprecated: false
+- name: zillow_valuation
+  description: Gets the Zillow valuation.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/ZillowValuation
+  deprecated: false
+- name: realtor_dot_com_url
+  description: Gets the URL that links to the property details on Realtor.com
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/RealtorDotComUrl
+  deprecated: false
+- name: mls_coverage
+  description: Gets a list of all mls orgs, broken down by state.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/MlsCoverage
+  deprecated: false
+- name: find_properties
+  description: Finds properties matching the specified text.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/FindProperties
+  deprecated: false
+- name: check_document_images_capability
+  description: Verify county(fips code) eligibility for pulling images based on the partner settings and
+    current master list data
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/CheckDocumentImagesCapability
+  deprecated: false
+- name: get_property_document_images
+  description: Get a list of documents requested for a specific proberty by the user
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/GetPropertyDocumentImages
+  deprecated: false
+- name: request_document_image
+  description: Request Document image
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/RequestDocumentImage
+  deprecated: false
+- name: delete_document_image_request
+  description: Delete document images request (mark for deletion)
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/DeleteDocumentImageRequest
+  deprecated: false
+- name: sign_map_url
+  description: Takes Google Maps Static API url, signs and returns it
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/PropertyData/SignMapUrl
+  deprecated: false
+- name: get_property_tax_rolls
+  description: Fetches the property tax rolls from BKFS.
+  category: PropertyData
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/PropertyData/GetPropertyTaxRolls
+  deprecated: false
+- name: contact_us
+  description: Communication from the user.
+  category: Public
+  source_operation: openapi/flueid-pro-openapi.yml#POST /api/Public/ContactUs
+  deprecated: false
+- name: fee_calculator_links
+  description: Gets a list of 3rd-party fee calculator links.
+  category: Settings
+  source_operation: openapi/flueid-pro-openapi.yml#GET /api/Settings/FeeCalculatorLinks
+  deprecated: false

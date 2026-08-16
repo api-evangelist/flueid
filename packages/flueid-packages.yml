@@ -1,0 +1,35 @@
+generated: '2026-08-16'
+method: searched
+source: npm registry search, PyPI, RubyGems, crates.io, NuGet, GitHub org github.com/Flueid
+package_count: 0
+official_package_count: 0
+packages: []
+registries_checked:
+- registry: npm
+  query: flueid
+  results: 0
+  url: https://registry.npmjs.org/-/v1/search?text=flueid
+- registry: pypi
+  name: flueid
+  status: 404
+- registry: rubygems
+  name: flueid
+  status: 404
+- registry: nuget
+  query: flueid
+  results: 0
+- registry: crates.io
+  name: flueid
+  status: 403
+  note: crates.io rate-limits unauthenticated agents; no Flueid crate is referenced anywhere in Flueid
+    documentation either
+github_org:
+  url: https://github.com/Flueid
+  http_status: 200
+  public_repos: 0
+  note: A GitHub organization named Flueid exists (created 2024-06-14, location "United States of America")
+    but publishes zero public repositories and is not linked from flueid.com, so ownership is not corroborated
+    and no GitHubOrganization pointer is emitted.
+note: Flueid ships no first-party client library in any public package registry. Integration is direct
+  HTTPS against api.pro.flueid.com, or a contracted partner integration for Flueid Decision/Transact.
+  No SDKs pointer is emitted.

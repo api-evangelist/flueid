@@ -1,0 +1,103 @@
+# Flueid
+
+> Flueid is an Austin, Texas real estate technology company that built the Verification of Title
+> (VOT) category — digitizing the legacy title search, examination and underwriting risk process so
+> title status is returned as data rather than a manual report. Its platform spans Flueid Decision
+> (the patented VOT decisioning engine for lenders, servicers, title underwriters and secondary-market
+> investors), Flueid Transact (settlement workflow orchestration) and Flueid Pro (a property research,
+> data and lead-discovery workspace for real estate agents, loan officers and title agents).
+
+Generated: 2026-08-16
+Method: generated (from apis.yml and the artifacts in this repository)
+Source: https://github.com/api-evangelist/flueid
+
+## What is machine-readable
+
+Flueid publishes exactly one public machine-readable contract: the Flueid Pro API, an OpenAPI 3.0.1
+document served at https://api.pro.flueid.com/swagger/v1/swagger.json with a Swagger UI at
+https://api.pro.flueid.com/swagger. It carries 132 operations across 16 tags and 415 component
+schemas. The Flueid Decision and Flueid Transact platform APIs are token-based partner integrations
+negotiated under contract; no public specification for them exists.
+
+## APIs
+
+- [Flueid Pro API](https://api.pro.flueid.com/swagger): 132 operations covering property data, title
+  orders, farms (territories), partners, documents and account administration. Base URL
+  https://api.pro.flueid.com
+
+## Specs
+
+- [Flueid Pro OpenAPI 3.0.1 (refined)](openapi/flueid-pro-openapi.yml)
+- [Flueid Pro OpenAPI 3.0.1 (verbatim harvest)](openapi/_original/flueid-pro-openapi-original.json)
+- [API Evangelist overlay](overlays/flueid-pro-overlay.yaml)
+
+## Capability surface
+
+- **PropertyData** (22 ops) — property search and suggestions, property detail and history, nearby and
+  polygon search, tax rolls, sales comparables, Zillow valuation, market analysis, MLS coverage,
+  recorded document image requests, property profile PDF, bookmarks.
+- **Farms** (18 ops) — define a geographic farm, save and reuse filters, upload a property spreadsheet,
+  add/remove properties, farm overview and Excel report.
+- **NewOrders** (15 ops) — new closing-services order intake: contact and role lookup, order type and
+  detail options, duplicate-order check, estimated close date, create order.
+- **Orders** (10 ops) — order detail and search, order status update, document retrieval, date-down and
+  full update, Flueid Decision order data.
+- **Partners** (11 ops) / **PartnerOrderSettings** (10 ops) — partner company profile, divisions and
+  branches, branding by sign-in URL, order options and settings.
+- **Account** (24 ops) — user profile, sign-up, roles, permissions, assistants, company settings.
+- **ClientCompanies**, **Documents**, **OrderDocumentSettings**, **OrderEvents**, **OrderOptions**,
+  **AccountPartner**, **Permissions**, **Public**, **Settings** — supporting surfaces.
+
+## Conventions
+
+- Base URL: https://api.pro.flueid.com
+- Versioning: an `api-version` query parameter, default `1.0`, on all 132 operations.
+- Style: RPC-style verbs on controllers (`/api/Orders/OrderDetail`), not resource REST.
+- Auth: `Authorization: Bearer <JWT>` issued by an AWS Cognito user pool. **The published contract
+  declares no securitySchemes** — this is observed from the Flueid Pro client, not documented by Flueid.
+- Content types: `application/json`, `text/json`, `text/plain`.
+- Paging: ad hoc. `page` / `pageSize` / `sortBy` appear on individual filter bodies; `totalCount` on
+  three response schemas. No shared paged-result envelope.
+- Idempotency: not supported and not documented.
+- Rate limits: not published; no `RateLimit-*` or `Retry-After` header in the contract.
+
+## Known gaps an agent should plan for
+
+- Every one of the 132 operations documents **only a 200 response**. No 4xx or 5xx is declared
+  anywhere, no error schema exists, and Flueid publishes no error reference. Failure handling must be
+  defensive.
+- No `operationId` on any operation — tools must be bound by method + path.
+- No `/.well-known/` document on any Flueid host (`api.pro.flueid.com` 404s all paths; the marketing
+  and app hosts are SPA catch-alls that return an HTML shell with HTTP 200).
+- No MCP server, no agent card, no first-party SDK in any package registry, no CLI, no public
+  changelog, no published pricing.
+- Three operations are flagged `deprecated: true` with no replacement named and no sunset policy.
+
+## Docs and company
+
+- [Website](https://www.flueid.com/)
+- [API reference (Swagger UI)](https://api.pro.flueid.com/swagger)
+- [Flueid Pro application / sign in](https://pro.flueid.com/)
+- [Security and compliance](https://www.flueid.com/security)
+- [Privacy notice](https://www.flueid.com/privacy)
+- [News and media](https://www.flueid.com/media)
+- [Contact and support](https://www.flueid.com/contact) — support@flueid.com
+- [Status](https://status.flueid.com/)
+- [Request a demo](https://www.flueid.com/demo)
+
+## Repository artifacts
+
+- [Authentication profile](authentication/flueid-authentication.yml)
+- [API conventions](conventions/flueid-conventions.yml)
+- [Data model](data-model/flueid-data-model.yml)
+- [Error catalogue (recorded absence)](errors/flueid-pro-problem-types.yml)
+- [Lifecycle and status](lifecycle/flueid-lifecycle.yml)
+- [Conformance](conformance/flueid-conformance.yml)
+- [Trust and compliance](security/flueid-trust-center.yml)
+- [Domain security probe](security/flueid-domain-security.yml)
+- [Well-known probe (no hits)](well-known/flueid-well-known.yml)
+- [Packages (none published)](packages/flueid-packages.yml)
+- [Plans and pricing (none published)](plans/flueid-plans-pricing.yml)
+- [Rate limits (none published)](rate-limits/flueid-rate-limits.yml)
+- [Candidate MCP tool surface (not shipped by Flueid)](mcp/flueid-mcp.yml)
+- [Agent skills](skills/_index.yml)

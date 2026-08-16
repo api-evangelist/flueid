@@ -1,0 +1,49 @@
+generated: '2026-08-16'
+method: generated
+source: openapi/flueid-pro-openapi.yml
+note: >-
+  Grounded in the 132 operations published at https://api.pro.flueid.com/swagger/v1/swagger.json. The
+  Flueid Pro contract carries no operationId on any operation, so every step in every skill is bound by
+  HTTP method + path, verified verbatim against the spec. Flueid publishes no agent skills, AGENTS.md or
+  agent documentation of its own; these are API Evangelist generations.
+skills:
+- file: flueid-property-research.md
+  name: Research a property with Flueid Pro
+  api: openapi/flueid-pro-openapi.yml
+  operations:
+  - POST /api/PropertyData/PropertySearchSuggestions
+  - POST /api/PropertyData/FindProperties
+  - GET /api/PropertyData/PropertyDetail
+  - GET /api/PropertyData/PropertyHistory
+  - GET /api/PropertyData/GetPropertyTaxRolls
+  - POST /api/PropertyData/SalesComps
+  - POST /api/PropertyData/ZillowValuation
+  - POST /api/PropertyData/PropertyProfileReportBase64
+- file: flueid-open-and-track-title-order.md
+  name: Open and track a Flueid Pro title order
+  api: openapi/flueid-pro-openapi.yml
+  operations:
+  - POST /api/NewOrders/OrderTypeOptions
+  - POST /api/NewOrders/OrderDetailsOptions
+  - POST /api/NewOrders/OrderContactOptions
+  - POST /api/NewOrders/CheckDuplicateOrder
+  - POST /api/NewOrders/CalculateCloseDate
+  - POST /api/NewOrders/CreateOrder
+  - POST /api/Orders/SearchOrders
+  - GET /api/Orders/OrderDetail
+  - GET /api/OrderEvents/OrderHistory
+  - POST /api/Orders/UpdateOrderStatus
+  - POST /api/Orders/GetDocument
+- file: flueid-build-and-report-on-a-farm.md
+  name: Build and report on a Flueid Pro farm
+  api: openapi/flueid-pro-openapi.yml
+  operations:
+  - GET /api/Farms/GetAllFarms
+  - GET /api/Farms/FarmFilters
+  - POST /api/Farms/SaveFarmFilter
+  - POST /api/Farms/SearchFarmGeoPoints
+  - POST /api/Farms/SaveFarm
+  - POST /api/Farms/UploadExcelFarm
+  - POST /api/Farms/FixNotFoundPropertyForFarm
+  - POST /api/Farms/FarmOverview
+  - GET /api/Farms/FarmReport

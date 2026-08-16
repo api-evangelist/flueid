@@ -1,0 +1,19 @@
+generated: '2026-08-16'
+method: searched
+source: https://www.flueid.com/ (full route table mined from the site bundle), https://www.flueid.com/demo
+plan_count: 0
+plans: []
+model: contact-sales
+note: Flueid publishes no pricing page. The marketing site is a React SPA whose complete route table is
+  /, /about, /careers, /contact, /demo, /editorial/:slug, /home-equity, /job-postings, /loss-mit, /media,
+  /privacy, /security — there is no /pricing or /plans route. Commercial terms for Flueid Decision, Flueid
+  Transact and Flueid Pro are negotiated through the "Request a demo" form; third-party listings describe
+  enterprise licence and usage-based models, but Flueid itself publishes no rate card.
+sign_up: https://pro.flueid.com/
+x-evidence:
+- url: https://www.flueid.com/demo
+  http_status: 200
+  note: sales-contact form; the only commercial entry point
+- url: https://www.flueid.com/static/js/main.b5d4fbb7.js
+  http_status: 200
+  note: client bundle route table contains no pricing route

@@ -1,0 +1,39 @@
+generated: '2026-08-16'
+method: searched
+source: https://pro.flueid.com/static/js/main.e47cfca1.js + https://www.flueid.com/security
+docs: null
+summary:
+  types:
+  - http
+  http_schemes:
+  - bearer
+  api_key_in: []
+  oauth2_flows: []
+  declared_in_openapi: false
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - https://pro.flueid.com/static/js/main.e47cfca1.js
+  issuer: Amazon Cognito user pool (AWS Amplify auth), region us-east-1/us-west-2 pools referenced in
+    the client bundle
+  header: 'Authorization: Bearer <jwt>'
+  note: Observed in the Flueid Pro client bundle, which uses AWS Amplify Auth (CognitoUser, UserPoolId,
+    IdentityPoolId, cognitoClientId) and attaches an Authorization header to every api.pro.flueid.com
+    request.
+gaps:
+- The published OpenAPI declares no components.securitySchemes at all, so an agent reading the contract
+  cannot tell how to authenticate.
+- No /.well-known/openid-configuration or /.well-known/oauth-authorization-server is served on any Flueid
+  host.
+- No public authentication documentation page exists; Flueid publishes no developer portal.
+provider_claim: 'Flueid states on https://www.flueid.com/security: "Our VOT platform APIs securely exchange
+  data between systems using leading token-based authentication and dedicated KMS encryption management."'
+x-evidence:
+- url: https://api.pro.flueid.com/swagger/v1/swagger.json
+  http_status: 200
+  note: components.securitySchemes is empty
+- url: https://api.pro.flueid.com/.well-known/openid-configuration
+  http_status: 404

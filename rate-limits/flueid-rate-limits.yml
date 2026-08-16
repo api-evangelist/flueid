@@ -1,0 +1,10 @@
+generated: '2026-08-16'
+method: searched
+source: https://api.pro.flueid.com/swagger/v1/swagger.json + https://www.flueid.com/
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status: null
+note: No rate limits are published. The OpenAPI document contains no RateLimit-*, X-RateLimit-* or Retry-After
+  header, declares no 429 response (it declares only 200 on all 132 operations), and Flueid publishes
+  no developer documentation where limits could be stated. An honest zero.

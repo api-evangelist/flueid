@@ -1,23 +1,112 @@
 aid: flueid
 name: Flueid
-description: 'Flueid is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Flueid is an Austin, Texas real estate technology company, founded in
+  2017, that built the Verification of Title (VOT) category — digitizing the legacy
+  title search, examination and underwriting risk process so title status can be returned
+  as data rather than a manual report. Its platform spans Flueid Decision (the patented
+  VOT decisioning engine used by mortgage lenders, servicers, title underwriters and
+  secondary-market investors), Flueid Transact (workflow and settlement orchestration)
+  and Flueid Pro (a property research, data and lead-discovery workspace for real estate
+  agents, loan officers and title agents). Flueid Pro exposes a public OpenAPI 3.0.1
+  contract at api.pro.flueid.com covering orders, property data, farms, partners, documents
+  and account management; the Decision and Transact platform APIs are token-based partner
+  integrations negotiated under contract rather than self-service.'
+image: https://www.flueid.com/favicons/android-chrome-192x192.png
 url: https://raw.githubusercontent.com/api-evangelist/flueid/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-16'
 modified: '2026-08-16'
 tags:
 - Company
-apis: []
+- Real Estate
+- Title Insurance
+- Mortgage
+- Property Data
+- Verification of Title
+- Financial Services
+- Lending
+- PropTech
+- Settlement Services
+apis:
+- aid: flueid-pro
+  name: Flueid Pro API
+  description: 'The Flueid Pro API is the REST contract behind the Flueid Pro property
+    research and lead-discovery workspace. It publishes an OpenAPI 3.0.1 document with
+    132 operations across sixteen tags — Account, AccountPartner, ClientCompanies, Documents,
+    Farms, NewOrders, OrderDocumentSettings, OrderEvents, OrderOptions, Orders, PartnerOrderSettings,
+    Partners, Permissions, PropertyData, Public and Settings — covering title order intake
+    and status, property data and tax-roll lookups, document image requests, farm (territory)
+    definition and reporting, partner branding and order settings, and user/permission
+    administration. Authentication is a bearer token issued by the Flueid Pro identity
+    layer (AWS Cognito); the contract itself declares no securitySchemes.'
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Property Data
+  - Title
+  - Orders
+  - Real Estate
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-pro-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: Overlay
+    url: overlays/flueid-pro-overlay.yaml
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/flueid-agentic-access.yml
+- type: DomainSecurity
+  url: security/flueid-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.flueid.com/
+- type: Documentation
+  url: https://api.pro.flueid.com/swagger
+- type: APIReference
+  url: https://api.pro.flueid.com/swagger
+- type: SignUp
+  url: https://pro.flueid.com/
+- type: Support
+  url: https://www.flueid.com/contact
+- type: Blog
+  url: https://www.flueid.com/media
+- type: PrivacyPolicy
+  url: https://www.flueid.com/privacy
+- type: StatusPage
+  url: https://status.flueid.com/
+- type: Compliance
+  url: https://www.flueid.com/security
+- type: TrustCenter
+  url: security/flueid-trust-center.yml
+- type: Authentication
+  url: authentication/flueid-authentication.yml
+- type: Conventions
+  url: conventions/flueid-conventions.yml
+- type: DataModel
+  url: data-model/flueid-data-model.yml
+- type: Lifecycle
+  url: lifecycle/flueid-lifecycle.yml
+- type: Conformance
+  url: conformance/flueid-conformance.yml
+- type: LLMsTxt
+  url: llms/flueid-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Plans
+  url: plans/flueid-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/flueid-rate-limits.yml
+x-enrichment:
+  date: '2026-08-16'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1

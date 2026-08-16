@@ -1,0 +1,82 @@
+generated: '2026-08-16'
+method: derived
+source: openapi/flueid-pro-openapi.yml
+api: Flueid Pro API
+base_url: https://api.pro.flueid.com
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer <jwt>'
+  issuer: AWS Cognito user pool (Flueid Pro identity layer)
+  declared_in_spec: false
+  note: The OpenAPI document declares no components.securitySchemes; the bearer-token model is observed
+    in the Flueid Pro single-page application bundle (https://pro.flueid.com/static/js/main.e47cfca1.js),
+    which ships AWS Amplify/Cognito auth and sets an Authorization header on every api.pro.flueid.com
+    call. See authentication/flueid-authentication.yml.
+versioning:
+  scheme: query-parameter
+  parameter: api-version
+  location: query
+  current: '1.0'
+  applied_to_operations: 132
+  note: Every one of the 132 operations declares an optional api-version query parameter with a default
+    of "1.0". No path or header versioning is used.
+request:
+  methods_used:
+  - GET
+  - POST
+  get_operations: 51
+  post_operations: 81
+  naming: RPC-style verbs on resource controllers, e.g. /api/Orders/OrderDetail, /api/Farms/SaveFarmFilter
+    — not resource-and-verb REST.
+  request_content_types:
+  - application/json
+  - text/json
+  - application/*+json
+  - application/json-patch+json
+  parameter_style: Scalar identifiers are passed as query parameters (partnerId, propertyId, orderId,
+    userId, farmId); complex filters are passed as a JSON request body.
+response:
+  content_types:
+  - application/json
+  - text/json
+  - text/plain
+  documented_status_codes:
+  - '200'
+  note: The published contract documents ONLY 200 responses across all 132 operations. No 4xx or 5xx response
+    is declared anywhere, so the error envelope is not machine-readable from the spec. See errors/flueid-pro-problem-types.yml.
+pagination:
+  style: page-number
+  request_fields:
+  - page
+  - pageSize
+  - sortBy
+  response_fields:
+  - totalCount
+  standardized: false
+  note: Paging is not a cross-cutting envelope. Individual filter DTOs carry page (11 schemas), pageSize
+    (4), sortBy (4); only 3 response schemas carry totalCount. There is no shared paged-result wrapper
+    in components.schemas.
+idempotency:
+  supported: false
+  header: null
+  note: No Idempotency-Key header, parameter, or documented retry-safety contract appears anywhere in
+    the specification, and Flueid publishes no developer documentation stating one. Write operations are
+    plain POSTs. No Idempotency pointer is emitted.
+request_tracing:
+  request_id_header: null
+  supported: false
+  note: No X-Request-Id / correlation-id header is declared in the contract.
+rate_limit_signaling:
+  headers: []
+  documented: false
+  note: No RateLimit-*, X-RateLimit-* or Retry-After header appears in the contract and no limits are
+    published. See rate-limits/flueid-rate-limits.yml.
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+cross_links:
+  authentication: authentication/flueid-authentication.yml
+  errors: errors/flueid-pro-problem-types.yml
+  lifecycle: lifecycle/flueid-lifecycle.yml
+  rate_limits: rate-limits/flueid-rate-limits.yml

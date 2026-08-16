@@ -42,5 +42,22 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Flueid is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://www.nasdaqprivatemarket.com/
+# Flueid
+
+Flueid is an Austin, Texas real estate technology company, founded in 2017, that built the Verification of Title (VOT) category — digitizing the legacy title search, examination and underwriting risk process so title status can be returned as data rather than a manual report. Its platform spans Flueid Decision (the patented VOT decisioning engine used by mortgage lenders, servicers, title underwriters and secondary-market investors), Flueid Transact (workflow and settlement orchestration) and Flueid Pro (a property research, data and lead-discovery workspace for real estate agents, loan officers and title agents). Flueid Pro exposes a public OpenAPI 3.0.1 contract at api.pro.flueid.com covering orders, property data, farms, partners, documents and account management; the Decision and Transact platform APIs are token-based partner integrations negotiated under contract rather than self-service.
+
+## APIs
+
+- **Flueid Pro API** — `https://api.pro.flueid.com` · [https://pro.flueid.com/](https://pro.flueid.com/)
+
+## Links
+
+- Website: https://www.flueid.com/
+- Documentation: https://api.pro.flueid.com/swagger
+- APIReference: https://api.pro.flueid.com/swagger
+- SignUp: https://pro.flueid.com/
+- Support: https://www.flueid.com/contact
+- Blog: https://www.flueid.com/media
+- PrivacyPolicy: https://www.flueid.com/privacy
+- StatusPage: https://status.flueid.com/
+- Compliance: https://www.flueid.com/security

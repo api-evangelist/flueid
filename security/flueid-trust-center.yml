@@ -1,0 +1,29 @@
+generated: '2026-08-16'
+method: searched
+probe: true
+url: https://www.flueid.com/security
+certifications:
+- SOC 2 Type 1
+- SOC 2 Type 2
+- FIPS 140-2 Level 3 (AWS KMS HSM)
+- NIST CSF alignment
+evidence:
+- source: https://www.flueid.com/security
+  http_status: 200
+  note: Page is client-rendered; the certification text is served in https://www.flueid.com/static/js/main.b5d4fbb7.js
+    and was read there verbatim.
+- quote: Uncompromising in our standards, Flueid achieved the SSAE SOC 2 Type 1 and 2 certifications from
+    an industry-leading audit firm within 18 months of launching Flueid Decision. We replicated the SOC
+    controlled framework for Flueid Transact and Flueid Pro.
+- quote: Our Flueid Decision platform leverages the Federal Information Processing Standards (FIPS) 140-2
+    Security Level 3 certification through AWS KMS HSMs.
+- quote: Aligned with current NIST CSF standards.
+- quote: '''A'' cyber rating from a top cyber risk intelligence platform.'
+controls_claimed:
+- Bank-grade security in a dedicated tenancy architecture
+- Zero-trust enforcement on every transaction, including encryption at the order level with Flueid Decision
+- Client-specific key management systems
+- Token-based, authenticated, authorized and end-to-end encrypted API integrations
+dedicated_trust_portal: false
+note: trust.flueid.com does not resolve. The security posture is published as a marketing page rather
+  than a trust portal with downloadable evidence; no report request workflow is exposed publicly.

@@ -1,0 +1,32 @@
+generated: '2026-08-16'
+method: searched
+source: https://api.pro.flueid.com/swagger/v1/swagger.json + https://status.flueid.com/
+versioning:
+  scheme: query-parameter
+  parameter: api-version
+  current: '1.0'
+  docs: https://api.pro.flueid.com/swagger
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: 'Flueid publishes no deprecation or sunset policy. Three operations are flagged deprecated: true
+    inside the contract itself, with no replacement named and no removal date. That is the only deprecation
+    signal the provider emits.'
+sla:
+  url: null
+  uptime_target: null
+  note: No published SLA or uptime commitment was found on flueid.com or the status page.
+status_page: https://status.flueid.com/
+status_page_platform: UptimeRobot (hosted status page, HTTP 200, meta robots noindex)
+deprecated_operations:
+- openapi/flueid-pro-openapi.yml#POST /api/Account/UpdateUserCompanySettings
+- openapi/flueid-pro-openapi.yml#POST /api/Partners/SavePartnerOrderSettings
+- openapi/flueid-pro-openapi.yml#GET /api/Partners/PartnerOrderSettings
+deprecated_operation_count: 3
+x-evidence:
+- url: https://status.flueid.com/
+  http_status: 200
+  note: UptimeRobot-hosted status page titled "Flueid"
+- url: https://api.pro.flueid.com/swagger/v1/swagger.json
+  http_status: 200
+  note: '3 of 132 operations carry deprecated: true'
