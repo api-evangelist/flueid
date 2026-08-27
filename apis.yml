@@ -41,36 +41,228 @@ tags_raw:
 - PropTech
 - Settlement Services
 apis:
-- aid: flueid-pro
-  name: Flueid Pro API
-  description: 'The Flueid Pro API is the REST contract behind the Flueid Pro property
-    research and lead-discovery workspace. It publishes an OpenAPI 3.0.1 document with
-    132 operations across sixteen tags — Account, AccountPartner, ClientCompanies, Documents,
-    Farms, NewOrders, OrderDocumentSettings, OrderEvents, OrderOptions, Orders, PartnerOrderSettings,
-    Partners, Permissions, PropertyData, Public and Settings — covering title order intake
-    and status, property data and tax-roll lookups, document image requests, farm (territory)
-    definition and reporting, partner branding and order settings, and user/permission
-    administration. Authentication is a bearer token issued by the Flueid Pro identity
-    layer (AWS Cognito); the contract itself declares no securitySchemes.'
+- aid: flueid:flueid-account-api
+  name: Flueid Account API
+  description: The Account API from Flueid — 24 operation(s) for account.
   humanURL: https://pro.flueid.com/
   baseURL: https://api.pro.flueid.com
   tags:
-  - Property Data
-  - Title
-  - Order
-  - Real-Estate
-  tags_raw:
-  - Property Data
-  - Title
-  - Orders
-  - Real Estate
+  - Account
   properties:
   - type: OpenAPI
-    url: openapi/flueid-pro-openapi.yml
+    url: openapi/flueid-account-api-openapi.yml
   - type: APIReference
     url: https://api.pro.flueid.com/swagger
-  - type: Overlay
-    url: overlays/flueid-pro-overlay.yaml
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-accountpartner-api
+  name: Flueid Account Partner API
+  description: The AccountPartner API from Flueid — 2 operation(s) for accountpartner.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - AccountPartner
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-accountpartner-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-clientcompanies-api
+  name: Flueid Client Companies API
+  description: The ClientCompanies API from Flueid — 5 operation(s) for clientcompanies.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - ClientCompanies
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-clientcompanies-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-documents-api
+  name: Flueid Documents API
+  description: The Documents API from Flueid — 1 operation(s) for documents.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-documents-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-farms-api
+  name: Flueid Farms API
+  description: The Farms API from Flueid — 18 operation(s) for farms.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Farms
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-farms-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-neworders-api
+  name: Flueid New Orders API
+  description: The NewOrders API from Flueid — 15 operation(s) for neworders.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - NewOrders
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-neworders-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-orderdocumentsettings-api
+  name: Flueid Order Document Settings API
+  description: The OrderDocumentSettings API from Flueid — 5 operation(s) for orderdocumentsettings.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - OrderDocumentSettings
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-orderdocumentsettings-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-orderevents-api
+  name: Flueid Order Events API
+  description: The OrderEvents API from Flueid — 2 operation(s) for orderevents.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - OrderEvents
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-orderevents-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-orderoptions-api
+  name: Flueid Order Options API
+  description: The OrderOptions API from Flueid — 2 operation(s) for orderoptions.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - OrderOptions
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-orderoptions-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-orders-api
+  name: Flueid Orders API
+  description: The Orders API from Flueid — 10 operation(s) for orders.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-orders-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-partnerordersettings-api
+  name: Flueid Partner Order Settings API
+  description: The PartnerOrderSettings API from Flueid — 10 operation(s) for partnerordersettings.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - PartnerOrderSettings
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-partnerordersettings-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-partners-api
+  name: Flueid Partners API
+  description: The Partners API from Flueid — 11 operation(s) for partners.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Partners
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-partners-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-permissions-api
+  name: Flueid Permissions API
+  description: The Permissions API from Flueid — 3 operation(s) for permissions.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-permissions-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-propertydata-api
+  name: Flueid Property Data API
+  description: The PropertyData API from Flueid — 22 operation(s) for propertydata.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - PropertyData
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-propertydata-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-public-api
+  name: Flueid Public API
+  description: The Public API from Flueid — 1 operation(s) for public.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Public
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-public-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-settings-api
+  name: Flueid Settings API
+  description: The Settings API from Flueid — 1 operation(s) for settings.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-settings-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
   - type: ErrorCatalog
     url: errors/flueid-pro-problem-types.yml
 maintainers:
@@ -79,6 +271,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/flueid-pro-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/flueid-agentic-access.yml
 - type: DomainSecurity
