@@ -11,6 +11,18 @@ description: 'Flueid is an Austin, Texas real estate technology company, founded
   contract at api.pro.flueid.com covering orders, property data, farms, partners, documents
   and account management; the Decision and Transact platform APIs are token-based partner
   integrations negotiated under contract rather than self-service.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.flueid.com/favicons/android-chrome-192x192.png
 url: https://raw.githubusercontent.com/api-evangelist/flueid/refs/heads/main/apis.yml
 x-type: company
