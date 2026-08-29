@@ -283,6 +283,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/flueid-capability-edges.yml
+  name: Flueid Business Capability Map
 - type: Overlay
   url: overlays/flueid-pro-overlay.yaml
 - type: AgenticAccess
