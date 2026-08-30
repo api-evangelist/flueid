@@ -1,0 +1,402 @@
+openapi: 3.2.0
+info:
+  title: Flueid Pro Order Document Settings API
+  version: '1.0'
+servers:
+- url: https://api.pro.flueid.com
+  description: Flueid Pro production API
+tags:
+- name: OrderDocumentSettings
+paths:
+  /api/OrderDocumentSettings/GetOrderDocumentList:
+    post:
+      tags:
+      - OrderDocumentSettings
+      summary: Retrieves the global list of documents
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: Filters for searching, sortign and pagination
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderDocumentFilters'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderDocumentFilters'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderDocumentFilters'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderDocumentFilters'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.Orders.DocumentType__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.Orders.DocumentType__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.Orders.DocumentType__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null'
+  /api/OrderDocumentSettings/SaveOrderDocument:
+    post:
+      tags:
+      - OrderDocumentSettings
+      summary: Saves the document type
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: Document to be saved
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DocumentType'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DocumentType'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DocumentType'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DocumentType'
+      responses:
+        '200':
+          description: Success
+  /api/OrderDocumentSettings/DeleteOrderDocument:
+    post:
+      tags:
+      - OrderDocumentSettings
+      summary: Deletes the document type
+      parameters:
+      - name: documentTypeId
+        in: query
+        description: Document to be Deleted
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+  /api/OrderDocumentSettings/SaveOrderDocumentTypeSetting:
+    post:
+      tags:
+      - OrderDocumentSettings
+      summary: Saves the document type
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: Document setting to be saved
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+      responses:
+        '200':
+          description: Success
+  /api/OrderDocumentSettings/DeleteOrderDocumentTypeSetting:
+    post:
+      tags:
+      - OrderDocumentSettings
+      summary: Deletes the document type
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: Setting to be deleted
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting'
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.DocumentType:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        documentTypeId:
+          type: integer
+          format: int32
+        enabled:
+          type: boolean
+        associatedEventType:
+          type: integer
+          format: int32
+        description:
+          type:
+          - string
+          - 'null'
+        preventOverride:
+          type: boolean
+        allowedGroups:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Core.Constants.UserGroup'
+        allowedRoles:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
+        isOverriden:
+          type: boolean
+      additionalProperties: false
+    ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.Orders.DocumentType__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DocumentType'
+        pageCount:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderRole:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 4
+      - 5
+      - 6
+      - 7
+      - 11
+      - 12
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 29
+      - 50
+      - 51
+      - 52
+      - 53
+      - 54
+      - 55
+      - 99
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.EntityConstants.EntityType:
+      enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 9999
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.SortDirection:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.DTOs.OrderDocumentFilters:
+      type: object
+      properties:
+        searchString:
+          type:
+          - string
+          - 'null'
+        entityType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
+        entityId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        pageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        pageIndex:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        sortBy:
+          type:
+          - string
+          - 'null'
+        sortDirection:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
+      additionalProperties: false
+    Titlefy.Core.Constants.UserGroup:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        entityType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
+        entityId:
+          type: integer
+          format: int32
+        documentTypeId:
+          type: integer
+          format: int32
+        allowedRoles:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
+      additionalProperties: false

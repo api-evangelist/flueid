@@ -1,0 +1,393 @@
+openapi: 3.2.0
+info:
+  title: Flueid Pro Account Partner API
+  version: '1.0'
+servers:
+- url: https://api.pro.flueid.com
+  description: Flueid Pro production API
+tags:
+- name: AccountPartner
+paths:
+  /api/AccountPartner/GetActivePartners:
+    get:
+      tags:
+      - AccountPartner
+      summary: Gets a list of active partners for the logged in user
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+  /api/AccountPartner/SetCurrentPartner:
+    post:
+      tags:
+      - AccountPartner
+      summary: Changes the currently selected partner to a new one from the active list
+      parameters:
+      - name: partnerId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.User'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.User'
+components:
+  schemas:
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    Titlefy.Data.Entities.User:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        identityId:
+          type:
+          - string
+          - 'null'
+        lastLoginDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        username:
+          type:
+          - string
+          - 'null'
+        userId:
+          type: integer
+          format: int32
+        industryType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.IndustryType'
+        email:
+          type:
+          - string
+          - 'null'
+        emailSecondary:
+          type:
+          - string
+          - 'null'
+        phoneMobile:
+          type:
+          - string
+          - 'null'
+        phoneDirect:
+          type:
+          - string
+          - 'null'
+        phoneFax:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        firstName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        suffix:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        photoUrl:
+          type:
+          - string
+          - 'null'
+        companyLogoUrl:
+          type:
+          - string
+          - 'null'
+        termsAccepted:
+          type: boolean
+        isApiUser:
+          type: boolean
+        licenseNumber:
+          type:
+          - string
+          - 'null'
+        fullName:
+          type:
+          - string
+          - 'null'
+        partnerAssociations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+        password:
+          type:
+          - string
+          - 'null'
+        partnerName:
+          type:
+          - string
+          - 'null'
+        divisionName:
+          type:
+          - string
+          - 'null'
+        branchName:
+          type:
+          - string
+          - 'null'
+        accountManagerName:
+          type:
+          - string
+          - 'null'
+        role:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
+        internalUser:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        assistants:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+          readOnly: true
+          deprecated: true
+        groups:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        companyName:
+          type:
+          - string
+          - 'null'
+        companyId:
+          type: integer
+          format: int32
+        divisionId:
+          type: integer
+          format: int32
+        branchId:
+          type: integer
+          format: int32
+        currentPartner:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+      additionalProperties: false
+    Titlefy.Data.Entities.UserPartnerAssociation:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        divisionId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        branchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        isDefault:
+          type: boolean
+        accountManagers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        escrowOfficers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        titleOfficers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        logoMainUrl:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        internalUser:
+          type: boolean
+        assistants:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
+        groups:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        company:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerCompany'
+      additionalProperties: false
+    Titlefy.Data.Entities.UserPartnerCompany:
+      type: object
+      properties:
+        companyName:
+          type:
+          - string
+          - 'null'
+        companyId:
+          type: integer
+          format: int32
+        divisionId:
+          type: integer
+          format: int32
+        branchId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Core.Constants.IndustryType:
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.UserStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.RelatedUser:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        autoSelect:
+          type: boolean
+      additionalProperties: false

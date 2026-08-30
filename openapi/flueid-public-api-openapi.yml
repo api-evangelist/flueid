@@ -1,0 +1,63 @@
+openapi: 3.2.0
+info:
+  title: Flueid Pro Public API
+  version: '1.0'
+servers:
+- url: https://api.pro.flueid.com
+  description: Flueid Pro production API
+tags:
+- name: Public
+paths:
+  /api/Public/ContactUs:
+    post:
+      tags:
+      - Public
+      summary: Communication from the user.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.Public.ContactUsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.Public.ContactUsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.Public.ContactUsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.Public.ContactUsRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    Titlefy.Models.Public.ContactUsRequest:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        topic:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false

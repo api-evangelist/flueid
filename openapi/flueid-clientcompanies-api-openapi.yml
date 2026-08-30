@@ -1,0 +1,476 @@
+openapi: 3.2.0
+info:
+  title: Flueid Pro Client Companies API
+  version: '1.0'
+servers:
+- url: https://api.pro.flueid.com
+  description: Flueid Pro production API
+tags:
+- name: ClientCompanies
+paths:
+  /api/ClientCompanies/ClientCompanyDivisions:
+    get:
+      tags:
+      - ClientCompanies
+      summary: Gets the hierarchy of divisions and branches for a specific client company.
+      parameters:
+      - name: clientCompanyId
+        in: query
+        description: ''
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Models.Account.DivisionBranchOptions'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Models.Account.DivisionBranchOptions'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Models.Account.DivisionBranchOptions'
+  /api/ClientCompanies/AllClientCompanies:
+    get:
+      tags:
+      - ClientCompanies
+      summary: Gets a list of all client companies for the specified partner, for binding to a dropdown.
+      parameters:
+      - name: partnerId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+  /api/ClientCompanies/SearchClientCompanies:
+    post:
+      tags:
+      - ClientCompanies
+      summary: Gets the list of client companies matching the supplied filters.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.CompanyFilters'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.CompanyFilters'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.CompanyFilters'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.CompanyFilters'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null'
+  /api/ClientCompanies/ClientCompany:
+    get:
+      tags:
+      - ClientCompanies
+      summary: Gets the information for a specific client company.
+      parameters:
+      - name: companyId
+        in: query
+        description: ''
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+  /api/ClientCompanies/SaveClientCompany:
+    post:
+      tags:
+      - ClientCompanies
+      summary: Saves the client company information.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: integer
+                format: int32
+            application/json:
+              schema:
+                type: integer
+                format: int32
+            text/json:
+              schema:
+                type: integer
+                format: int32
+components:
+  schemas:
+    Titlefy.Models.Account.DivisionBranchOptions:
+      type: object
+      properties:
+        divisionOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+        divisionBranches:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Account.DivisionOption'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.YesNoType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Division:
+      type: object
+      properties:
+        divisionId:
+          type: integer
+          format: int32
+        divisionName:
+          type:
+          - string
+          - 'null'
+        referenceId:
+          type:
+          - string
+          - 'null'
+        branches:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderProductSubType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.OrderOptions:
+      type: object
+      properties:
+        policyDefault:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+        includeENOWrapper:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
+        enableSelectProcessing:
+          type: boolean
+      additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.CompanyFilters:
+      type: object
+      properties:
+        searchString:
+          type:
+          - string
+          - 'null'
+        partnerIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        pageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        pageIndex:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        sortBy:
+          type:
+          - string
+          - 'null'
+        sortDirection:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
+      additionalProperties: false
+    ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+        pageCount:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+      additionalProperties: false
+    Titlefy.Models.Account.DivisionOption:
+      type: object
+      properties:
+        divisionId:
+          type: integer
+          format: int32
+        branchOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+      additionalProperties: false
+    Titlefy.Core.Constants.SortDirection:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Branch:
+      type: object
+      properties:
+        branchId:
+          type: integer
+          format: int32
+        branchName:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        license:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.ClientCompany:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        partnerId:
+          type: integer
+          format: int32
+        companyId:
+          type: integer
+          format: int32
+        companyName:
+          type:
+          - string
+          - 'null'
+        divisions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Division'
+        orderProviderIds:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompanyProviderId'
+        partnerName:
+          type:
+          - string
+          - 'null'
+        disabled:
+          type: boolean
+        isAffiliate:
+          type: boolean
+        orderOptions:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.OrderOptions'
+      additionalProperties: false
+    Titlefy.Models.DropdownOption:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        text:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.ClientCompanyProviderId:
+      type: object
+      properties:
+        orderProvider:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider'
+        providerCompanyId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false

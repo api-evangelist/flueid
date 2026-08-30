@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  title: Flueid Pro Documents API
+  version: '1.0'
+servers:
+- url: https://api.pro.flueid.com
+  description: Flueid Pro production API
+tags:
+- name: Documents
+paths:
+  /api/Documents/GetHyperLinkedDocuments:
+    get:
+      tags:
+      - Documents
+      summary: Gets all hyperlinked documents from the s3 bucket for this Partner and OrderNumber.
+      parameters:
+      - name: partnerCode
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: orderNumber
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Documents.S3Document'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Documents.S3Document'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Documents.S3Document'
+components:
+  schemas:
+    Titlefy.Documents.S3Document:
+      type: object
+      properties:
+        bucketName:
+          type:
+          - string
+          - 'null'
+        folderName:
+          type:
+          - string
+          - 'null'
+        filename:
+          type:
+          - string
+          - 'null'
+        fullFilename:
+          type:
+          - string
+          - 'null'
+        lastModifiedDate:
+          type: string
+          format: date-time
+        filesizeInBytes:
+          type: integer
+          format: int64
+        downloadURL:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false

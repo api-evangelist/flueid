@@ -1,0 +1,5178 @@
+openapi: 3.2.0
+info:
+  title: Flueid Pro Property Data API
+  version: '1.0'
+servers:
+- url: https://api.pro.flueid.com
+  description: Flueid Pro production API
+tags:
+- name: PropertyData
+paths:
+  /api/PropertyData/PropertySearchSuggestions:
+    post:
+      tags:
+      - PropertyData
+      summary: Gets suggestions matching the passed search text, within a certain geographic area.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertySearchSuggestionRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertySearchSuggestionRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertySearchSuggestionRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertySearchSuggestionRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropSearchSuggestion'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropSearchSuggestion'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropSearchSuggestion'
+  /api/PropertyData/PropertiesNearby:
+    post:
+      tags:
+      - PropertyData
+      summary: Gets all properties within a defined geographic box.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertiesNearbyRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertiesNearbyRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertiesNearbyRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertiesNearbyRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+  /api/PropertyData/PropertyById:
+    get:
+      tags:
+      - PropertyData
+      summary: Gets a single property by id.
+      parameters:
+      - name: propertyId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+  /api/PropertyData/PropertiesByIds:
+    post:
+      tags:
+      - PropertyData
+      summary: Gets a single property by id.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int32
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int32
+          text/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int32
+          application/*+json:
+            schema:
+              type: array
+              items:
+                type: integer
+                format: int32
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+  /api/PropertyData/PropertyDetail:
+    get:
+      tags:
+      - PropertyData
+      summary: Fetches the full property details by property ID.
+      parameters:
+      - name: propertyId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetail'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetail'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetail'
+  /api/PropertyData/PropertyHistory:
+    get:
+      tags:
+      - PropertyData
+      summary: Fetches the full property history by property ID.
+      parameters:
+      - name: propertyId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionHistoryItem'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionHistoryItem'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionHistoryItem'
+  /api/PropertyData/BookmarkProperty:
+    post:
+      tags:
+      - PropertyData
+      summary: Bookmarks the specified property.
+      parameters:
+      - name: propertyId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+  /api/PropertyData/UnBookmarkProperty:
+    post:
+      tags:
+      - PropertyData
+      summary: Removes the bookmark from the specified property.
+      parameters:
+      - name: propertyId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+  /api/PropertyData/SalesComps:
+    post:
+      tags:
+      - PropertyData
+      summary: Searches for sales comparables matching the supplied criteria.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.SalesCompsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.SalesCompsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.SalesCompsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.SalesCompsRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+  /api/PropertyData/MarketAnalysis:
+    get:
+      tags:
+      - PropertyData
+      summary: Gets the market analysis based on the given zipcode.
+      parameters:
+      - name: zipCode
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MarketAnalysis'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MarketAnalysis'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MarketAnalysis'
+  /api/PropertyData/PropertyProfileReportBase64:
+    post:
+      tags:
+      - PropertyData
+      summary: Requests the property profile in PDF format.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertyProfileReportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertyProfileReportRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertyProfileReportRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.PropertyProfileReportRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+  /api/PropertyData/AllTrackedProperties:
+    get:
+      tags:
+      - PropertyData
+      summary: Gets all properties tracked by the user.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+  /api/PropertyData/ZillowValuation:
+    post:
+      tags:
+      - PropertyData
+      summary: Gets the Zillow valuation.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Models.PropertyData.ZillowValuation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Models.PropertyData.ZillowValuation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Models.PropertyData.ZillowValuation'
+  /api/PropertyData/RealtorDotComUrl:
+    post:
+      tags:
+      - PropertyData
+      summary: Gets the URL that links to the property details on Realtor.com
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.RealtorDotComUrlRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.RealtorDotComUrlRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.RealtorDotComUrlRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.RealtorDotComUrlRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+  /api/PropertyData/MlsCoverage:
+    get:
+      tags:
+      - PropertyData
+      summary: Gets a list of all mls orgs, broken down by state.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MlsCoverageArea'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MlsCoverageArea'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MlsCoverageArea'
+  /api/PropertyData/FindProperties:
+    post:
+      tags:
+      - PropertyData
+      summary: Finds properties matching the specified text.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        description: ''
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.FindPropertiesRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.FindPropertiesRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.FindPropertiesRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Titlefy.Models.PropertyData.FindPropertiesRequest'
+        required: true
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+  /api/PropertyData/CheckDocumentImagesCapability:
+    get:
+      tags:
+      - PropertyData
+      summary: Verify county(fips code) eligibility for pulling images based on the partner settings and current master list data
+      parameters:
+      - name: propertyId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: boolean
+            application/json:
+              schema:
+                type: boolean
+            text/json:
+              schema:
+                type: boolean
+  /api/PropertyData/GetPropertyDocumentImages:
+    get:
+      tags:
+      - PropertyData
+      summary: Get a list of documents requested for a specific proberty by the user
+      parameters:
+      - name: propertyId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.Documents.PropertyDocumentRequest'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.Documents.PropertyDocumentRequest'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Data.Entities.Documents.PropertyDocumentRequest'
+  /api/PropertyData/RequestDocumentImage:
+    get:
+      tags:
+      - PropertyData
+      summary: Request Document image
+      parameters:
+      - name: propertyId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: transactionId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: docType
+        in: query
+        schema:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.DocumentType'
+      - name: docNumber
+        in: query
+        schema:
+          type: string
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.PropertyDocument'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.PropertyDocument'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.PropertyDocument'
+  /api/PropertyData/DeleteDocumentImageRequest:
+    get:
+      tags:
+      - PropertyData
+      summary: Delete document images request (mark for deletion)
+      parameters:
+      - name: propertyId
+        in: query
+        schema:
+          type: integer
+          format: int32
+      - name: transactionId
+        in: query
+        schema:
+          type: integer
+          format: int64
+      - name: documentNumber
+        in: query
+        schema:
+          type: string
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.PropertyDocument'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.PropertyDocument'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.PropertyDocument'
+  /api/PropertyData/SignMapUrl:
+    post:
+      tags:
+      - PropertyData
+      summary: Takes Google Maps Static API url, signs and returns it
+      parameters:
+      - name: url
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+  /api/PropertyData/GetPropertyTaxRolls:
+    get:
+      tags:
+      - PropertyData
+      summary: Fetches the property tax rolls from BKFS.
+      parameters:
+      - name: propertyId
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxRolls'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxRolls'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxRolls'
+components:
+  schemas:
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Parcel:
+      type: object
+      properties:
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        billParcelNumber:
+          type:
+          - string
+          - 'null'
+        assessorParcelNumber:
+          type:
+          - string
+          - 'null'
+        assessmentYear:
+          type: integer
+          format: int32
+        assessments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Assessment'
+        exemptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Exemption'
+        netTaxable:
+          type: number
+          format: double
+        alerts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Alert'
+        withoutExemptionEstimatedCurrentYearBaseAmount:
+          type: number
+          format: double
+        owners:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Owner'
+        mailingAddress:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.MailingAddress'
+        comment:
+          type:
+          - string
+          - 'null'
+        bills:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Bill'
+        useCode:
+          type:
+          - string
+          - 'null'
+        useDescription:
+          type:
+          - string
+          - 'null'
+        stateEqualizedValue:
+          type: number
+          format: double
+        stateEqualizedValueYear:
+          type: integer
+          format: int32
+        homesteadPercent:
+          type: number
+          format: double
+        schoolDistrict:
+          type:
+          - string
+          - 'null'
+        publicWaterSewer:
+          type:
+          - string
+          - 'null'
+        legal:
+          type:
+          - string
+          - 'null'
+        metaData:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.MetaData'
+        levies:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Levy'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyListingInfo:
+      type: object
+      properties:
+        isListed:
+          type: boolean
+        isPending:
+          type: boolean
+        isSold:
+          type: boolean
+        listingId:
+          type:
+          - string
+          - 'null'
+        mlsOrgId:
+          type:
+          - string
+          - 'null'
+        photoReferenceId:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        listingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        pendingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        soldDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        soldPrice:
+          type: integer
+          format: int32
+        listingPrice:
+          type: integer
+          format: int32
+        listingPriceRangeLow:
+          type: integer
+          format: int32
+        listingPriceRangeHigh:
+          type: integer
+          format: int32
+        agentInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyListingAgent'
+        publicListingComments:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.Pro.Constants.OrderConstants.OrderType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Titlefy.ExternalServices.TaxData.TaxExemptionItem:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyProfileSenderRecipient:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        photoUrl:
+          type:
+          - string
+          - 'null'
+        companyLogoUrl:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Core.Constants.D4aDocumentStatus:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Assessment:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        otherTypeName:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyLien:
+      type: object
+      properties:
+        transactionId:
+          type: integer
+          format: int64
+        recordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        datedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        docProviderRef:
+          type:
+          - string
+          - 'null'
+        book:
+          type:
+          - string
+          - 'null'
+        page:
+          type:
+          - string
+          - 'null'
+        loanAmount:
+          type: integer
+          format: int32
+        lender:
+          type:
+          - string
+          - 'null'
+        lenderDbaName:
+          type:
+          - string
+          - 'null'
+        lenderAddress:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        privateLender:
+          type: boolean
+        lenderType:
+          type:
+          - string
+          - 'null'
+        term:
+          type: integer
+          format: int32
+        termType:
+          type:
+          - string
+          - 'null'
+        loanDueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        rate:
+          type: number
+          format: double
+        rateMax:
+          type: number
+          format: double
+        rateMinOnChange:
+          type: number
+          format: double
+        rateMaxOnChange:
+          type: number
+          format: double
+        estimatedRate:
+          type: number
+          format: double
+        loanType:
+          type:
+          - string
+          - 'null'
+        loanPurpose:
+          type:
+          - string
+          - 'null'
+        financingType:
+          type:
+          - string
+          - 'null'
+        lienPosition:
+          type: integer
+          format: int32
+        estimatedBalance:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        adjustableRateRider:
+          type: boolean
+        adjustableRateIndex:
+          type:
+          - string
+          - 'null'
+        changeIndex:
+          type: number
+          format: double
+        rateChangeFrequency:
+          type:
+          - string
+          - 'null'
+        interestOnlyPeriod:
+          type:
+          - string
+          - 'null'
+        fixedStepConversionRateRider:
+          type:
+          - string
+          - 'null'
+        rateConversionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        prepaymentRider:
+          type: boolean
+        prepaymentPenaltyTermInMonths:
+          type: integer
+          format: int32
+        borrowers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionConsumer'
+        estimatedMonthlyPI:
+          type: number
+          format: double
+        estimatedMonthlyPrincipal:
+          type: number
+          format: double
+        estimatedMonthlyInterest:
+          type: number
+          format: double
+        purchaseMortgage:
+          type: boolean
+        borrowersAsString:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.PaymentInstruction:
+      type: object
+      properties:
+        issueCheck:
+          type: boolean
+        severity:
+          type:
+          - string
+          - 'null'
+        paymentMethod:
+          type:
+          - string
+          - 'null'
+        comments:
+          type:
+          - string
+          - 'null'
+        paymentAgencies:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.PaymentAgency'
+        payTo:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.PayTo'
+        refOrCertIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Installment:
+      type: object
+      properties:
+        eventDates:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.EventDate'
+        baseAmount:
+          type: number
+          format: double
+        balance:
+          type: number
+          format: double
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.TaxInstallmentStatus'
+        discounts:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Discount'
+        payments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Payment'
+        estimated:
+          type: boolean
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Data:
+      type: object
+      properties:
+        identification:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Identification'
+        properties:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Property'
+        comment:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxAgency:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        addressLines:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        phone:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        url:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+        payTo:
+          type:
+          - string
+          - 'null'
+        annualTax:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.AnnualTax'
+        taxStatus:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.TaxStatus'
+        delinquencyDates:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: date-time
+        billReleaseDates:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: date-time
+        parcels:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxParcel'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxBillInstallment:
+      type: object
+      properties:
+        events:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxEvent'
+        baseTaxAmount:
+          type: number
+          format: double
+        taxBalance:
+          type: number
+          format: double
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.TaxInstallmentStatus'
+        payments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxPayment'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyListingAgent:
+      type: object
+      properties:
+        agentName:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        licenseNumber:
+          type:
+          - string
+          - 'null'
+        address:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.AnnualTax:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        taxType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureContact:
+      type: object
+      properties:
+        careOfName:
+          type:
+          - string
+          - 'null'
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        attentionTo:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        trusteeSaleNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Agency:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+        payTo:
+          type:
+          - string
+          - 'null'
+        payToAddressLines:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        telephone:
+          type:
+          - string
+          - 'null'
+        fax:
+          type:
+          - string
+          - 'null'
+        currentYearPostingDate:
+          type: string
+          format: date-time
+        priorYearPostingDate:
+          type: string
+          format: date-time
+        collectAtClosing:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.CollectAtClosing'
+        delinquencyDates:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: date-time
+        billReleaseDates:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+            format: date-time
+        metaData:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.MetaData'
+        parcels:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Parcel'
+        agencyCode:
+          type:
+          - string
+          - 'null'
+        agencyName:
+          type:
+          - string
+          - 'null'
+        parcelNumbers:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Payment:
+      type: object
+      properties:
+        paidOn:
+          type: string
+          format: date-time
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Month:
+      type: object
+      properties:
+        firstPaymentMonth:
+          type:
+          - string
+          - 'null'
+        escrowInstallments:
+          type: number
+          format: double
+        payTaxesAtClosing:
+          type: boolean
+        paymentAmount:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.Models.PropertyData.PropertyProfileReportRequest:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        salesComparableIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        salesCompsRequest:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.SalesCompsRequest'
+        preparedFor:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyProfileSenderRecipient'
+        preparedBy:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyProfileSenderRecipient'
+        visibility:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyProfileVisibility'
+        emailPropertyProfile:
+          type: boolean
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyOpenLien:
+      type: object
+      properties:
+        transactionId:
+          type: integer
+          format: int64
+        recordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        datedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        docProviderRef:
+          type:
+          - string
+          - 'null'
+        book:
+          type:
+          - string
+          - 'null'
+        page:
+          type:
+          - string
+          - 'null'
+        loanAmount:
+          type: integer
+          format: int32
+        lender:
+          type:
+          - string
+          - 'null'
+        lenderDbaName:
+          type:
+          - string
+          - 'null'
+        lenderAddress:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        privateLender:
+          type: boolean
+        lenderType:
+          type:
+          - string
+          - 'null'
+        term:
+          type: integer
+          format: int32
+        termType:
+          type:
+          - string
+          - 'null'
+        loanDueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        rate:
+          type: number
+          format: double
+        rateMax:
+          type: number
+          format: double
+        rateMinOnChange:
+          type: number
+          format: double
+        rateMaxOnChange:
+          type: number
+          format: double
+        estimatedRate:
+          type: number
+          format: double
+        loanType:
+          type:
+          - string
+          - 'null'
+        loanPurpose:
+          type:
+          - string
+          - 'null'
+        financingType:
+          type:
+          - string
+          - 'null'
+        lienPosition:
+          type: integer
+          format: int32
+        estimatedBalance:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        adjustableRateRider:
+          type: boolean
+        adjustableRateIndex:
+          type:
+          - string
+          - 'null'
+        changeIndex:
+          type: number
+          format: double
+        rateChangeFrequency:
+          type:
+          - string
+          - 'null'
+        interestOnlyPeriod:
+          type:
+          - string
+          - 'null'
+        fixedStepConversionRateRider:
+          type:
+          - string
+          - 'null'
+        rateConversionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        prepaymentRider:
+          type: boolean
+        prepaymentPenaltyTermInMonths:
+          type: integer
+          format: int32
+        borrowers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionConsumer'
+        estimatedMonthlyPI:
+          type: number
+          format: double
+        estimatedMonthlyPrincipal:
+          type: number
+          format: double
+        estimatedMonthlyInterest:
+          type: number
+          format: double
+        purchaseMortgage:
+          type: boolean
+        borrowersAsString:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        titleCompany:
+          type:
+          - string
+          - 'null'
+        cashPurchase:
+          type: boolean
+        constructionLoan:
+          type: boolean
+        standAloneSecond:
+          type: boolean
+        equityCreditLine:
+          type: boolean
+        assignedLenderName:
+          type:
+          - string
+          - 'null'
+        assignmentDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        numberOfAssignments:
+          type: integer
+          format: int32
+        preForeclosureStatus:
+          type:
+          - string
+          - 'null'
+        preFclRecordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        preFclFilingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        preFclCaseTrusteeSaleNum:
+          type:
+          - string
+          - 'null'
+        preFclAuctionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyOwnership:
+      type: object
+      properties:
+        mailCareOfName:
+          type:
+          - string
+          - 'null'
+        mailingAddress:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        ownerOccupied:
+          type: boolean
+        primaryOwner:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.ConsumerName'
+        primaryOwnerType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
+        primaryOwnerTypeDescription:
+          type:
+          - string
+          - 'null'
+        primaryOwnerIdCode:
+          type:
+          - string
+          - 'null'
+        secondaryOwner:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.ConsumerName'
+        secondaryOwnerType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
+        secondaryOwnerTypeDescription:
+          type:
+          - string
+          - 'null'
+        ownedSince:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        vesting:
+          type:
+          - string
+          - 'null'
+        primaryResidence:
+          type: boolean
+        numberOfOpenLiens:
+          type: integer
+          format: int32
+        totalAmountOfOpenLiens:
+          type: integer
+          format: int32
+        ownerSourceCode:
+          type:
+          - string
+          - 'null'
+        numberOfFinanceTransactions:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.TaxAssessment:
+      type: object
+      properties:
+        isBillPart:
+          type: boolean
+        year:
+          type: integer
+          format: int32
+        delinquentDate:
+          type: string
+          format: date-time
+        amount:
+          type: number
+          format: double
+        description:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.MailingAddress:
+      type: object
+      properties:
+        streetAddress:
+          type:
+          - string
+          - 'null'
+        cityStateZip:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.AddressExpanded:
+      type: object
+      properties:
+        streetNumber:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        fullStreetAddress:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zipCode5:
+          type:
+          - string
+          - 'null'
+        zipCode4:
+          type:
+          - string
+          - 'null'
+        fullAddressOneLine:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        zipCodeFull:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        streetDirectionLeft:
+          type:
+          - string
+          - 'null'
+        streetName:
+          type:
+          - string
+          - 'null'
+        streetSuffix:
+          type:
+          - string
+          - 'null'
+        streetDirectionRight:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyAssociation:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        associationType:
+          type:
+          - string
+          - 'null'
+        contactName:
+          type:
+          - string
+          - 'null'
+        streetAddress:
+          type:
+          - string
+          - 'null'
+        cityStateZip:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        fees:
+          type: integer
+          format: int32
+        feeRangeMin:
+          type: integer
+          format: int32
+        feeRangeMax:
+          type: integer
+          format: int32
+        feeFrequency:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Models.PropertyData.FindPropertiesRequest:
+      type: object
+      properties:
+        searchText:
+          type:
+          - string
+          - 'null'
+        maxResults:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Exemption:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        otherTypeName:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.AdditionalProperty:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        value:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxPayment:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        paidOn:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.TaxEstimation:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        score:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.PropertyDetailSettings:
+      type: object
+      properties:
+        showNetsheet:
+          type: boolean
+        showBuyersEstimate:
+          type: boolean
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Discount:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        percentage:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.CertFee:
+      type: object
+      properties:
+        agencies:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Agency'
+        payee:
+          type:
+          - string
+          - 'null'
+        cost:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.AnnualTax:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxBill:
+      type: object
+      properties:
+        fromYear:
+          type: integer
+          format: int32
+        toYear:
+          type: integer
+          format: int32
+        installments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxBillInstallment'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.MetaData:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        value:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.CollectAtClosing:
+      type: object
+      properties:
+        annualTaxAmount:
+          type: number
+          format: double
+        months:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Month'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.ProviderOrderSlim:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int32
+        expiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        titlefyCreatorUserId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        titlefyOrderId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        titlefyOrderType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderType'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxAssessmentItem:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.ForeclosureAdditionalInfo:
+      type: object
+      properties:
+        caseNumber:
+          type:
+          - string
+          - 'null'
+        dueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        defaultDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        unpaidBalance:
+          type: integer
+          format: int32
+        pastDueAmount:
+          type: integer
+          format: int32
+        pastDueAsOfDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        auctionInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureAuction'
+        trustee:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureContact'
+        contact:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureContact'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Levy:
+      type: object
+      properties:
+        fundNumber:
+          type:
+          - string
+          - 'null'
+        districtName:
+          type:
+          - string
+          - 'null'
+        amount:
+          type: number
+          format: double
+        taxType:
+          type:
+          - string
+          - 'null'
+        levyType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropSearchSuggestion:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        suggestionType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropSearchSuggestionType'
+        owner:
+          type:
+          - string
+          - 'null'
+        address:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        matchedText:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        apn:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.MlsOrg:
+      type: object
+      properties:
+        mlsOrgId:
+          type:
+          - string
+          - 'null'
+        mlsOrgName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.MarketStats:
+      type: object
+      properties:
+        averageValue:
+          type: integer
+          format: int32
+        averageListPriceLast30Days:
+          type: integer
+          format: int32
+        averageSalePriceLast30Days:
+          type: integer
+          format: int32
+        numListingsLast30Days:
+          type: integer
+          format: int32
+        numSoldLast30Days:
+          type: integer
+          format: int32
+        numSoldLast6Months:
+          type: integer
+          format: int32
+        averageSalePriceLast6Months:
+          type: integer
+          format: int32
+        numListingsLast6Months:
+          type: integer
+          format: int32
+        averageListPriceLast6Months:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Core.Constants.TaxInstallmentStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Flueid.PropertyDb.Models.PropertyData.PropertyRelatedDocument:
+      type: object
+      properties:
+        transactionId:
+          type: integer
+          format: int64
+        recordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contractDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        book:
+          type:
+          - string
+          - 'null'
+        page:
+          type:
+          - string
+          - 'null'
+        lender:
+          type:
+          - string
+          - 'null'
+        loanAmount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Bill:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        certificationStatus:
+          type:
+          - string
+          - 'null'
+        fromYear:
+          type: integer
+          format: int32
+        toYear:
+          type: integer
+          format: int32
+        installments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Installment'
+        redemptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Redemption'
+        taxAssessments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.TaxAssessment'
+        startYear:
+          type: integer
+          format: int32
+        endYear:
+          type: integer
+          format: int32
+        billStatus:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.BlackKnightTaxResponse:
+      type: object
+      properties:
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        request:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.BlackKnightTaxRequest'
+        data:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Data'
+        pdf:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxParcel:
+      type: object
+      properties:
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        assessedYear:
+          type: integer
+          format: int32
+        assessmentItems:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxAssessmentItem'
+        improvementPercentage:
+          type: number
+          format: double
+        exemptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxExemptionItem'
+        netTaxableAmount:
+          type: number
+          format: double
+        bills:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxBill'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyAssessment:
+      type: object
+      properties:
+        assessedValue:
+          type: integer
+          format: int32
+        landValue:
+          type: integer
+          format: int32
+        improvementValue:
+          type: integer
+          format: int32
+        improvementPct:
+          type: number
+          format: double
+        assessedYear:
+          type: integer
+          format: int32
+        marketValue:
+          type: integer
+          format: int32
+        marketLandValue:
+          type: integer
+          format: int32
+        marketImprovementValue:
+          type: integer
+          format: int32
+        marketValueYear:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        county:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyCharacteristics:
+      type: object
+      properties:
+        propertyType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
+        propertyTypeDescription:
+          type:
+          - string
+          - 'null'
+        yearBuilt:
+          type: integer
+          format: int32
+        bedrooms:
+          type: integer
+          format: int32
+        bathroomsTotal:
+          type: number
+          format: double
+        bathroomsFull:
+          type: integer
+          format: int32
+        bathroomsPartial:
+          type: integer
+          format: int32
+        livingSqFt:
+          type: integer
+          format: int32
+        basement:
+          type:
+          - string
+          - 'null'
+        lotSqFt:
+          type: integer
+          format: int32
+        lotAcres:
+          type: number
+          format: double
+        lotDepth:
+          type: integer
+          format: int32
+        lotFrontage:
+          type: integer
+          format: int32
+        stories:
+          type: number
+          format: double
+        storiesDescription:
+          type:
+          - string
+          - 'null'
+        hasBasement:
+          type: boolean
+        hasAttic:
+          type: boolean
+        isSplitLevel:
+          type: boolean
+        roomsTotal:
+          type: integer
+          format: int32
+        parking:
+          type:
+          - string
+          - 'null'
+        parkingType:
+          type:
+          - string
+          - 'null'
+        hasPool:
+          type: boolean
+        pool:
+          type:
+          - string
+          - 'null'
+        fireplace:
+          type:
+          - string
+          - 'null'
+        unitsTotal:
+          type: integer
+          format: int32
+        airConditioning:
+          type:
+          - string
+          - 'null'
+        siteInfluence:
+          type:
+          - string
+          - 'null'
+        amenities:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        numberOfBuildings:
+          type: integer
+          format: int32
+        buildingAreas:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.BuildingArea'
+        buildingClass:
+          type:
+          - string
+          - 'null'
+        buildingCondition:
+          type:
+          - string
+          - 'null'
+        buildingQuality:
+          type:
+          - string
+          - 'null'
+        buildingComments:
+          type:
+          - string
+          - 'null'
+        elevator:
+          type:
+          - string
+          - 'null'
+        interiorWalls:
+          type:
+          - string
+          - 'null'
+        exteriorWalls:
+          type:
+          - string
+          - 'null'
+        extraFeatures:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.ExtraFeature'
+        floorCovering:
+          type:
+          - string
+          - 'null'
+        foundation:
+          type:
+          - string
+          - 'null'
+        heating:
+          type:
+          - string
+          - 'null'
+        heatingFuelType:
+          type:
+          - string
+          - 'null'
+        additionalImprovements:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.AdditionalImprovement'
+        featuredRooms:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        numberOfPlumbingFixtures:
+          type: integer
+          format: int32
+        roofCover:
+          type:
+          - string
+          - 'null'
+        roofType:
+          type:
+          - string
+          - 'null'
+        sewer:
+          type:
+          - string
+          - 'null'
+        water:
+          type:
+          - string
+          - 'null'
+        propertyStyle:
+          type:
+          - string
+          - 'null'
+        constructionType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Owner:
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyValuation:
+      type: object
+      properties:
+        estimatedValue:
+          type: integer
+          format: int32
+        valueRangeMin:
+          type: integer
+          format: int32
+        valueRangeMax:
+          type: integer
+          format: int32
+        confidenceScore:
+          type: integer
+          format: int32
+        standardDeviation:
+          type: integer
+          format: int32
+        valuationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        estimatedLtvCombined:
+          type: number
+          format: double
+        purchaseLtv:
+          type: number
+          format: double
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosure:
+      type: object
+      properties:
+        currentForeclosureStatus:
+          type:
+          - string
+          - 'null'
+        recordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        docProviderRef:
+          type:
+          - string
+          - 'null'
+        book:
+          type:
+          - string
+          - 'null'
+        page:
+          type:
+          - string
+          - 'null'
+        documentType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.DocumentType'
+        docTypeDescription:
+          type:
+          - string
+          - 'null'
+        loanNumber:
+          type:
+          - string
+          - 'null'
+        caseNumber:
+          type:
+          - string
+          - 'null'
+        dueDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        defaultDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        unpaidBalance:
+          type: integer
+          format: int32
+        pastDueAmount:
+          type: integer
+          format: int32
+        pastDueAsOfDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        lender:
+          type:
+          - string
+          - 'null'
+        lenderType:
+          type:
+          - string
+          - 'null'
+        auctionInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureAuction'
+        originalNoticeOfDefault:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureOriginalNod'
+        originalLoan:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureOriginalLoan'
+        trustee:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureContact'
+        contact:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureContact'
+        deedTransactionId:
+          type: integer
+          format: int64
+        mortgageTransactionId:
+          type: integer
+          format: int64
+        mersIndicator:
+          type: boolean
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.MarketAnalysis:
+      type: object
+      properties:
+        stats:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MarketStats'
+        demographics:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MarketDemographics'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyProfileVisibility:
+      type: object
+      properties:
+        propertyFacts:
+          type: boolean
+        currentOwnership:
+          type: boolean
+        openLiens:
+          type: boolean
+        lastMarketSale:
+          type: boolean
+        currentMarketStatus:
+          type: boolean
+        valuation:
+          type: boolean
+        localPropertyValues:
+          type: boolean
+        comparableProperties:
+          type: boolean
+        transactionHistory:
+          type: boolean
+        propertyTaxes:
+          type: boolean
+        foreclosure:
+          type: boolean
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Party:
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Credential:
+      type: object
+      properties:
+        username:
+          type:
+          - string
+          - 'null'
+        password:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+        additionalProperties:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.AdditionalProperty'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.Constants.HistoryTransactionType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Documents.PropertyDocumentRequest:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        requestId:
+          type: integer
+          format: int32
+        userId:
+          type: integer
+          format: int32
+        partnerId:
+          type: integer
+          format: int32
+        transactionId:
+          type: integer
+          format: int64
+        propertyId:
+          type: integer
+          format: int32
+        documentTypeDescription:
+          type:
+          - string
+          - 'null'
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        isDeleted:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.D4aDocumentStatus'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyTransactionHistoryItem:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        transactionId:
+          type: integer
+          format: int64
+        buyersBorrowers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionConsumer'
+        sellers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionConsumer'
+        recordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        datedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        payoffDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        saleAmount:
+          type: integer
+          format: int32
+        salePriceCode:
+          type:
+          - string
+          - 'null'
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        loanNumber:
+          type:
+          - string
+          - 'null'
+        docProviderRef:
+          type:
+          - string
+          - 'null'
+        book:
+          type:
+          - string
+          - 'null'
+        page:
+          type:
+          - string
+          - 'null'
+        documentType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.DocumentType'
+        documentTypeDescription:
+          type:
+          - string
+          - 'null'
+        subDocType:
+          type:
+          - string
+          - 'null'
+        transactionType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.HistoryTransactionType'
+        transactionTypeDescription:
+          type:
+          - string
+          - 'null'
+        recordType:
+          type:
+          - string
+          - 'null'
+        isResale:
+          type: boolean
+        cityTransferTax:
+          type: number
+          format: double
+        countyTransferTax:
+          type: number
+          format: double
+        transferTax:
+          type: number
+          format: double
+        mortgages:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyLien'
+        lender:
+          type:
+          - string
+          - 'null'
+        titleCompany:
+          type:
+          - string
+          - 'null'
+        nonDisclosureState:
+          type: boolean
+        interFamilyTransfer:
+          type: boolean
+        cashPurchase:
+          type: boolean
+        constructionLoan:
+          type: boolean
+        standAloneSecond:
+          type: boolean
+        equityCreditLine:
+          type: boolean
+        purchaseMoneyMortgage:
+          type: boolean
+        residentialUse:
+          type: boolean
+        distressedSale:
+          type: boolean
+        reoStatus:
+          type:
+          - string
+          - 'null'
+        mersIndicator:
+          type: boolean
+        multiApnFlag:
+          type:
+          - string
+          - 'null'
+        partialInterestTransferred:
+          type:
+          - string
+          - 'null'
+        mainOrAddendumRecord:
+          type:
+          - string
+          - 'null'
+        assignor:
+          type:
+          - string
+          - 'null'
+        assigneePoolNum:
+          type:
+          - string
+          - 'null'
+        doubleSystemRecordingFlag:
+          type:
+          - string
+          - 'null'
+        doubleSystemDocNumber:
+          type:
+          - string
+          - 'null'
+        doubleSystemPreviousDocNumber:
+          type:
+          - string
+          - 'null'
+        matchedOrphan:
+          type:
+          - string
+          - 'null'
+        deedTransactionId:
+          type: integer
+          format: int64
+        mortgageTransactionId:
+          type: integer
+          format: int64
+        relatedDocument:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyRelatedDocument'
+        foreclosureAdditionalInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.ForeclosureAdditionalInfo'
+        hawaiiAdditionalRecordingInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.HawaiiAdditionalRecordingInfo'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        buyersBorrowersAsString:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        sellersAsString:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.BuildingArea:
+      type: object
+      properties:
+        areaName:
+          type:
+          - string
+          - 'null'
+        areaSqFt:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.PaymentAgency:
+      type: object
+      properties:
+        code:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        parcels:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Parcel'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyTaxes:
+      type: object
+      properties:
+        apn:
+          type:
+          - string
+          - 'null'
+        county:
+          type:
+          - string
+          - 'null'
+        taxYear:
+          type: integer
+          format: int32
+        taxAmount:
+          type: integer
+          format: int32
+        taxDelinquentYear:
+          type: integer
+          format: int32
+        taxRateCodeArea:
+          type:
+          - string
+          - 'null'
+        schoolTaxDistrict1:
+          type:
+          - string
+          - 'null'
+        schoolTaxDistrictType1:
+          type:
+          - string
+          - 'null'
+        schoolTaxDistrict2:
+          type:
+          - string
+          - 'null'
+        schoolTaxDistrictType2:
+          type:
+          - string
+          - 'null'
+        schoolTaxDistrict3:
+          type:
+          - string
+          - 'null'
+        schoolTaxDistrictType3:
+          type:
+          - string
+          - 'null'
+        homestead:
+          type: boolean
+        californiaHomeownersExemption:
+          type: boolean
+        taxExemptions:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        installments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTaxInstallment'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Fees:
+      type: object
+      properties:
+        certFees:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.CertFee'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.EventDate:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        dateType:
+          type:
+          - string
+          - 'null'
+        otherDateType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Models.PropertyData.PropertySearchSuggestionRequest:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        searchString:
+          type:
+          - string
+          - 'null'
+        maxResultsPerType:
+          type: integer
+          format: int32
+        suggestionSearchType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Data.SuggestionSearchType'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.Address:
+      type: object
+      properties:
+        streetNumber:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        fullStreetAddress:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zipCode5:
+          type:
+          - string
+          - 'null'
+        zipCode4:
+          type:
+          - string
+          - 'null'
+        fullAddressOneLine:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        zipCodeFull:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.MlsHistoryRecord:
+      type: object
+      properties:
+        listingId:
+          type:
+          - string
+          - 'null'
+        mlsOrgId:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        statusDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        listingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        pendingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        soldDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        soldPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        listingPrice:
+          type:
+          - number
+          - 'null'
+          format: double
+        listingPriceRangeLow:
+          type:
+          - number
+          - 'null'
+          format: double
+        listingPriceRangeHigh:
+          type:
+          - number
+          - 'null'
+          format: double
+        ownerName:
+          type:
+          - string
+          - 'null'
+        agentInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyListingAgent'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureAuction:
+      type: object
+      properties:
+        auctionDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        auctionTime:
+          type:
+          - string
+          - 'null'
+        location:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        minBidAmount:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Data.Entities.Address:
+      type: object
+      properties:
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        streetNumber: {}
+        streetName:
+          type:
+          - string
+          - 'null'
+        fullAddress:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        streetAddress:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    Flueid.PropertyDb.Models.Constants.ConsumerType:
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Flueid.PropertyDb.Models.Constants.PropertyType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 50
+      - 70
+      - 100
+      - 200
+      type: integer
+      format: int32
+    Titlefy.ExternalServices.TaxData.TaxRawDataItem:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        isPiq:
+          type: boolean
+        blackKnightTaxInfo:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.BlackKnightTaxResponse'
+        publicRecordTaxInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTaxes'
+        address:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        assessedValue:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Property:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Address'
+        countyFips:
+          type: integer
+          format: int32
+        stateFips:
+          type: integer
+          format: int32
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        legalDescription:
+          type:
+          - string
+          - 'null'
+        propertyValue:
+          type: number
+          format: double
+        parties:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Party'
+        taxes:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Taxes'
+        homeOwnerAssociations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.HomeOwnerAssociation'
+        fees:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Fees'
+        paymentInstructions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.PaymentInstruction'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.MlsCoverageArea:
+      type: object
+      properties:
+        stateName:
+          type:
+          - string
+          - 'null'
+        mlsOrgs:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MlsOrg'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.PropertyDetailLite:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        fips:
+          type:
+          - string
+          - 'null'
+        apn:
+          type:
+          - string
+          - 'null'
+        streetNum:
+          type:
+          - string
+          - 'null'
+        streetAddr:
+          type:
+          - string
+          - 'null'
+        fullAddr:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        mailStreetAddr:
+          type:
+          - string
+          - 'null'
+        mailCity:
+          type:
+          - string
+          - 'null'
+        mailState:
+          type:
+          - string
+          - 'null'
+        mailZip:
+          type:
+          - string
+          - 'null'
+        locationGeo:
+          $ref: '#/components/schemas/OpenSearch.Client.GeoLocation'
+        owner1Type:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
+        owner1Name:
+          type:
+          - string
+          - 'null'
+        owner1LastName:
+          type:
+          - string
+          - 'null'
+        owner2Type:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
+        owner2Name:
+          type:
+          - string
+          - 'null'
+        owner2LastName:
+          type:
+          - string
+          - 'null'
+        ownerOcc:
+          type: boolean
+        beds:
+          type: integer
+          format: int32
+        baths:
+          type: number
+          format: double
+        yearBuilt:
+          type: integer
+          format: int32
+        sqFt:
+          type: integer
+          format: int32
+        lotSqFt:
+          type: integer
+          format: int32
+        stories:
+          type: number
+          format: double
+        hasBasement:
+          type: boolean
+        hasAttic:
+          type: boolean
+        isSplitLevel:
+          type: boolean
+        propType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
+        estValue:
+          type: integer
+          format: int32
+        assdValue:
+          type: integer
+          format: int32
+        assdYear:
+          type: integer
+          format: int32
+        estEquity:
+          type: integer
+          format: int32
+        saleDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        saleAmt:
+          type: integer
+          format: int32
+        saleDocNum:
+          type:
+          - string
+          - 'null'
+        mlsSaleDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mlsSaleAmt:
+          type: integer
+          format: int32
+        listed:
+          type: boolean
+        pending:
+          type: boolean
+        sold:
+          type: boolean
+        listingId:
+          type:
+          - string
+          - 'null'
+        listingPrice:
+          type: integer
+          format: int32
+        listingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        pendingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        picUrl:
+          type:
+          - string
+          - 'null'
+        noPicUrl:
+          type:
+          - string
+          - 'null'
+        hot:
+          type: boolean
+        nonDisclosureState:
+          type: boolean
+        updated:
+          type: string
+          format: date-time
+        mtg1Amt:
+          type: integer
+          format: int32
+        mtg1EstBal:
+          type: integer
+          format: int32
+        mtg1RecDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mtg1Rate:
+          type: number
+          format: double
+        mtg1Term:
+          type: integer
+          format: int32
+        mtg1LoanType:
+          type:
+          - string
+          - 'null'
+        mtg1FinType:
+          type:
+          - string
+          - 'null'
+        mtg2Amt:
+          type: integer
+          format: int32
+        mtg2EstBal:
+          type: integer
+          format: int32
+        mtg2RecDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mtg2Rate:
+          type: number
+          format: double
+        mtg2Term:
+          type: integer
+          format: int32
+        mtg2LoanType:
+          type:
+          - string
+          - 'null'
+        mtg2FinType:
+          type:
+          - string
+          - 'null'
+        lot:
+          type:
+          - string
+          - 'null'
+        block:
+          type:
+          - string
+          - 'null'
+        tract:
+          type:
+          - string
+          - 'null'
+        subdivision:
+          type:
+          - string
+          - 'null'
+        legal:
+          type:
+          - string
+          - 'null'
+        mlsOrg:
+          type:
+          - string
+          - 'null'
+        owner1FirstName:
+          type:
+          - string
+          - 'null'
+        owner2FirstName:
+          type:
+          - string
+          - 'null'
+        improvementAmount:
+          type: integer
+          format: int32
+        improvementPct:
+          type: number
+          format: double
+        county:
+          type:
+          - string
+          - 'null'
+        zoning:
+          type:
+          - string
+          - 'null'
+        fireplace:
+          type:
+          - string
+          - 'null'
+        parking:
+          type:
+          - string
+          - 'null'
+        hasPool:
+          type: boolean
+        pool:
+          type:
+          - string
+          - 'null'
+        taxYear:
+          type: integer
+          format: int32
+        taxAmount:
+          type: integer
+          format: int32
+        valueRangeMin:
+          type: integer
+          format: int32
+        valueRangeMax:
+          type: integer
+          format: int32
+        confidenceScore:
+          type: integer
+          format: int32
+        preForeclosureDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        foreclosureDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mtg1Lender:
+          type:
+          - string
+          - 'null'
+        mtg2Lender:
+          type:
+          - string
+          - 'null'
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+        distFromSubjInMiles:
+          type: number
+          format: double
+        equityPct:
+          type: integer
+          format: int32
+        outOfStateOwner:
+          type: boolean
+        mailAddressIsPoBox:
+          type: boolean
+        lastListingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        saved:
+          type: boolean
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Name:
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        type:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.BlackKnightTaxRequest:
+      type: object
+      properties:
+        orderId:
+          type:
+          - string
+          - 'null'
+        systemReferenceId:
+          type:
+          - string
+          - 'null'
+        closingDate:
+          type: string
+          format: date-time
+        requestContact:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.RequestContact'
+        specialInstructions:
+          type:
+          - string
+          - 'null'
+        transaction:
+          type:
+          - string
+          - 'null'
+        credentials:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Credential'
+        properties:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.RequestProperty'
+        namedValues:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.NamedValue'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.RequestProperty:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Address'
+        countyFips:
+          type: integer
+          format: int32
+        stateFips:
+          type: integer
+          format: int32
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        legalDescription:
+          type:
+          - string
+          - 'null'
+        propertyValue:
+          type: number
+          format: double
+        parties:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Party'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.AdditionalImprovement:
+      type: object
+      properties:
+        improvementName:
+          type:
+          - string
+          - 'null'
+        improvementSqFt:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertiesNearbyRequest:
+      type: object
+      properties:
+        centerPointLatitude:
+          type: number
+          format: double
+        centerPointLongitude:
+          type: number
+          format: double
+        maxSearchRadiusInMiles:
+          type: number
+          format: double
+        boundingBox:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.BoundingBox'
+        polygonPoints:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.GeoPoint'
+        multiPolygonPoints:
+          type:
+          - array
+          - 'null'
+          items:
+            type: array
+            items:
+              type: array
+              items:
+                $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.GeoPoint'
+        propertyTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
+        minEstimatedValue:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxEstimatedValue:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minBedrooms:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minBathrooms:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minSqFt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxSqFt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minYearBuilt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxYearBuilt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minStories:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxStories:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minMtg1Amt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxMtg1Amt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minMtg1Age:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxMtg1Age:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minMtg1Rate:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxMtg1Rate:
+          type:
+          - number
+          - 'null'
+          format: double
+        minMtg2Amt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxMtg2Amt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minMtg2Age:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxMtg2Age:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minMtg2Rate:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxMtg2Rate:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxResults:
+          type: integer
+          format: int32
+        isHot:
+          type:
+          - boolean
+          - 'null'
+        isListed:
+          type:
+          - boolean
+          - 'null'
+        isPending:
+          type:
+          - boolean
+          - 'null'
+        isSold:
+          type:
+          - boolean
+          - 'null'
+        isOffMarket:
+          type:
+          - boolean
+          - 'null'
+        ignoreSubCategoryFilters:
+          type: boolean
+        errorIfExceedsMaxResults:
+          type: boolean
+        isForeclosure:
+          type: boolean
+        isPreForeclosure:
+          type: boolean
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Taxes:
+      type: object
+      properties:
+        status:
+          type:
+          - string
+          - 'null'
+        agencies:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Agency'
+        annualTax:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.AnnualTax'
+        taxEstimation:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.TaxEstimation'
+        comment:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.ExtraFeature:
+      type: object
+      properties:
+        featureName:
+          type:
+          - string
+          - 'null'
+        featureSqFt:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Alert:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        otherTypeName:
+          type:
+          - string
+          - 'null'
+        comment:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropLocation:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        siteAddress:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.AddressExpanded'
+        apn:
+          type:
+          - string
+          - 'null'
+        alternateAPN:
+          type:
+          - string
+          - 'null'
+        alternateApnType:
+          type:
+          - string
+          - 'null'
+        taxParcelNumber:
+          type:
+          - string
+          - 'null'
+        duplicateApnId:
+          type:
+          - string
+          - 'null'
+        countyFips:
+          type:
+          - string
+          - 'null'
+        countyName:
+          type:
+          - string
+          - 'null'
+        censusTract:
+          type:
+          - string
+          - 'null'
+        legalLot:
+          type:
+          - string
+          - 'null'
+        legalBlock:
+          type:
+          - string
+          - 'null'
+        legalDistrict:
+          type:
+          - string
+          - 'null'
+        legalSection:
+          type:
+          - string
+          - 'null'
+        legalLandLot:
+          type:
+          - string
+          - 'null'
+        legalLotCode:
+          type:
+          - string
+          - 'null'
+        legalTract:
+          type:
+          - string
+          - 'null'
+        shortLegalDescription:
+          type:
+          - string
+          - 'null'
+        fullLegalDescription:
+          type:
+          - string
+          - 'null'
+        subdivision:
+          type:
+          - string
+          - 'null'
+        legalPhaseNumber:
+          type:
+          - string
+          - 'null'
+        legalUnit:
+          type:
+          - string
+          - 'null'
+        carrierRoute:
+          type:
+          - string
+          - 'null'
+        cityTownshipMunicipality:
+          type:
+          - string
+          - 'null'
+        sectionTownshipRangeMeridian:
+          type:
+          - string
+          - 'null'
+        assessorsMapReference:
+          type:
+          - string
+          - 'null'
+        zoning:
+          type:
+          - string
+          - 'null'
+        neighborhoodCode:
+          type:
+          - string
+          - 'null'
+        condoOrBuildingName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.ConsumerName:
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        suffix:
+          type:
+          - string
+          - 'null'
+        fullName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.HawaiiAdditionalRecordingInfo:
+      type: object
+      properties:
+        transferCertificateOfTitle:
+          type:
+          - string
+          - 'null'
+        condoCprHpr:
+          type:
+          - string
+          - 'null'
+        situsUnitNumber:
+          type:
+          - string
+          - 'null'
+        previousTransferCertificateOfTitle:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.SalesCompsRequest:
+      type: object
+      properties:
+        subjectPropIdToExclude:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        centerPointLatitude:
+          type: number
+          format: double
+        centerPointLongitude:
+          type: number
+          format: double
+        searchRadiusInMiles:
+          type:
+          - number
+          - 'null'
+          format: double
+        saleDateMonthsBack:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        propertyTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
+        minSalesPrice:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxSalesPrice:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minBedrooms:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxBedrooms:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minBathrooms:
+          type:
+          - number
+          - 'null'
+          format: double
+        maxBathrooms:
+          type:
+          - number
+          - 'null'
+          format: double
+        minSqFt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxSqFt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        minYearBuilt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxYearBuilt:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maxResults:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureOriginalNod:
+      type: object
+      properties:
+        recordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        docProviderRef:
+          type:
+          - string
+          - 'null'
+        book:
+          type:
+          - string
+          - 'null'
+        page:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.PayTo:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        mailTo:
+          type:
+          - string
+          - 'null'
+        contactName:
+          type:
+          - string
+          - 'null'
+        mailingAddressLine1:
+          type:
+          - string
+          - 'null'
+        mailingAddressLine2:
+          type:
+          - string
+          - 'null'
+        mailingAddressLine3:
+          type:
+          - string
+          - 'null'
+        mailingCity:
+          type:
+          - string
+          - 'null'
+        mailingState:
+          type:
+          - string
+          - 'null'
+        mailingZip:
+          type:
+          - string
+          - 'null'
+        isThirdParty:
+          type: boolean
+        phone:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.MarketDemographics:
+      type: object
+      properties:
+        zipCode:
+          type:
+          - string
+          - 'null'
+        rentMedian:
+          type: integer
+          format: int32
+        unemploymentRate:
+          type: number
+          format: double
+        ageMedian:
+          type: number
+          format: double
+        malePct:
+          type: number
+          format: double
+        femalePct:
+          type: number
+          format: double
+        familySizeMedian:
+          type: number
+          format: double
+        householdIncomeMedian:
+          type: number
+          format: double
+        individualIncomeMedian:
+          type: number
+          format: double
+        lastUpdatedDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Flueid.PropertyDb.Models.Constants.DocumentType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      format: int32
+    Flueid.PropertyDb.Data.SuggestionSearchType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    Flueid.PropertyDb.Models.PropertyData.GeoPoint:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.HomeOwnerAssociation:
+      type: object
+      properties:
+        status:
+          type:
+          - string
+          - 'null'
+        countyName:
+          type:
+          - string
+          - 'null'
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        cycle:
+          type:
+          - string
+          - 'null'
+        telephone:
+          type:
+          - string
+          - 'null'
+        faxNumber:
+          type:
+          - string
+          - 'null'
+        contactName:
+          type:
+          - string
+          - 'null'
+        comment:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    OpenSearch.Client.GeoLocation:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxRolls:
+      type: object
+      properties:
+        serviceAvailable:
+          type: boolean
+        dataFound:
+          type: boolean
+        usingPublicRecordsData:
+          type: boolean
+        piqTaxYear:
+          type: integer
+          format: int32
+        piqTaxAmount:
+          type: number
+          format: double
+        piqEstimateName:
+          type:
+          - string
+          - 'null'
+        piqEstimateDescription:
+          type:
+          - string
+          - 'null'
+        piqEstimateScore:
+          type: integer
+          format: int32
+        taxAgencies:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxAgency'
+        data:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxRawData'
+      additionalProperties: false
+    Titlefy.Core.Constants.TaxStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    Titlefy.ExternalServices.TaxData.TaxEvent:
+      type: object
+      properties:
+        dateType:
+          type:
+          - string
+          - 'null'
+        eventDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosureOriginalLoan:
+      type: object
+      properties:
+        recordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        datedDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        docProviderRef:
+          type:
+          - string
+          - 'null'
+        book:
+          type:
+          - string
+          - 'null'
+        page:
+          type:
+          - string
+          - 'null'
+        lender:
+          type:
+          - string
+          - 'null'
+        lenderType:
+          type:
+          - string
+          - 'null'
+        loanAmount:
+          type: integer
+          format: int32
+        titleCompany:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.BoundingBox:
+      type: object
+      properties:
+        topLeft:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.GeoPoint'
+        bottomRight:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.GeoPoint'
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.PropertyDocument:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        providerId:
+          type:
+          - string
+          - 'null'
+        transactionId:
+          type: integer
+          format: int64
+        documentNumber:
+          type:
+          - string
+          - 'null'
+        propertyId:
+          type: integer
+          format: int32
+        documentTypeDescription:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.D4aDocumentStatus'
+        documentLink:
+          type:
+          - string
+          - 'null'
+        documentBase64:
+          type:
+          - string
+          - 'null'
+        providerRequestId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.TaxRawData:
+      type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.TaxRawDataItem'
+      additionalProperties: false
+    Titlefy.Models.PropertyData.RealtorDotComUrlRequest:
+      type: object
+      properties:
+        streetAddress:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Identification:
+      type: object
+      properties:
+        orderId:
+          type:
+          - string
+          - 'null'
+        systemReferenceId:
+          type:
+          - string
+          - 'null'
+        requestId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Flueid.PropertyDb.Models.Constants.PropSearchSuggestionType:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    Titlefy.Models.PropertyData.ZillowValuation:
+      type: object
+      properties:
+        zpid:
+          type:
+          - string
+          - 'null'
+        lastUpdated:
+          type: string
+          format: date-time
+        valuation:
+          type: integer
+          format: int32
+        valuationMin:
+          type: integer
+          format: int32
+        valuationMax:
+          type: integer
+          format: int32
+        thirtyDayChange:
+          type: integer
+          format: int32
+          deprecated: true
+        webLink:
+          type:
+          - string
+          - 'null'
+        propertyAddress:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        address:
+          type:
+          - string
+          - 'null'
+        rental:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        rentalMin:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        rentalMax:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        foreclosure:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.PropertyDetail:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        location:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropLocation'
+        characteristics:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyCharacteristics'
+        ownership:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyOwnership'
+        openLiens:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyOpenLien'
+        valuation:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyValuation'
+        assessment:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyAssessment'
+        lastMarketSale:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionHistoryItem'
+        priorMarketSale:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTransactionHistoryItem'
+        taxes:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyTaxes'
+        associations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyAssociation'
+        listingInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyListingInfo'
+        mlsHistory:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MlsHistoryRecord'
+        preForeclosure:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyPreForeclosure'
+        photoMainUrl:
+          type:
+          - string
+          - 'null'
+        noPhotoUrl:
+          type:
+          - string
+          - 'null'
+        locationRoadMapUrl:
+          type:
+          - string
+          - 'null'
+        isHot:
+          type: boolean
+        nonDisclosureState:
+          type: boolean
+        estimatedEquity:
+          type: integer
+          format: int32
+        mostRecentCountyRecordingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mlsOrg:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        mailAddressIsPoBox:
+          type: boolean
+        lastListingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        fvdLastSaleDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        fvdLastListingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        settings:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailSettings'
+        titleCheckOrders:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.ProviderOrderSlim'
+        photoUrls:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        photoCount:
+          type: integer
+          format: int32
+        isSaved:
+          type: boolean
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Address:
+      type: object
+      properties:
+        streetAddress:
+          type:
+          - string
+          - 'null'
+        cityStateZip:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyTaxInstallment:
+      type: object
+      properties:
+        baseAmountDue:
+          type: integer
+          format: int32
+        netAmountDue:
+          type: integer
+          format: int32
+        status:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyTransactionConsumer:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.ConsumerName'
+        careOfName:
+          type:
+          - string
+          - 'null'
+        consumerType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
+        vesting:
+          type:
+          - string
+          - 'null'
+        relationship:
+          type:
+          - string
+          - 'null'
+        idCode:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.NamedValue:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        value:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Redemption:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        validThrough:
+          type: string
+          format: date-time
+      additionalProperties: false
+    Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.RequestContact:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/Titlefy.ExternalServices.TaxData.Providers.BlackKnight.ProviderObjects.Name'
+        email:
+          type:
+          - string
+          - 'null'
+        branch:
+          type:
+          - string
+          - 'null'
+        username:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false

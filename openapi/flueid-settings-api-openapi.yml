@@ -1,0 +1,55 @@
+openapi: 3.2.0
+info:
+  title: Flueid Pro Settings API
+  version: '1.0'
+servers:
+- url: https://api.pro.flueid.com
+  description: Flueid Pro production API
+tags:
+- name: Settings
+paths:
+  /api/Settings/FeeCalculatorLinks:
+    get:
+      tags:
+      - Settings
+      summary: Gets a list of 3rd-party fee calculator links.
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Models.General.Link'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Models.General.Link'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Titlefy.Models.General.Link'
+components:
+  schemas:
+    Titlefy.Models.General.Link:
+      type: object
+      properties:
+        title:
+          type:
+          - string
+          - 'null'
+        url:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
