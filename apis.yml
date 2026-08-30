@@ -157,6 +157,8 @@ apis:
   humanURL: https://pro.flueid.com/
   baseURL: https://api.pro.flueid.com
   tags:
+  - Order Events
+  tags_raw:
   - OrderEvents
   properties:
   - type: OpenAPI
@@ -185,6 +187,8 @@ apis:
   humanURL: https://pro.flueid.com/
   baseURL: https://api.pro.flueid.com
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -241,6 +245,8 @@ apis:
   humanURL: https://pro.flueid.com/
   baseURL: https://api.pro.flueid.com
   tags:
+  - Property Data
+  tags_raw:
   - PropertyData
   properties:
   - type: OpenAPI
