@@ -166,22 +166,6 @@ apis:
     url: https://api.pro.flueid.com/swagger
   - type: ErrorCatalog
     url: errors/flueid-pro-problem-types.yml
-- aid: flueid:flueid-orderevents-api
-  name: Flueid Order Events API
-  description: The OrderEvents API from Flueid — 2 operation(s) for orderevents.
-  humanURL: https://pro.flueid.com/
-  baseURL: https://api.pro.flueid.com
-  tags:
-  - Order Events
-  tags_raw:
-  - OrderEvents
-  properties:
-  - type: OpenAPI
-    url: openapi/flueid-orderevents-api-openapi.yml
-  - type: APIReference
-    url: https://api.pro.flueid.com/swagger
-  - type: ErrorCatalog
-    url: errors/flueid-pro-problem-types.yml
 - aid: flueid:flueid-orderoptions-api
   name: Flueid Order Options API
   description: The OrderOptions API from Flueid — 2 operation(s) for orderoptions.
@@ -254,22 +238,6 @@ apis:
     url: https://api.pro.flueid.com/swagger
   - type: ErrorCatalog
     url: errors/flueid-pro-problem-types.yml
-- aid: flueid:flueid-propertydata-api
-  name: Flueid Property Data API
-  description: The PropertyData API from Flueid — 22 operation(s) for propertydata.
-  humanURL: https://pro.flueid.com/
-  baseURL: https://api.pro.flueid.com
-  tags:
-  - Property Data
-  tags_raw:
-  - PropertyData
-  properties:
-  - type: OpenAPI
-    url: openapi/flueid-propertydata-api-openapi.yml
-  - type: APIReference
-    url: https://api.pro.flueid.com/swagger
-  - type: ErrorCatalog
-    url: errors/flueid-pro-problem-types.yml
 - aid: flueid:flueid-public-api
   name: Flueid Public API
   description: The Public API from Flueid — 1 operation(s) for public.
@@ -294,6 +262,34 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/flueid-settings-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-order-events-api
+  name: Flueid Order Events API
+  description: The Order Events API from Flueid — 2 operation(s) for order events.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Order Events
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-order-events-api-openapi.yml
+  - type: APIReference
+    url: https://api.pro.flueid.com/swagger
+  - type: ErrorCatalog
+    url: errors/flueid-pro-problem-types.yml
+- aid: flueid:flueid-property-data-api
+  name: Flueid Property Data API
+  description: The Property Data API from Flueid — 22 operation(s) for property data.
+  humanURL: https://pro.flueid.com/
+  baseURL: https://api.pro.flueid.com
+  tags:
+  - Property Data
+  properties:
+  - type: OpenAPI
+    url: openapi/flueid-property-data-api-openapi.yml
   - type: APIReference
     url: https://api.pro.flueid.com/swagger
   - type: ErrorCatalog
