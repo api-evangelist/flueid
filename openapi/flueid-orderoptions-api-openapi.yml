@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Order Options API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: OrderOptions
 paths:
@@ -12,7 +9,7 @@ paths:
     get:
       tags:
       - OrderOptions
-      summary: Returns a list of all Lookup codes for a company by company id, division id, branch id
+      summary: Returns a list of all Lookup codes for a company by company id, division id…
       parameters:
       - name: companyId
         in: query
@@ -40,6 +37,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderLookupCodes'
+      operationId: getApiOrderOptionsGetAllLookupCodesForCompany
+      x-operation-id-source: derived
   /api/OrderOptions/SaveEntityLookupCodes:
     post:
       tags:
@@ -80,35 +79,21 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderLookupCodes'
+      operationId: postApiOrderOptionsSaveEntityLookupCodes
+      x-operation-id-source: derived
 components:
   schemas:
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
+    Flueid.Pro.Constants.EntityConstants.EntityType:
+      enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 9999
+      type: integer
+      format: int32
     Titlefy.Data.Entities.Orders.OrderLookupCodes:
       type: object
       properties:
@@ -171,17 +156,33 @@ components:
       - 99
       type: integer
       format: int32
-    Flueid.Pro.Constants.EntityConstants.EntityType:
-      enum:
-      - 10
-      - 20
-      - 30
-      - 40
-      - 50
-      - 60
-      - 9999
-      type: integer
-      format: int32
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
     Titlefy.Data.Entities.Orders.OrderLookupCodeRole:
       type: object
       properties:

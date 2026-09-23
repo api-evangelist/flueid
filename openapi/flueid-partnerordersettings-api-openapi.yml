@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Partner Order Settings API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: PartnerOrderSettings
 paths:
@@ -12,7 +9,7 @@ paths:
     get:
       tags:
       - PartnerOrderSettings
-      summary: Gets partner order settings for a Partner.
+      summary: Gets partner order settings for a Partner
       parameters:
       - name: partnerId
         in: query
@@ -39,11 +36,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.PartnerOrderSettingsResponse'
+      operationId: getApiPartnerOrderSettingsPartnerOrderSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/SetPartnerOrderSettings:
     post:
       tags:
       - PartnerOrderSettings
-      summary: Sets Partner Order Settings for a Partner.
+      summary: Sets Partner Order Settings for a Partner
       parameters:
       - name: api-version
         in: query
@@ -79,11 +78,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.TxmSettingsResponse'
+      operationId: postApiPartnerOrderSettingsSetPartnerOrderSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/TxmSettings:
     get:
       tags:
       - PartnerOrderSettings
-      summary: Gets TXM Settings for a Partner.
+      summary: Gets TXM Settings for a Partner
       parameters:
       - name: partnerId
         in: query
@@ -110,11 +111,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.TxmSettingsResponse'
+      operationId: getApiPartnerOrderSettingsTxmSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/SetTxmSettings:
     post:
       tags:
       - PartnerOrderSettings
-      summary: Sets TXM Settings for a Partner.
+      summary: Sets TXM Settings for a Partner
       parameters:
       - name: api-version
         in: query
@@ -150,11 +153,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.TxmSettingsResponse'
+      operationId: postApiPartnerOrderSettingsSetTxmSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/DecisionSettings:
     get:
       tags:
       - PartnerOrderSettings
-      summary: Gets TXM Settings for a Partner.
+      summary: Gets TXM Settings for a Partner
       parameters:
       - name: partnerId
         in: query
@@ -181,11 +186,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.DecisionSettingsResponse'
+      operationId: getApiPartnerOrderSettingsDecisionSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/SetDecisionSettings:
     post:
       tags:
       - PartnerOrderSettings
-      summary: Sets TXM Settings for a Partner.
+      summary: Sets TXM Settings for a Partner
       parameters:
       - name: api-version
         in: query
@@ -221,11 +228,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.DecisionSettingsResponse'
+      operationId: postApiPartnerOrderSettingsSetDecisionSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/D4aSettings:
     get:
       tags:
       - PartnerOrderSettings
-      summary: Gets D4A Settings for a Partner.
+      summary: Gets D4A Settings for a Partner
       parameters:
       - name: partnerId
         in: query
@@ -252,11 +261,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.D4aSettingsResponse'
+      operationId: getApiPartnerOrderSettingsD4aSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/SetD4aSettings:
     post:
       tags:
       - PartnerOrderSettings
-      summary: Sets D4A Settings for a Partner.
+      summary: Sets D4A Settings for a Partner
       parameters:
       - name: api-version
         in: query
@@ -292,11 +303,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.D4aSettingsResponse'
+      operationId: postApiPartnerOrderSettingsSetD4aSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/HilSettings:
     get:
       tags:
       - PartnerOrderSettings
-      summary: Gets TXM Settings for a Partner.
+      summary: Gets TXM Settings for a Partner
       parameters:
       - name: partnerId
         in: query
@@ -323,11 +336,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.HilSettingsResponse'
+      operationId: getApiPartnerOrderSettingsHilSettings
+      x-operation-id-source: derived
   /api/PartnerOrderSettings/SetHilSettings:
     post:
       tags:
       - PartnerOrderSettings
-      summary: Sets Hil Settings for a Partner.
+      summary: Sets Hil Settings for a Partner
       parameters:
       - name: api-version
         in: query
@@ -363,93 +378,27 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.HilSettingsResponse'
+      operationId: postApiPartnerOrderSettingsSetHilSettings
+      x-operation-id-source: derived
 components:
   schemas:
-    Flueid.Pro.Constants.OrderConstants.OrderType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      type: integer
-      format: int32
-    Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO:
-      type: object
-      properties:
-        orderNumberFetchMode:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderNumberFetchMode'
-        softProConnectionString:
-          type:
-          - string
-          - 'null'
-        softProNumberingGroupId:
-          type:
-          - string
-          - 'null'
-        orderNumServiceUrl:
-          type:
-          - string
-          - 'null'
-        orderNumServiceAuthUrl:
-          type:
-          - string
-          - 'null'
-        orderNumServiceUsername:
-          type:
-          - string
-          - 'null'
-        orderNumServicePassword:
-          type:
-          - string
-          - 'null'
-        url:
-          type:
-          - string
-          - 'null'
-        apiKey:
-          type:
-          - string
-          - 'null'
-        affiliateCode:
-          type:
-          - string
-          - 'null'
-        collaborationEmail:
-          type:
-          - string
-          - 'null'
-        orderAPIVersion:
-          type:
-          - string
-          - 'null'
-        splitPurchaseOrderType:
-          type: boolean
-        bypassTxm:
-          type: boolean
-      additionalProperties: false
-    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      type: integer
-      format: int32
-    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateDecisionSettingsRequest:
+    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateHilSettingsRequest:
       type: object
       properties:
         partnerId:
           type: integer
           format: int32
-        decisionSettings:
-          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.DecisionSettingsDTO'
+        hilSettings:
+          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO'
+      additionalProperties: false
+    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.D4aSettingsResponse:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        d4aSettings:
+          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.D4aSettingsDTO'
       additionalProperties: false
     Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.D4aSettingsDTO:
       type: object
@@ -466,23 +415,6 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
-    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderNumberFetchMode:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateHilSettingsRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        hilSettings:
-          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO'
-      additionalProperties: false
     Flueid.Pro.Constants.OrderConstants.OrderServiceType:
       enum:
       - 0
@@ -498,6 +430,14 @@ components:
       - 10
       - 11
       - 12
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderNumberFetchMode:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
       type: integer
       format: int32
     Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.DecisionEnabledClientDTO:
@@ -522,37 +462,6 @@ components:
       - 3
       type: integer
       format: int32
-    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdatePartnerOrderSettingsRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        orderProvider:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider'
-        openOrderEmail:
-          type:
-          - string
-          - 'null'
-        preserveOwnerNameFromPropertyData:
-          type: boolean
-        omitPayoffData:
-          type: boolean
-        defaultPropertyType:
-          type: integer
-          format: int32
-        useDefaultBeforeDb:
-          type: boolean
-      additionalProperties: false
-    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateD4aSettingsRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        d4aSettings:
-          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.D4aSettingsDTO'
-      additionalProperties: false
     Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.HilSettingsResponse:
       type: object
       properties:
@@ -561,121 +470,6 @@ components:
           format: int32
         hilSettings:
           $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO'
-      additionalProperties: false
-    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.D4aSettingsResponse:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        d4aSettings:
-          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.D4aSettingsDTO'
-      additionalProperties: false
-    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateTxmSettingsRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        txmSettings:
-          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO'
-      additionalProperties: false
-    Flueid.Pro.Constants.OrderConstants.OrderSubType:
-      enum:
-      - 0
-      - 100
-      - 101
-      - 102
-      - 104
-      - 105
-      - 106
-      - 107
-      - 200
-      - 201
-      - 202
-      - 203
-      - 205
-      - 206
-      - 207
-      - 300
-      - 400
-      - 401
-      - 402
-      - 403
-      - 404
-      - 407
-      - 408
-      - 409
-      - 410
-      - 411
-      - 412
-      - 413
-      - 500
-      - 501
-      - 502
-      - 503
-      - 504
-      - 505
-      - 506
-      - 507
-      - 508
-      - 509
-      - 510
-      - 600
-      - 700
-      - 800
-      type: integer
-      format: int32
-    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.TxmSettingsResponse:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        txmSettings:
-          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO'
-      additionalProperties: false
-    Flueid.Pro.Constants.EntityConstants.EntityType:
-      enum:
-      - 10
-      - 20
-      - 30
-      - 40
-      - 50
-      - 60
-      - 9999
-      type: integer
-      format: int32
-    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.PartnerOrderSettingsResponse:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        orderProvider:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider'
-        openOrderEmail:
-          type:
-          - string
-          - 'null'
-        preserveOwnerNameFromPropertyData:
-          type: boolean
-        omitPayoffData:
-          type: boolean
-        defaultPropertyType:
-          type: integer
-          format: int32
-        useDefaultBeforeDb:
-          type: boolean
-      additionalProperties: false
-    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.DecisionSettingsResponse:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        decisionSettings:
-          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.DecisionSettingsDTO'
       additionalProperties: false
     Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.DecisionSettingsDTO:
       type: object
@@ -755,5 +549,228 @@ components:
           items:
             $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderServiceType'
         enablePurchaseUpdate:
+          type: boolean
+      additionalProperties: false
+    Flueid.Pro.Constants.OrderConstants.OrderType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.OrderConstants.OrderSubType:
+      enum:
+      - 0
+      - 100
+      - 101
+      - 102
+      - 104
+      - 105
+      - 106
+      - 107
+      - 200
+      - 201
+      - 202
+      - 203
+      - 205
+      - 206
+      - 207
+      - 300
+      - 400
+      - 401
+      - 402
+      - 403
+      - 404
+      - 407
+      - 408
+      - 409
+      - 410
+      - 411
+      - 412
+      - 413
+      - 500
+      - 501
+      - 502
+      - 503
+      - 504
+      - 505
+      - 506
+      - 507
+      - 508
+      - 509
+      - 510
+      - 600
+      - 700
+      - 800
+      type: integer
+      format: int32
+    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateTxmSettingsRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        txmSettings:
+          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO'
+      additionalProperties: false
+    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateDecisionSettingsRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        decisionSettings:
+          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.DecisionSettingsDTO'
+      additionalProperties: false
+    Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO:
+      type: object
+      properties:
+        orderNumberFetchMode:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderNumberFetchMode'
+        softProConnectionString:
+          type:
+          - string
+          - 'null'
+        softProNumberingGroupId:
+          type:
+          - string
+          - 'null'
+        orderNumServiceUrl:
+          type:
+          - string
+          - 'null'
+        orderNumServiceAuthUrl:
+          type:
+          - string
+          - 'null'
+        orderNumServiceUsername:
+          type:
+          - string
+          - 'null'
+        orderNumServicePassword:
+          type:
+          - string
+          - 'null'
+        url:
+          type:
+          - string
+          - 'null'
+        apiKey:
+          type:
+          - string
+          - 'null'
+        affiliateCode:
+          type:
+          - string
+          - 'null'
+        collaborationEmail:
+          type:
+          - string
+          - 'null'
+        orderAPIVersion:
+          type:
+          - string
+          - 'null'
+        splitPurchaseOrderType:
+          type: boolean
+        bypassTxm:
+          type: boolean
+      additionalProperties: false
+    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.EntityConstants.EntityType:
+      enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 9999
+      type: integer
+      format: int32
+    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdatePartnerOrderSettingsRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        orderProvider:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider'
+        openOrderEmail:
+          type:
+          - string
+          - 'null'
+        preserveOwnerNameFromPropertyData:
+          type: boolean
+        omitPayoffData:
+          type: boolean
+        defaultPropertyType:
+          type: integer
+          format: int32
+        useDefaultBeforeDb:
+          type: boolean
+      additionalProperties: false
+    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.DecisionSettingsResponse:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        decisionSettings:
+          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.DecisionSettingsDTO'
+      additionalProperties: false
+    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.TxmSettingsResponse:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        txmSettings:
+          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.TxmSettingsDTO'
+      additionalProperties: false
+    Flueid.Pro.Contracts.Requests.PartnerOrderSettingsRequests.UpdateD4aSettingsRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        d4aSettings:
+          $ref: '#/components/schemas/Flueid.Pro.Contracts.DTOs.PartnerOrderSettingsDTOs.D4aSettingsDTO'
+      additionalProperties: false
+    Flueid.Pro.Contracts.Responses.PartnerOrderSettingsResponses.PartnerOrderSettingsResponse:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        orderProvider:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider'
+        openOrderEmail:
+          type:
+          - string
+          - 'null'
+        preserveOwnerNameFromPropertyData:
+          type: boolean
+        omitPayoffData:
+          type: boolean
+        defaultPropertyType:
+          type: integer
+          format: int32
+        useDefaultBeforeDb:
           type: boolean
       additionalProperties: false

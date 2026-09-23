@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Permissions API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: Permissions
 paths:
@@ -12,7 +9,7 @@ paths:
     post:
       tags:
       - Permissions
-      summary: Upsert a single permission for the passed in EntityType and EntityId and returns the effective permission boolean
+      summary: Upsert a single permission for the passed in EntityType and EntityId and…
       parameters:
       - name: api-version
         in: query
@@ -38,11 +35,13 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: postApiPermissionsSaveAndReturnPermission
+      x-operation-id-source: derived
   /api/Permissions/GetEntityPermissions:
     post:
       tags:
       - Permissions
-      summary: Get Permissions for the passed in Entity by Permission Group.
+      summary: Get Permissions for the passed in Entity by Permission Group
       parameters:
       - name: api-version
         in: query
@@ -85,11 +84,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Models.Permissions.PermissionDisplay'
+      operationId: postApiPermissionsGetEntityPermissions
+      x-operation-id-source: derived
   /api/Permissions/GetEffectivePermissionsDisplay:
     post:
       tags:
       - Permissions
-      summary: Gets effective permisison display for a single user and permission name at all entity levels
+      summary: Gets effective permisison display for a single user and permission name at all…
       parameters:
       - name: api-version
         in: query
@@ -132,54 +133,21 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Models.Permissions.EffectivePermissionDisplay'
+      operationId: postApiPermissionsGetEffectivePermissionsDisplay
+      x-operation-id-source: derived
 components:
   schemas:
-    Titlefy.Models.Permissions.EffectivePermissionDisplay:
-      type: object
-      properties:
-        entityLevel:
-          type:
-          - string
-          - 'null'
-        value:
-          type: boolean
-        overrideLowerLevels:
-          type: boolean
-        preventOverrideByHigherLevels:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Models.Permissions.GetEntityPermissionsRequest:
-      type: object
-      properties:
-        entityType:
-          type:
-          - string
-          - 'null'
-        entityId:
-          type: integer
-          format: int32
-        targetedPartnerId:
-          type: integer
-          format: int32
-        permissionGroupName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.EffectivePermissionRequest:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int32
-        targetedPartnerId:
-          type: integer
-          format: int32
-        permissionName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
+    Flueid.Pro.Constants.EntityConstants.EntityType:
+      enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 9999
+      type: integer
+      format: int32
     Titlefy.Data.Entities.HierarchySetting:
       type: object
       properties:
@@ -199,31 +167,52 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Titlefy.Models.Permissions.UpsertEntityPermissionRequest:
+    Titlefy.Models.Permissions.EffectivePermissionDisplay:
       type: object
       properties:
-        entityId:
+        entityLevel:
+          type:
+          - string
+          - 'null'
+        value:
+          type: boolean
+        overrideLowerLevels:
+          type: boolean
+        preventOverrideByHigherLevels:
+          type: boolean
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.EffectivePermissionRequest:
+      type: object
+      properties:
+        userId:
           type: integer
           format: int32
-        entityType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
         targetedPartnerId:
           type: integer
           format: int32
-        permission:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        permissionName:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    Flueid.Pro.Constants.EntityConstants.EntityType:
-      enum:
-      - 10
-      - 20
-      - 30
-      - 40
-      - 50
-      - 60
-      - 9999
-      type: integer
-      format: int32
+    Titlefy.Models.Permissions.GetEntityPermissionsRequest:
+      type: object
+      properties:
+        entityType:
+          type:
+          - string
+          - 'null'
+        entityId:
+          type: integer
+          format: int32
+        targetedPartnerId:
+          type: integer
+          format: int32
+        permissionGroupName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Titlefy.Models.Permissions.PermissionDisplay:
       type: object
       properties:
@@ -247,4 +236,18 @@ components:
           - 'null'
         isEnabled:
           type: boolean
+      additionalProperties: false
+    Titlefy.Models.Permissions.UpsertEntityPermissionRequest:
+      type: object
+      properties:
+        entityId:
+          type: integer
+          format: int32
+        entityType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
+        targetedPartnerId:
+          type: integer
+          format: int32
+        permission:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
       additionalProperties: false

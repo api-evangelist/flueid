@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Public API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: Public
 paths:
@@ -12,7 +9,7 @@ paths:
     post:
       tags:
       - Public
-      summary: Communication from the user.
+      summary: Communication from the user
       parameters:
       - name: api-version
         in: query
@@ -39,6 +36,8 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: postApiPublicContactUs
+      x-operation-id-source: derived
 components:
   schemas:
     Titlefy.Models.Public.ContactUsRequest:

@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Farms API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: Farms
 paths:
@@ -12,7 +9,7 @@ paths:
     post:
       tags:
       - Farms
-      summary: Finds properties within a defined polygon.
+      summary: Finds properties within a defined polygon
       parameters:
       - name: api-version
         in: query
@@ -63,11 +60,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.FarmGeoPoint'
+      operationId: postApiFarmsSearchFarmGeoPoints
+      x-operation-id-source: derived
   /api/Farms/SearchFarmProps:
     post:
       tags:
       - Farms
-      summary: Finds properties within a defined polygon.
+      summary: Finds properties within a defined polygon
       parameters:
       - name: api-version
         in: query
@@ -118,11 +117,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PropertyDetailLite'
+      operationId: postApiFarmsSearchFarmProps
+      x-operation-id-source: derived
   /api/Farms/FarmOverview:
     post:
       tags:
       - Farms
-      summary: Gets the farm overview information.
+      summary: Gets the farm overview information
       parameters:
       - name: api-version
         in: query
@@ -167,11 +168,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.AreaOverview'
+      operationId: postApiFarmsFarmOverview
+      x-operation-id-source: derived
   /api/Farms/SaveFarm:
     post:
       tags:
       - Farms
-      summary: Saves the farm.
+      summary: Saves the farm
       parameters:
       - name: api-version
         in: query
@@ -208,11 +211,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.Farm'
+      operationId: postApiFarmsSaveFarm
+      x-operation-id-source: derived
   /api/Farms/GetFarm:
     get:
       tags:
       - Farms
-      summary: Gets the farm.
+      summary: Gets the farm
       parameters:
       - name: farmId
         in: query
@@ -240,11 +245,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.Farm'
+      operationId: getApiFarmsGetFarm
+      x-operation-id-source: derived
   /api/Farms/GetAllFarms:
     get:
       tags:
       - Farms
-      summary: Gets all farms for the user.
+      summary: Gets all farms for the user
       parameters:
       - name: api-version
         in: query
@@ -271,11 +278,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.Farm'
+      operationId: getApiFarmsGetAllFarms
+      x-operation-id-source: derived
   /api/Farms/SaveFarmProperty:
     post:
       tags:
       - Farms
-      summary: Saves the farm property.
+      summary: Saves the farm property
       parameters:
       - name: api-version
         in: query
@@ -302,11 +311,13 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: postApiFarmsSaveFarmProperty
+      x-operation-id-source: derived
   /api/Farms/RenameFarm:
     post:
       tags:
       - Farms
-      summary: Changes the name of the farm.
+      summary: Changes the name of the farm
       parameters:
       - name: api-version
         in: query
@@ -333,11 +344,13 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: postApiFarmsRenameFarm
+      x-operation-id-source: derived
   /api/Farms/DeleteFarm:
     post:
       tags:
       - Farms
-      summary: Deletes the farm.
+      summary: Deletes the farm
       parameters:
       - name: farmId
         in: query
@@ -355,11 +368,13 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: postApiFarmsDeleteFarm
+      x-operation-id-source: derived
   /api/Farms/FarmFilters:
     get:
       tags:
       - Farms
-      summary: Gets any global filters or filters saved by the user.
+      summary: Gets any global filters or filters saved by the user
       parameters:
       - name: farmId
         in: query
@@ -392,11 +407,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilter'
+      operationId: getApiFarmsFarmFilters
+      x-operation-id-source: derived
   /api/Farms/SaveFarmFilter:
     post:
       tags:
       - Farms
-      summary: Saves the farm filter.
+      summary: Saves the farm filter
       parameters:
       - name: api-version
         in: query
@@ -436,11 +453,13 @@ paths:
               schema:
                 type: integer
                 format: int32
+      operationId: postApiFarmsSaveFarmFilter
+      x-operation-id-source: derived
   /api/Farms/DeleteFarmFilter:
     post:
       tags:
       - Farms
-      summary: Deletes the farm filter.
+      summary: Deletes the farm filter
       parameters:
       - name: farmFilterId
         in: query
@@ -458,11 +477,13 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: postApiFarmsDeleteFarmFilter
+      x-operation-id-source: derived
   /api/Farms/FarmReport:
     get:
       tags:
       - Farms
-      summary: Gets an Excel report for the farm.
+      summary: Gets an Excel report for the farm
       parameters:
       - name: farmId
         in: query
@@ -489,11 +510,13 @@ paths:
             text/json:
               schema:
                 type: string
+      operationId: getApiFarmsFarmReport
+      x-operation-id-source: derived
   /api/Farms/UploadExcelFarm:
     post:
       tags:
       - Farms
-      summary: Accepts a spreadsheet of properties and processes it to create a new farm.
+      summary: Accepts a spreadsheet of properties and processes it to create a new farm
       parameters:
       - name: api-version
         in: query
@@ -526,11 +549,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Models.Farms.FarmUploadResponse'
+      operationId: postApiFarmsUploadExcelFarm
+      x-operation-id-source: derived
   /api/Farms/FixNotFoundPropertyForFarm:
     post:
       tags:
       - Farms
-      summary: Fixes unfound property from the farm upload.
+      summary: Fixes unfound property from the farm upload
       parameters:
       - name: api-version
         in: query
@@ -567,11 +592,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.Farm'
+      operationId: postApiFarmsFixNotFoundPropertyForFarm
+      x-operation-id-source: derived
   /api/Farms/AddPropertyToFarm:
     post:
       tags:
       - Farms
-      summary: Add Property to the farm.
+      summary: Add Property to the farm
       parameters:
       - name: api-version
         in: query
@@ -608,11 +635,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.Farm'
+      operationId: postApiFarmsAddPropertyToFarm
+      x-operation-id-source: derived
   /api/Farms/DeletePropertyFromFarm:
     post:
       tags:
       - Farms
-      summary: Remove Property from the farm.
+      summary: Remove Property from the farm
       parameters:
       - name: api-version
         in: query
@@ -649,6 +678,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.Farm'
+      operationId: postApiFarmsDeletePropertyFromFarm
+      x-operation-id-source: derived
   /api/Farms/MarkFarmUploadViewed:
     post:
       tags:
@@ -671,221 +702,10 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: postApiFarmsMarkFarmUploadViewed
+      x-operation-id-source: derived
 components:
   schemas:
-    Flueid.PropertyDb.Models.PropertyData.Address:
-      type: object
-      properties:
-        streetNumber:
-          type:
-          - string
-          - 'null'
-        address1:
-          type:
-          - string
-          - 'null'
-        address2:
-          type:
-          - string
-          - 'null'
-        fullStreetAddress:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        zipCode5:
-          type:
-          - string
-          - 'null'
-        zipCode4:
-          type:
-          - string
-          - 'null'
-        fullAddressOneLine:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        zipCodeFull:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-      additionalProperties: false
-    Titlefy.Core.Constants.FarmType:
-      enum:
-      - 0
-      - 1
-      type: integer
-      format: int32
-    Flueid.PropertyDb.Models.Constants.ConsumerType:
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Flueid.PropertyDb.Models.PropertyData.GeoPoint:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-      additionalProperties: false
-    Flueid.PropertyDb.Models.Constants.PropertyType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      - 50
-      - 70
-      - 100
-      - 200
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.FarmUploadProperty:
-      type: object
-      properties:
-        address1:
-          type:
-          - string
-          - 'null'
-        address2:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        zip:
-          type:
-          - string
-          - 'null'
-        firstName:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        notes:
-          type:
-          - string
-          - 'null'
-        uniqueId:
-          type:
-          - string
-          - 'null'
-        propertyAddress:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
-        search:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MultiSearchItem'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.FarmGeoPoint:
-      type: object
-      properties:
-        propertyId:
-          type: integer
-          format: int32
-        lat:
-          type: number
-          format: double
-        lon:
-          type: number
-          format: double
-      additionalProperties: false
-    Titlefy.Core.Constants.FarmPropertyLabel:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.FarmProperty:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
-        createdDate:
-          type: string
-          format: date-time
-        createdByUser:
-          type:
-          - string
-          - 'null'
-        lastUpdatedDate:
-          type: string
-          format: date-time
-        lastUpdatedByUser:
-          type:
-          - string
-          - 'null'
-        farmId:
-          type: integer
-          format: int32
-        propertyId:
-          type: integer
-          format: int32
-        label:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.FarmPropertyLabel'
-        notes:
-          type:
-          - string
-          - 'null'
-        customer:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmPropertyCustomer'
-        propertyInfo:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyDetailLite'
-      additionalProperties: false
-    Titlefy.Data.Entities.FarmFilterMinMax:
-      type: object
-      properties:
-        minValue:
-          type:
-          - number
-          - 'null'
-          format: double
-        maxValue:
-          type:
-          - number
-          - 'null'
-          format: double
-      additionalProperties: false
     Titlefy.Models.Farms.FarmPropertyRequest:
       type: object
       properties:
@@ -900,422 +720,70 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Flueid.PropertyDb.Models.PropertyData.PropertyDetailLite:
+    Titlefy.Data.Entities.DTOs.FarmGeoPoint:
       type: object
       properties:
         propertyId:
           type: integer
           format: int32
-        fips:
-          type:
-          - string
-          - 'null'
-        apn:
-          type:
-          - string
-          - 'null'
-        streetNum:
-          type:
-          - string
-          - 'null'
-        streetAddr:
-          type:
-          - string
-          - 'null'
-        fullAddr:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        zip:
-          type:
-          - string
-          - 'null'
-        mailStreetAddr:
-          type:
-          - string
-          - 'null'
-        mailCity:
-          type:
-          - string
-          - 'null'
-        mailState:
-          type:
-          - string
-          - 'null'
-        mailZip:
-          type:
-          - string
-          - 'null'
-        locationGeo:
-          $ref: '#/components/schemas/OpenSearch.Client.GeoLocation'
-        owner1Type:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
-        owner1Name:
-          type:
-          - string
-          - 'null'
-        owner1LastName:
-          type:
-          - string
-          - 'null'
-        owner2Type:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
-        owner2Name:
-          type:
-          - string
-          - 'null'
-        owner2LastName:
-          type:
-          - string
-          - 'null'
-        ownerOcc:
-          type: boolean
-        beds:
-          type: integer
-          format: int32
-        baths:
-          type: number
-          format: double
-        yearBuilt:
-          type: integer
-          format: int32
-        sqFt:
-          type: integer
-          format: int32
-        lotSqFt:
-          type: integer
-          format: int32
-        stories:
-          type: number
-          format: double
-        hasBasement:
-          type: boolean
-        hasAttic:
-          type: boolean
-        isSplitLevel:
-          type: boolean
-        propType:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
-        estValue:
-          type: integer
-          format: int32
-        assdValue:
-          type: integer
-          format: int32
-        assdYear:
-          type: integer
-          format: int32
-        estEquity:
-          type: integer
-          format: int32
-        saleDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        saleAmt:
-          type: integer
-          format: int32
-        saleDocNum:
-          type:
-          - string
-          - 'null'
-        mlsSaleDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        mlsSaleAmt:
-          type: integer
-          format: int32
-        listed:
-          type: boolean
-        pending:
-          type: boolean
-        sold:
-          type: boolean
-        listingId:
-          type:
-          - string
-          - 'null'
-        listingPrice:
-          type: integer
-          format: int32
-        listingDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        pendingDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        picUrl:
-          type:
-          - string
-          - 'null'
-        noPicUrl:
-          type:
-          - string
-          - 'null'
-        hot:
-          type: boolean
-        nonDisclosureState:
-          type: boolean
-        updated:
-          type: string
-          format: date-time
-        mtg1Amt:
-          type: integer
-          format: int32
-        mtg1EstBal:
-          type: integer
-          format: int32
-        mtg1RecDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        mtg1Rate:
-          type: number
-          format: double
-        mtg1Term:
-          type: integer
-          format: int32
-        mtg1LoanType:
-          type:
-          - string
-          - 'null'
-        mtg1FinType:
-          type:
-          - string
-          - 'null'
-        mtg2Amt:
-          type: integer
-          format: int32
-        mtg2EstBal:
-          type: integer
-          format: int32
-        mtg2RecDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        mtg2Rate:
-          type: number
-          format: double
-        mtg2Term:
-          type: integer
-          format: int32
-        mtg2LoanType:
-          type:
-          - string
-          - 'null'
-        mtg2FinType:
-          type:
-          - string
-          - 'null'
-        lot:
-          type:
-          - string
-          - 'null'
-        block:
-          type:
-          - string
-          - 'null'
-        tract:
-          type:
-          - string
-          - 'null'
-        subdivision:
-          type:
-          - string
-          - 'null'
-        legal:
-          type:
-          - string
-          - 'null'
-        mlsOrg:
-          type:
-          - string
-          - 'null'
-        owner1FirstName:
-          type:
-          - string
-          - 'null'
-        owner2FirstName:
-          type:
-          - string
-          - 'null'
-        improvementAmount:
-          type: integer
-          format: int32
-        improvementPct:
-          type: number
-          format: double
-        county:
-          type:
-          - string
-          - 'null'
-        zoning:
-          type:
-          - string
-          - 'null'
-        fireplace:
-          type:
-          - string
-          - 'null'
-        parking:
-          type:
-          - string
-          - 'null'
-        hasPool:
-          type: boolean
-        pool:
-          type:
-          - string
-          - 'null'
-        taxYear:
-          type: integer
-          format: int32
-        taxAmount:
-          type: integer
-          format: int32
-        valueRangeMin:
-          type: integer
-          format: int32
-        valueRangeMax:
-          type: integer
-          format: int32
-        confidenceScore:
-          type: integer
-          format: int32
-        preForeclosureDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        foreclosureDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        mtg1Lender:
-          type:
-          - string
-          - 'null'
-        mtg2Lender:
-          type:
-          - string
-          - 'null'
         lat:
           type: number
           format: double
         lon:
           type: number
           format: double
-        distFromSubjInMiles:
-          type: number
-          format: double
-        equityPct:
+      additionalProperties: false
+    Titlefy.Models.Farms.FarmUploadResponse:
+      type: object
+      properties:
+        rowCount:
           type: integer
           format: int32
-        outOfStateOwner:
-          type: boolean
-        mailAddressIsPoBox:
-          type: boolean
-        lastListingDate:
+        filePath:
           type:
           - string
           - 'null'
+        columns:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        values:
+          type:
+          - array
+          - 'null'
+          items:
+            type: array
+            items:
+              type: string
+      additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
           format: date-time
-      additionalProperties: false
-    Titlefy.Data.Entities.FarmFilterPropertyLabel:
-      type: object
-      properties:
-        undefined:
-          type:
-          - boolean
-          - 'null'
-        lead:
-          type:
-          - boolean
-          - 'null'
-        visitProspect:
-          type:
-          - boolean
-          - 'null'
-        doNotContact:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    Flueid.PropertyDb.Models.PropertyData.AreaOverview:
-      type: object
-      properties:
-        totalProperties:
-          type: integer
-          format: int32
-        totalHotProperties:
-          type: integer
-          format: int32
-        totalOwnerOccupied:
-          type: integer
-          format: int32
-        totalNonOwnerOccupied:
-          type: integer
-          format: int32
-        totalSoldPast12Months:
-          type: integer
-          format: int32
-        avgLengthOfStay:
-          type: integer
-          format: int32
-        pctWithPositiveEquity:
-          type: integer
-          format: int32
-        avgEquity:
-          type: integer
-          format: int32
-        avgValuation:
-          type: integer
-          format: int32
-        avgSqFt:
-          type: integer
-          format: int32
-        avgAgeOfProperty:
-          type: integer
-          format: int32
-        totalListingsPast90Days:
-          type: integer
-          format: int32
-        totalSalesPast90Days:
-          type: integer
-          format: int32
-        avgSalesPast3Months:
-          type: integer
-          format: int32
-        avgSalesPast6Months:
-          type: integer
-          format: int32
-        avgSalesPast12Months:
-          type: integer
-          format: int32
-        equityGreaterThat60Pct:
-          type: integer
-          format: int32
-        totalOutOfStateOwners:
-          type: integer
-          format: int32
+          readOnly: true
       additionalProperties: false
     Titlefy.Data.Entities.FarmUploadMapping:
       type: object
@@ -1363,6 +831,139 @@ components:
           - 'null'
           format: int32
       additionalProperties: false
+    Titlefy.Data.Entities.FarmFilter:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        farmFilterId:
+          type: integer
+          format: int32
+        userId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        farmId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        filterName:
+          type:
+          - string
+          - 'null'
+        propertyLabel:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterPropertyLabel'
+        propertyStatus:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterPropertyStatus'
+        occupancyStatus:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterOccupancyStatus'
+        averageEquity:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        estimatedMarketValue:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        lengthOfOwnership:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        mortgage1Rate:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        mortgage1Age:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        mortgage1Amount:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        mortgage2Rate:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        mortgage2Age:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        mortgage2Amount:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        mortgagesTotalAmount:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        loanToValue:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        bedrooms:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        bathrooms:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        livingSqFt:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        stories:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        propertyAge:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
+        propertyTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
+        isGlobal:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    Flueid.PropertyDb.Models.Constants.ConsumerType:
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Models.Farms.RenameFarmRequest:
+      type: object
+      properties:
+        farmId:
+          type: integer
+          format: int32
+        farmName:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.GeoPoint:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      additionalProperties: false
+    Flueid.PropertyDb.Models.Constants.PropertyType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 50
+      - 70
+      - 100
+      - 200
+      type: integer
+      format: int32
     OpenSearch.Client.GeoLocation:
       type: object
       properties:
@@ -1372,6 +973,120 @@ components:
         longitude:
           type: number
           format: double
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.MultiSearchItem:
+      type: object
+      properties:
+        itemId:
+          type:
+          - string
+          - 'null'
+        propertyAddress:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        ownerLastName:
+          type:
+          - string
+          - 'null'
+        result:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyDetailLite'
+      additionalProperties: false
+    Titlefy.Core.Constants.TrackedUpdateType:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 101
+      - 102
+      - 103
+      - 104
+      - 105
+      - 106
+      - 107
+      - 201
+      - 202
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.FarmFilterPropertyLabel:
+      type: object
+      properties:
+        undefined:
+          type:
+          - boolean
+          - 'null'
+        lead:
+          type:
+          - boolean
+          - 'null'
+        visitProspect:
+          type:
+          - boolean
+          - 'null'
+        doNotContact:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.FarmPropertyCustomer:
+      type: object
+      properties:
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        phoneType:
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          type:
+          - string
+          - 'null'
+        owner:
+          type: boolean
+        renter:
+          type: boolean
+        buyer:
+          type: boolean
+        seller:
+          type: boolean
+      additionalProperties: false
+    Titlefy.Data.Entities.FarmFilterPropertyStatus:
+      type: object
+      properties:
+        hotProperties:
+          type:
+          - boolean
+          - 'null'
+        forSale:
+          type:
+          - boolean
+          - 'null'
+        recentlySold:
+          type:
+          - boolean
+          - 'null'
+        pendingSale:
+          type:
+          - boolean
+          - 'null'
+        offMarket:
+          type:
+          - boolean
+          - 'null'
       additionalProperties: false
     Titlefy.Data.Entities.DTOs.PropertyDetailLite:
       type: object
@@ -1714,229 +1429,64 @@ components:
         saved:
           type: boolean
       additionalProperties: false
-    Titlefy.Models.Farms.FarmUploadResponse:
+    Titlefy.Data.Entities.FarmFilterMinMax:
       type: object
       properties:
-        rowCount:
-          type: integer
-          format: int32
-        filePath:
+        minValue:
           type:
-          - string
+          - number
           - 'null'
-        columns:
+          format: double
+        maxValue:
           type:
-          - array
+          - number
           - 'null'
-          items:
-            type: string
-        values:
-          type:
-          - array
-          - 'null'
-          items:
-            type: array
-            items:
-              type: string
+          format: double
       additionalProperties: false
-    Flueid.PropertyDb.Models.PropertyData.MultiSearchItem:
+    Flueid.PropertyDb.Models.PropertyData.Address:
       type: object
       properties:
-        itemId:
+        streetNumber:
           type:
           - string
           - 'null'
-        propertyAddress:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
-        ownerLastName:
+        address1:
           type:
           - string
           - 'null'
-        result:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyDetailLite'
-      additionalProperties: false
-    Titlefy.Core.Constants.TrackedUpdateType:
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 101
-      - 102
-      - 103
-      - 104
-      - 105
-      - 106
-      - 107
-      - 201
-      - 202
-      type: integer
-      format: int32
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
+        address2:
+          type:
+          - string
+          - 'null'
+        fullStreetAddress:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zipCode5:
+          type:
+          - string
+          - 'null'
+        zipCode4:
+          type:
+          - string
+          - 'null'
+        fullAddressOneLine:
+          type:
+          - string
+          - 'null'
           readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
-    Titlefy.Data.Entities.FarmFilterOccupancyStatus:
-      type: object
-      properties:
-        ownerOccupied:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.FarmPropertyCustomer:
-      type: object
-      properties:
-        firstName:
+        zipCodeFull:
           type:
           - string
           - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        phoneType:
-          type:
-          - string
-          - 'null'
-        phoneNumber:
-          type:
-          - string
-          - 'null'
-        owner:
-          type: boolean
-        renter:
-          type: boolean
-        buyer:
-          type: boolean
-        seller:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Models.Farms.RenameFarmRequest:
-      type: object
-      properties:
-        farmId:
-          type: integer
-          format: int32
-        farmName:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.FarmFilter:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
-        createdDate:
-          type: string
-          format: date-time
-        createdByUser:
-          type:
-          - string
-          - 'null'
-        lastUpdatedDate:
-          type: string
-          format: date-time
-        lastUpdatedByUser:
-          type:
-          - string
-          - 'null'
-        farmFilterId:
-          type: integer
-          format: int32
-        userId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        farmId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        filterName:
-          type:
-          - string
-          - 'null'
-        propertyLabel:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterPropertyLabel'
-        propertyStatus:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterPropertyStatus'
-        occupancyStatus:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterOccupancyStatus'
-        averageEquity:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        estimatedMarketValue:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        lengthOfOwnership:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        mortgage1Rate:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        mortgage1Age:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        mortgage1Amount:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        mortgage2Rate:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        mortgage2Age:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        mortgage2Amount:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        mortgagesTotalAmount:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        loanToValue:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        bedrooms:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        bathrooms:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        livingSqFt:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        stories:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        propertyAge:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmFilterMinMax'
-        propertyTypes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
-        isGlobal:
-          type: boolean
           readOnly: true
       additionalProperties: false
     Titlefy.Data.Entities.DTOs.EntityUpdate:
@@ -1957,6 +1507,461 @@ components:
           format: date-time
         pinned:
           type: boolean
+      additionalProperties: false
+    Titlefy.Core.Constants.FarmType:
+      enum:
+      - 0
+      - 1
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.FarmUploadProperty:
+      type: object
+      properties:
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        firstName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        notes:
+          type:
+          - string
+          - 'null'
+        uniqueId:
+          type:
+          - string
+          - 'null'
+        propertyAddress:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.Address'
+        search:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.MultiSearchItem'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.PropertyDetailLite:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        fips:
+          type:
+          - string
+          - 'null'
+        apn:
+          type:
+          - string
+          - 'null'
+        streetNum:
+          type:
+          - string
+          - 'null'
+        streetAddr:
+          type:
+          - string
+          - 'null'
+        fullAddr:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        mailStreetAddr:
+          type:
+          - string
+          - 'null'
+        mailCity:
+          type:
+          - string
+          - 'null'
+        mailState:
+          type:
+          - string
+          - 'null'
+        mailZip:
+          type:
+          - string
+          - 'null'
+        locationGeo:
+          $ref: '#/components/schemas/OpenSearch.Client.GeoLocation'
+        owner1Type:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
+        owner1Name:
+          type:
+          - string
+          - 'null'
+        owner1LastName:
+          type:
+          - string
+          - 'null'
+        owner2Type:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.ConsumerType'
+        owner2Name:
+          type:
+          - string
+          - 'null'
+        owner2LastName:
+          type:
+          - string
+          - 'null'
+        ownerOcc:
+          type: boolean
+        beds:
+          type: integer
+          format: int32
+        baths:
+          type: number
+          format: double
+        yearBuilt:
+          type: integer
+          format: int32
+        sqFt:
+          type: integer
+          format: int32
+        lotSqFt:
+          type: integer
+          format: int32
+        stories:
+          type: number
+          format: double
+        hasBasement:
+          type: boolean
+        hasAttic:
+          type: boolean
+        isSplitLevel:
+          type: boolean
+        propType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
+        estValue:
+          type: integer
+          format: int32
+        assdValue:
+          type: integer
+          format: int32
+        assdYear:
+          type: integer
+          format: int32
+        estEquity:
+          type: integer
+          format: int32
+        saleDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        saleAmt:
+          type: integer
+          format: int32
+        saleDocNum:
+          type:
+          - string
+          - 'null'
+        mlsSaleDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mlsSaleAmt:
+          type: integer
+          format: int32
+        listed:
+          type: boolean
+        pending:
+          type: boolean
+        sold:
+          type: boolean
+        listingId:
+          type:
+          - string
+          - 'null'
+        listingPrice:
+          type: integer
+          format: int32
+        listingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        pendingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        picUrl:
+          type:
+          - string
+          - 'null'
+        noPicUrl:
+          type:
+          - string
+          - 'null'
+        hot:
+          type: boolean
+        nonDisclosureState:
+          type: boolean
+        updated:
+          type: string
+          format: date-time
+        mtg1Amt:
+          type: integer
+          format: int32
+        mtg1EstBal:
+          type: integer
+          format: int32
+        mtg1RecDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mtg1Rate:
+          type: number
+          format: double
+        mtg1Term:
+          type: integer
+          format: int32
+        mtg1LoanType:
+          type:
+          - string
+          - 'null'
+        mtg1FinType:
+          type:
+          - string
+          - 'null'
+        mtg2Amt:
+          type: integer
+          format: int32
+        mtg2EstBal:
+          type: integer
+          format: int32
+        mtg2RecDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mtg2Rate:
+          type: number
+          format: double
+        mtg2Term:
+          type: integer
+          format: int32
+        mtg2LoanType:
+          type:
+          - string
+          - 'null'
+        mtg2FinType:
+          type:
+          - string
+          - 'null'
+        lot:
+          type:
+          - string
+          - 'null'
+        block:
+          type:
+          - string
+          - 'null'
+        tract:
+          type:
+          - string
+          - 'null'
+        subdivision:
+          type:
+          - string
+          - 'null'
+        legal:
+          type:
+          - string
+          - 'null'
+        mlsOrg:
+          type:
+          - string
+          - 'null'
+        owner1FirstName:
+          type:
+          - string
+          - 'null'
+        owner2FirstName:
+          type:
+          - string
+          - 'null'
+        improvementAmount:
+          type: integer
+          format: int32
+        improvementPct:
+          type: number
+          format: double
+        county:
+          type:
+          - string
+          - 'null'
+        zoning:
+          type:
+          - string
+          - 'null'
+        fireplace:
+          type:
+          - string
+          - 'null'
+        parking:
+          type:
+          - string
+          - 'null'
+        hasPool:
+          type: boolean
+        pool:
+          type:
+          - string
+          - 'null'
+        taxYear:
+          type: integer
+          format: int32
+        taxAmount:
+          type: integer
+          format: int32
+        valueRangeMin:
+          type: integer
+          format: int32
+        valueRangeMax:
+          type: integer
+          format: int32
+        confidenceScore:
+          type: integer
+          format: int32
+        preForeclosureDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        foreclosureDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        mtg1Lender:
+          type:
+          - string
+          - 'null'
+        mtg2Lender:
+          type:
+          - string
+          - 'null'
+        lat:
+          type: number
+          format: double
+        lon:
+          type: number
+          format: double
+        distFromSubjInMiles:
+          type: number
+          format: double
+        equityPct:
+          type: integer
+          format: int32
+        outOfStateOwner:
+          type: boolean
+        mailAddressIsPoBox:
+          type: boolean
+        lastListingDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      additionalProperties: false
+    Flueid.PropertyDb.Models.PropertyData.AreaOverview:
+      type: object
+      properties:
+        totalProperties:
+          type: integer
+          format: int32
+        totalHotProperties:
+          type: integer
+          format: int32
+        totalOwnerOccupied:
+          type: integer
+          format: int32
+        totalNonOwnerOccupied:
+          type: integer
+          format: int32
+        totalSoldPast12Months:
+          type: integer
+          format: int32
+        avgLengthOfStay:
+          type: integer
+          format: int32
+        pctWithPositiveEquity:
+          type: integer
+          format: int32
+        avgEquity:
+          type: integer
+          format: int32
+        avgValuation:
+          type: integer
+          format: int32
+        avgSqFt:
+          type: integer
+          format: int32
+        avgAgeOfProperty:
+          type: integer
+          format: int32
+        totalListingsPast90Days:
+          type: integer
+          format: int32
+        totalSalesPast90Days:
+          type: integer
+          format: int32
+        avgSalesPast3Months:
+          type: integer
+          format: int32
+        avgSalesPast6Months:
+          type: integer
+          format: int32
+        avgSalesPast12Months:
+          type: integer
+          format: int32
+        equityGreaterThat60Pct:
+          type: integer
+          format: int32
+        totalOutOfStateOwners:
+          type: integer
+          format: int32
       additionalProperties: false
     Titlefy.Data.Entities.Farm:
       type: object
@@ -2081,26 +2086,54 @@ components:
           items:
             $ref: '#/components/schemas/Titlefy.Data.Entities.FarmProperty'
       additionalProperties: false
-    Titlefy.Data.Entities.FarmFilterPropertyStatus:
+    Titlefy.Data.Entities.FarmProperty:
       type: object
       properties:
-        hotProperties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
           type:
-          - boolean
+          - string
           - 'null'
-        forSale:
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
           type:
-          - boolean
+          - string
           - 'null'
-        recentlySold:
+        farmId:
+          type: integer
+          format: int32
+        propertyId:
+          type: integer
+          format: int32
+        label:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.FarmPropertyLabel'
+        notes:
           type:
-          - boolean
+          - string
           - 'null'
-        pendingSale:
-          type:
-          - boolean
-          - 'null'
-        offMarket:
+        customer:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.FarmPropertyCustomer'
+        propertyInfo:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.PropertyData.PropertyDetailLite'
+      additionalProperties: false
+    Titlefy.Core.Constants.FarmPropertyLabel:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.FarmFilterOccupancyStatus:
+      type: object
+      properties:
+        ownerOccupied:
           type:
           - boolean
           - 'null'

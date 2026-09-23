@@ -2,17 +2,14 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Order Events API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
-- name: OrderEvents
+- name: Order Events
 paths:
   /api/OrderEvents/OrderHistory:
     get:
       tags:
-      - OrderEvents
-      summary: ''
+      - Order Events
+      summary: Get api order events order history
       parameters:
       - name: orderId
         in: query
@@ -46,11 +43,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Models.Orders.OrderHistoryItem'
+      x-summary-source: derived
+      operationId: getApiOrderEventsOrderHistory
+      x-operation-id-source: derived
   /api/OrderEvents/PostDocument:
     post:
       tags:
-      - OrderEvents
-      summary: Accepts an event containing a document.
+      - Order Events
+      summary: Accepts an event containing a document
       parameters:
       - name: api-version
         in: query
@@ -87,23 +87,10 @@ paths:
             text/json:
               schema:
                 type: string
+      operationId: postApiOrderEventsPostDocument
+      x-operation-id-source: derived
 components:
   schemas:
-    Titlefy.Models.Orders.OrderHistoryItem:
-      type: object
-      properties:
-        eventType:
-          type:
-          - string
-          - 'null'
-        eventDescription:
-          type:
-          - string
-          - 'null'
-        eventTime:
-          type: string
-          format: date-time
-      additionalProperties: false
     Titlefy.Models.Orders.EventSubmission:
       type: object
       properties:
@@ -131,4 +118,19 @@ components:
           - integer
           - 'null'
           format: int32
+      additionalProperties: false
+    Titlefy.Models.Orders.OrderHistoryItem:
+      type: object
+      properties:
+        eventType:
+          type:
+          - string
+          - 'null'
+        eventDescription:
+          type:
+          - string
+          - 'null'
+        eventTime:
+          type: string
+          format: date-time
       additionalProperties: false

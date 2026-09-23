@@ -1,0 +1,71 @@
+{
+  "provider": "flueid",
+  "sources": [
+    "_original/flueid-pro-openapi-original.json"
+  ],
+  "outputs": [
+    "flueid-account-api-openapi.yml",
+    "flueid-accountpartner-api-openapi.yml",
+    "flueid-clientcompanies-api-openapi.yml",
+    "flueid-documents-api-openapi.yml",
+    "flueid-farms-api-openapi.yml",
+    "flueid-neworders-api-openapi.yml",
+    "flueid-orderdocumentsettings-api-openapi.yml",
+    "flueid-orderevents-api-openapi.yml",
+    "flueid-orderoptions-api-openapi.yml",
+    "flueid-orders-api-openapi.yml",
+    "flueid-partnerordersettings-api-openapi.yml",
+    "flueid-partners-api-openapi.yml",
+    "flueid-permissions-api-openapi.yml",
+    "flueid-propertydata-api-openapi.yml",
+    "flueid-public-api-openapi.yml",
+    "flueid-settings-api-openapi.yml"
+  ],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "flueid-pro-openapi-original.json: upgraded openapi 3.0.1 -> OpenAPI 3.2.0; renamed 3 component key(s) illegal in 3.x (e.g. Titlefy.Data.Entities.DTOs.PaginatedSearchResult`1[[Titlefy.Data.Entities.ClientCompany, Titlefy.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]])",
+    "flueid-pro-openapi-original.json: declared missing tag: Account",
+    "flueid-pro-openapi-original.json: declared missing tag: AccountPartner",
+    "flueid-pro-openapi-original.json: declared missing tag: ClientCompanies",
+    "flueid-pro-openapi-original.json: declared missing tag: Documents",
+    "flueid-pro-openapi-original.json: declared missing tag: Farms",
+    "flueid-pro-openapi-original.json: declared missing tag: NewOrders",
+    "flueid-pro-openapi-original.json: declared missing tag: OrderDocumentSettings",
+    "flueid-pro-openapi-original.json: declared missing tag: OrderEvents",
+    "flueid-pro-openapi-original.json: declared missing tag: OrderOptions",
+    "flueid-pro-openapi-original.json: declared missing tag: Orders",
+    "flueid-pro-openapi-original.json: declared missing tag: PartnerOrderSettings",
+    "flueid-pro-openapi-original.json: declared missing tag: Partners",
+    "flueid-pro-openapi-original.json: declared missing tag: Permissions",
+    "flueid-pro-openapi-original.json: declared missing tag: PropertyData",
+    "flueid-pro-openapi-original.json: declared missing tag: Public",
+    "flueid-pro-openapi-original.json: declared missing tag: Settings",
+    "superseded outputs removed: flueid-order-events-api-openapi.yml, flueid-property-data-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 16 total)"
+  ],
+  "skipped": [
+    "_original/flueid-pro-openapi.yml: archived document superseded by a larger archived document",
+    "flueid-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-accountpartner-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-clientcompanies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-documents-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-farms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-neworders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-order-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-orderdocumentsettings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-orderoptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-partnerordersettings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-partners-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-permissions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-property-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-public-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flueid-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}

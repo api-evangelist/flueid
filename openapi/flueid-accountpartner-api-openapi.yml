@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Account Partner API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: AccountPartner
 paths:
@@ -39,6 +36,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+      operationId: getApiAccountPartnerGetActivePartners
+      x-operation-id-source: derived
   /api/AccountPartner/SetCurrentPartner:
     post:
       tags:
@@ -71,34 +70,97 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.User'
+      operationId: postApiAccountPartnerSetCurrentPartner
+      x-operation-id-source: derived
 components:
   schemas:
-    MongoDB.Bson.ObjectId:
+    Titlefy.Data.Entities.UserPartnerCompany:
       type: object
       properties:
-        timestamp:
+        companyName:
+          type:
+          - string
+          - 'null'
+        companyId:
           type: integer
           format: int32
-          readOnly: true
-        machine:
+        divisionId:
           type: integer
           format: int32
-          readOnly: true
-          deprecated: true
-        pid:
+        branchId:
           type: integer
           format: int32
-          readOnly: true
-          deprecated: true
-        increment:
+      additionalProperties: false
+    Titlefy.Core.Constants.IndustryType:
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.UserPartnerAssociation:
+      type: object
+      properties:
+        partnerId:
           type: integer
           format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
+        divisionId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        branchId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        isDefault:
+          type: boolean
+        accountManagers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        escrowOfficers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        titleOfficers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        logoMainUrl:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        internalUser:
+          type: boolean
+        assistants:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
+        groups:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        company:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerCompany'
       additionalProperties: false
     Titlefy.Data.Entities.User:
       type: object
@@ -285,103 +347,33 @@ components:
         currentPartner:
           $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
       additionalProperties: false
-    Titlefy.Data.Entities.UserPartnerAssociation:
+    MongoDB.Bson.ObjectId:
       type: object
       properties:
-        partnerId:
+        timestamp:
           type: integer
           format: int32
-        divisionId:
-          type:
-          - integer
-          - 'null'
+          readOnly: true
+        machine:
+          type: integer
           format: int32
-        branchId:
-          type:
-          - integer
-          - 'null'
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
           format: int32
-        isDefault:
-          type: boolean
-        accountManagers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        escrowOfficers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        titleOfficers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        logoMainUrl:
-          type:
-          - string
-          - 'null'
-        companyName:
-          type:
-          - string
-          - 'null'
-        internalUser:
-          type: boolean
-        assistants:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        status:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
-        groups:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        company:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerCompany'
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
       additionalProperties: false
-    Titlefy.Data.Entities.UserPartnerCompany:
-      type: object
-      properties:
-        companyName:
-          type:
-          - string
-          - 'null'
-        companyId:
-          type: integer
-          format: int32
-        divisionId:
-          type: integer
-          format: int32
-        branchId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Titlefy.Core.Constants.IndustryType:
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.UserStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      format: int32
     Titlefy.Data.Entities.RelatedUser:
       type: object
       properties:
@@ -391,3 +383,12 @@ components:
         autoSelect:
           type: boolean
       additionalProperties: false
+    Titlefy.Core.Constants.UserStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32

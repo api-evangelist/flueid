@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Client Companies API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: ClientCompanies
 paths:
@@ -12,7 +9,7 @@ paths:
     get:
       tags:
       - ClientCompanies
-      summary: Gets the hierarchy of divisions and branches for a specific client company.
+      summary: Gets the hierarchy of divisions and branches for a specific client company
       parameters:
       - name: clientCompanyId
         in: query
@@ -39,11 +36,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Models.Account.DivisionBranchOptions'
+      operationId: getApiClientCompaniesClientCompanyDivisions
+      x-operation-id-source: derived
   /api/ClientCompanies/AllClientCompanies:
     get:
       tags:
       - ClientCompanies
-      summary: Gets a list of all client companies for the specified partner, for binding to a dropdown.
+      summary: Gets a list of all client companies for the specified partner, for binding to a…
       parameters:
       - name: partnerId
         in: query
@@ -75,11 +74,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+      operationId: getApiClientCompaniesAllClientCompanies
+      x-operation-id-source: derived
   /api/ClientCompanies/SearchClientCompanies:
     post:
       tags:
       - ClientCompanies
-      summary: Gets the list of client companies matching the supplied filters.
+      summary: Gets the list of client companies matching the supplied filters
       parameters:
       - name: api-version
         in: query
@@ -115,11 +116,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null'
+      operationId: postApiClientCompaniesSearchClientCompanies
+      x-operation-id-source: derived
   /api/ClientCompanies/ClientCompany:
     get:
       tags:
       - ClientCompanies
-      summary: Gets the information for a specific client company.
+      summary: Gets the information for a specific client company
       parameters:
       - name: companyId
         in: query
@@ -146,11 +149,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+      operationId: getApiClientCompaniesClientCompany
+      x-operation-id-source: derived
   /api/ClientCompanies/SaveClientCompany:
     post:
       tags:
       - ClientCompanies
-      summary: Saves the client company information.
+      summary: Saves the client company information
       parameters:
       - name: api-version
         in: query
@@ -189,8 +194,42 @@ paths:
               schema:
                 type: integer
                 format: int32
+      operationId: postApiClientCompaniesSaveClientCompany
+      x-operation-id-source: derived
 components:
   schemas:
+    Titlefy.Data.Entities.ClientCompanyProviderId:
+      type: object
+      properties:
+        orderProvider:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider'
+        providerCompanyId:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderProductSubType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
     Titlefy.Models.Account.DivisionBranchOptions:
       type: object
       properties:
@@ -207,92 +246,17 @@ components:
           items:
             $ref: '#/components/schemas/Titlefy.Models.Account.DivisionOption'
       additionalProperties: false
-    Titlefy.Core.Constants.Orders.YesNoType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.Division:
+    Titlefy.Models.DropdownOption:
       type: object
       properties:
-        divisionId:
-          type: integer
-          format: int32
-        divisionName:
+        value:
           type:
           - string
           - 'null'
-        referenceId:
+        text:
           type:
           - string
           - 'null'
-        branches:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderProductSubType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 5
-      - 6
-      - 7
-      - 8
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.OrderOptions:
-      type: object
-      properties:
-        policyDefault:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
-        includeENOWrapper:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
-        enableSelectProcessing:
-          type: boolean
-      additionalProperties: false
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
       additionalProperties: false
     Titlefy.Data.Entities.DTOs.CompanyFilters:
       type: object
@@ -325,6 +289,20 @@ components:
         sortDirection:
           $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
       additionalProperties: false
+    Titlefy.Core.Constants.SortDirection:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.Orders.YesNoType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
       properties:
@@ -341,64 +319,32 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    Titlefy.Models.Account.DivisionOption:
+    MongoDB.Bson.ObjectId:
       type: object
       properties:
-        divisionId:
+        timestamp:
           type: integer
           format: int32
-        branchOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-      additionalProperties: false
-    Titlefy.Core.Constants.SortDirection:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.Branch:
-      type: object
-      properties:
-        branchId:
+          readOnly: true
+        machine:
           type: integer
           format: int32
-        branchName:
-          type:
-          - string
-          - 'null'
-        address1:
-          type:
-          - string
-          - 'null'
-        address2:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        zip:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        license:
-          type:
-          - string
-          - 'null'
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
       additionalProperties: false
     Titlefy.Data.Entities.ClientCompany:
       type: object
@@ -452,24 +398,85 @@ components:
         orderOptions:
           $ref: '#/components/schemas/Titlefy.Data.Entities.OrderOptions'
       additionalProperties: false
-    Titlefy.Models.DropdownOption:
+    Titlefy.Data.Entities.Division:
       type: object
       properties:
-        value:
+        divisionId:
+          type: integer
+          format: int32
+        divisionName:
           type:
           - string
           - 'null'
-        text:
+        referenceId:
           type:
           - string
           - 'null'
+        branches:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
       additionalProperties: false
-    Titlefy.Data.Entities.ClientCompanyProviderId:
+    Titlefy.Models.Account.DivisionOption:
       type: object
       properties:
-        orderProvider:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider'
-        providerCompanyId:
+        divisionId:
+          type: integer
+          format: int32
+        branchOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+      additionalProperties: false
+    Titlefy.Data.Entities.OrderOptions:
+      type: object
+      properties:
+        policyDefault:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+        includeENOWrapper:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
+        enableSelectProcessing:
+          type: boolean
+      additionalProperties: false
+    Titlefy.Data.Entities.Branch:
+      type: object
+      properties:
+        branchId:
+          type: integer
+          format: int32
+        branchName:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        license:
           type:
           - string
           - 'null'

@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro Documents API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: Documents
 paths:
@@ -12,7 +9,7 @@ paths:
     get:
       tags:
       - Documents
-      summary: Gets all hyperlinked documents from the s3 bucket for this Partner and OrderNumber.
+      summary: Gets all hyperlinked documents from the s3 bucket for this Partner and…
       parameters:
       - name: partnerCode
         in: query
@@ -51,6 +48,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Documents.S3Document'
+      operationId: getApiDocumentsGetHyperLinkedDocuments
+      x-operation-id-source: derived
 components:
   schemas:
     Titlefy.Documents.S3Document:

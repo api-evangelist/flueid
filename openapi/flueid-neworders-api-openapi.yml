@@ -2,9 +2,6 @@ openapi: 3.2.0
 info:
   title: Flueid Pro New Orders API
   version: '1.0'
-servers:
-- url: https://api.pro.flueid.com
-  description: Flueid Pro production API
 tags:
 - name: NewOrders
 paths:
@@ -12,7 +9,7 @@ paths:
     post:
       tags:
       - NewOrders
-      summary: Creates a new order for closing services.
+      summary: Creates a new order for closing services
       parameters:
       - name: api-version
         in: query
@@ -49,6 +46,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Models.Orders.OrderSubmissionResult'
+      operationId: postApiNewOrdersCreateOrder
+      x-operation-id-source: derived
   /api/NewOrders/RetrieveOrderSubmission:
     get:
       tags:
@@ -81,11 +80,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderSubmission'
+      operationId: getApiNewOrdersRetrieveOrderSubmission
+      x-operation-id-source: derived
   /api/NewOrders/CheckDuplicateOrder:
     post:
       tags:
       - NewOrders
-      summary: Checks if the property is already involved in a current in-process order.
+      summary: Checks if the property is already involved in a current in-process order
       parameters:
       - name: api-version
         in: query
@@ -122,11 +123,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Models.Orders.CheckDuplicateOrderResponse'
+      operationId: postApiNewOrdersCheckDuplicateOrder
+      x-operation-id-source: derived
   /api/NewOrders/SearchRelatedBizSrcUsers:
     get:
       tags:
       - NewOrders
-      summary: Searches for related business source users.
+      summary: Searches for related business source users
       parameters:
       - name: searchString
         in: query
@@ -159,11 +162,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      operationId: getApiNewOrdersSearchRelatedBizSrcUsers
+      x-operation-id-source: derived
   /api/NewOrders/SearchOrderContact:
     get:
       tags:
       - NewOrders
-      summary: Searches for order contact based on role.
+      summary: Searches for order contact based on role
       parameters:
       - name: searchString
         in: query
@@ -202,11 +207,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      operationId: getApiNewOrdersSearchOrderContact
+      x-operation-id-source: derived
   /api/NewOrders/DefaultOrderContacts:
     post:
       tags:
       - NewOrders
-      summary: Gets the default order contacts for this business source user.
+      summary: Gets the default order contacts for this business source user
       parameters:
       - name: api-version
         in: query
@@ -249,11 +256,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      operationId: postApiNewOrdersDefaultOrderContacts
+      x-operation-id-source: derived
   /api/NewOrders/BusinessSourceRoles:
     get:
       tags:
       - NewOrders
-      summary: Gets the roles that this business source can play on an order.
+      summary: Gets the roles that this business source can play on an order
       parameters:
       - name: userId
         in: query
@@ -287,11 +296,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+      operationId: getApiNewOrdersBusinessSourceRoles
+      x-operation-id-source: derived
   /api/NewOrders/RelatedAssistants:
     get:
       tags:
       - NewOrders
-      summary: Gets related assistant users.
+      summary: Gets related assistant users
       parameters:
       - name: subjectUserId
         in: query
@@ -325,11 +336,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      operationId: getApiNewOrdersRelatedAssistants
+      x-operation-id-source: derived
   /api/NewOrders/RelatedOfficers:
     post:
       tags:
       - NewOrders
-      summary: Gets related officer users.
+      summary: Gets related officer users
       parameters:
       - name: api-version
         in: query
@@ -372,11 +385,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      operationId: postApiNewOrdersRelatedOfficers
+      x-operation-id-source: derived
   /api/NewOrders/CompanyAccountManagers:
     post:
       tags:
       - NewOrders
-      summary: Gets related Account Manager users.
+      summary: Gets related Account Manager users
       parameters:
       - name: api-version
         in: query
@@ -419,11 +434,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      operationId: postApiNewOrdersCompanyAccountManagers
+      x-operation-id-source: derived
   /api/NewOrders/OrderTypeOptions:
     post:
       tags:
       - NewOrders
-      summary: Gets the order type options for the new order.
+      summary: Gets the order type options for the new order
       parameters:
       - name: api-version
         in: query
@@ -466,11 +483,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderTypeOption'
+      operationId: postApiNewOrdersOrderTypeOptions
+      x-operation-id-source: derived
   /api/NewOrders/OrderContactOptions:
     post:
       tags:
       - NewOrders
-      summary: Gets the order contact options for the new order.
+      summary: Gets the order contact options for the new order
       parameters:
       - name: api-version
         in: query
@@ -513,11 +532,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderContactOption'
+      operationId: postApiNewOrdersOrderContactOptions
+      x-operation-id-source: derived
   /api/NewOrders/OrderDetailsOptions:
     post:
       tags:
       - NewOrders
-      summary: Gets the settings to indicate which sections of data should be collected for an order.
+      summary: Gets the settings to indicate which sections of data should be collected for an…
       parameters:
       - name: api-version
         in: query
@@ -554,11 +575,13 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Titlefy.Models.Orders.OrderDetailsOptions'
+      operationId: postApiNewOrdersOrderDetailsOptions
+      x-operation-id-source: derived
   /api/NewOrders/CalculateCloseDate:
     post:
       tags:
       - NewOrders
-      summary: Gets a default estimated closing date.
+      summary: Gets a default estimated closing date
       parameters:
       - name: api-version
         in: query
@@ -598,11 +621,13 @@ paths:
               schema:
                 type: string
                 format: date-time
+      operationId: postApiNewOrdersCalculateCloseDate
+      x-operation-id-source: derived
   /api/NewOrders/CompanyTitleOfficers:
     post:
       tags:
       - NewOrders
-      summary: Get all active Title Officers in the company.
+      summary: Get all active Title Officers in the company
       parameters:
       - name: api-version
         in: query
@@ -645,10 +670,249 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      operationId: postApiNewOrdersCompanyTitleOfficers
+      x-operation-id-source: derived
 components:
   schemas:
-    Titlefy.Core.Constants.Orders.OrderProductType:
+    Titlefy.Data.Entities.Orders.FldCurativeItem:
+      type: object
+      properties:
+        curativeName:
+          type:
+          - string
+          - 'null'
+        grade:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderCurativeGrade'
+      additionalProperties: false
+    Titlefy.Core.Constants.IndustryType:
       enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Models.Orders.CheckDuplicateOrderRequest:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        partnerId:
+          type: integer
+          format: int32
+        externalReferenceId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.ContactCommunicationPref:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.DTOs.OrderSubmissionProperty:
+      type: object
+      properties:
+        propertyId:
+          type: integer
+          format: int32
+        fipsCode:
+          type:
+          - string
+          - 'null'
+        countyName:
+          type:
+          - string
+          - 'null'
+        apn:
+          type:
+          - string
+          - 'null'
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        address:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+        ownerName:
+          type:
+          - string
+          - 'null'
+        propertyType:
+          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
+        legalDescription:
+          type:
+          - string
+          - 'null'
+        ownerOccupied:
+          type: boolean
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderContactType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Orders.OrderProduct:
+      type: object
+      properties:
+        productCategory:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductCategory'
+        productType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductType'
+        productTypeDescription:
+          type:
+          - string
+          - 'null'
+        productSubType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+        productSubTypeDescription:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.InsuranceInfo:
+      type: object
+      properties:
+        serviceProviderType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
+        orderingParty:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
+        orderingPartyDescription:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        contactFirstName:
+          type:
+          - string
+          - 'null'
+        contactLastName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+        policyNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Models.Orders.OrderServiceSubmissionResult:
+      type: object
+      properties:
+        succeeded:
+          type: boolean
+        orderNumber:
+          type:
+          - string
+          - 'null'
+        orderProviderId:
+          type: integer
+          format: int32
+        orderProviderNumber:
+          type: integer
+          format: int32
+        productionSystemOrderId:
+          type:
+          - string
+          - 'null'
+        serviceType:
+          type: integer
+          format: int32
+        failReasons:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderFailReason'
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.HomeWarrantyInfo:
+      type: object
+      properties:
+        serviceProviderType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
+        orderingParty:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
+        orderingPartyDescription:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        contactFirstName:
+          type:
+          - string
+          - 'null'
+        contactLastName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+        licenseNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Flueid.PropertyDb.Models.Constants.PropertyType:
+      enum:
+      - 0
       - 1
       - 2
       - 3
@@ -661,22 +925,588 @@ components:
       - 10
       - 11
       - 12
-      - 13
+      - 50
+      - 70
+      - 100
+      - 200
       type: integer
       format: int32
-    Flueid.Pro.Constants.OrderConstants.OrderType:
+    Titlefy.Data.Entities.Orders.Loan:
+      type: object
+      properties:
+        lenderName:
+          type:
+          - string
+          - 'null'
+        loanNumber:
+          type:
+          - string
+          - 'null'
+        loanNumberHash:
+          type:
+          - string
+          - 'null'
+          format: byte
+        loanAmount:
+          type: number
+          format: double
+        loanType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.LoanType'
+        loanTypeDescription:
+          type:
+          - string
+          - 'null'
+        lienPosition:
+          type: integer
+          format: int32
+        loanApplicationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        loanApprovalDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        rate:
+          type: number
+          format: double
+        term:
+          type: integer
+          format: int32
+        termType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.TermType'
+        unpaidPrincipalBalance:
+          type: number
+          format: double
+        originalLoanAmount:
+          type: number
+          format: double
+        cashOutAmount:
+          type: number
+          format: double
+        contactEmail:
+          type:
+          - string
+          - 'null'
+        contactFirstName:
+          type:
+          - string
+          - 'null'
+        contactLastName:
+          type:
+          - string
+          - 'null'
+        company:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.LoanCompany'
+      additionalProperties: false
+    Titlefy.Models.Orders.CheckDuplicateOrderResponse:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int32
+        orderNumber:
+          type:
+          - string
+          - 'null'
+        isDuplicate:
+          type: boolean
+        openDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        orderType:
+          type: integer
+          format: int32
+        orderTypeDescription:
+          type:
+          - string
+          - 'null'
+        productionSystemOrderId:
+          type:
+          - string
+          - 'null'
+        loanNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.OrderServiceTypeOption:
+      type: object
+      properties:
+        selectionType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
+        serviceType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderServiceType'
+        serviceTypeDescription:
+          type:
+          - string
+          - 'null'
+        existingOrders:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.ProviderOrderSlim'
+        productCategories:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderProductCategoryOption'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderWorkflowType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.Orders.OrderProcessingType:
+      enum:
+      - 0
+      - 2
+      - 4
+      - 5
+      - 6
+      - 9
+      - 10
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.DTOs.OrderTypeOption:
+      type: object
+      properties:
+        selectionType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
+        orderType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderType'
+        orderTypeDescription:
+          type:
+          - string
+          - 'null'
+        subTypeOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderSubTypeOption'
+        closingServicesIsBlocked:
+          type: boolean
+        closingServicesBlockedMessage:
+          type:
+          - string
+          - 'null'
+        defaultOrderServiceType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderServiceType'
+        defaultEscrowOrderProductSubType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+        defaultTitleOrderProductSubType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+        defaultTitleOrderServiceOption:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.ServiceOption'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderStatus:
       enum:
       - 0
       - 1
       - 2
       - 3
       - 4
-      - 5
-      - 6
-      - 7
-      - 8
       type: integer
       format: int32
+    Titlefy.Data.Entities.Orders.PestControlInfo:
+      type: object
+      properties:
+        serviceProviderType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
+        orderingParty:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
+        orderingPartyDescription:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        contactFirstName:
+          type:
+          - string
+          - 'null'
+        contactLastName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+      additionalProperties: false
+    Titlefy.Data.Entities.UserPartnerCompany:
+      type: object
+      properties:
+        companyName:
+          type:
+          - string
+          - 'null'
+        companyId:
+          type: integer
+          format: int32
+        divisionId:
+          type: integer
+          format: int32
+        branchId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.HomeOwnersAssociationInfo:
+      type: object
+      properties:
+        serviceProviderType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
+        orderingParty:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
+        orderingPartyDescription:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        contactFirstName:
+          type:
+          - string
+          - 'null'
+        contactLastName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+        hoaName:
+          type:
+          - string
+          - 'null'
+        dues:
+          type: number
+          format: double
+        paymentFrequency:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.PaymentFrequency'
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.DefaultDetails:
+      type: object
+      properties:
+        mersRegistrationNumber:
+          type:
+          - string
+          - 'null'
+        customerReferenceNumber:
+          type:
+          - string
+          - 'null'
+        trustorGrantor:
+          type:
+          - string
+          - 'null'
+        trustee:
+          type:
+          - string
+          - 'null'
+        beneficiaryGrantee:
+          type:
+          - string
+          - 'null'
+        legalDescription:
+          type:
+          - string
+          - 'null'
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        servicerName:
+          type:
+          - string
+          - 'null'
+        servicerCode:
+          type:
+          - string
+          - 'null'
+        deedOfTrustDetails:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DeedOfTrustDetails'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderServiceProviderType:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Orders.OrderDetails:
+      type: object
+      properties:
+        estimatedCloseDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        customerReference:
+          type:
+          - string
+          - 'null'
+        contractAcceptanceDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contractExpirationDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        salePrice:
+          type: integer
+          format: int32
+        contingencyRemovalDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        inspectionPeriodEndDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        buyerSignUpDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        buyerWalkthroughDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        escrowReference:
+          type:
+          - string
+          - 'null'
+        defaultDetails:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DefaultDetails'
+      additionalProperties: false
+    Titlefy.Models.Orders.OrderDetailStandaloneField:
+      type: object
+      properties:
+        field:
+          type:
+          - string
+          - 'null'
+        parentSection:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.OrderContactOptionsRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        orderType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderType'
+        orderSubType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderSubType'
+        services:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderService'
+      additionalProperties: false
+    Flueid.Pro.Constants.OrderConstants.OrderSubType:
+      enum:
+      - 0
+      - 100
+      - 101
+      - 102
+      - 104
+      - 105
+      - 106
+      - 107
+      - 200
+      - 201
+      - 202
+      - 203
+      - 205
+      - 206
+      - 207
+      - 300
+      - 400
+      - 401
+      - 402
+      - 403
+      - 404
+      - 407
+      - 408
+      - 409
+      - 410
+      - 411
+      - 412
+      - 413
+      - 500
+      - 501
+      - 502
+      - 503
+      - 504
+      - 505
+      - 506
+      - 507
+      - 508
+      - 509
+      - 510
+      - 600
+      - 700
+      - 800
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.DTOs.OrderSubTypeOption:
+      type: object
+      properties:
+        selectionType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
+        orderSubType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderSubType'
+        orderSubTypeDescription:
+          type:
+          - string
+          - 'null'
+        preClosingServiceTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderServiceTypeOption'
+        closingServiceTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderServiceTypeOption'
+      additionalProperties: false
+    Titlefy.Models.Orders.DefaultOrderContactsRequest:
+      type: object
+      properties:
+        bizSrcUserId:
+          type: integer
+          format: int32
+        orderType:
+          type: integer
+          format: int32
+        propertyId:
+          type: integer
+          format: int32
+        orderId:
+          type: integer
+          format: int32
+        includeTEOfficers:
+          type: boolean
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.OrderContactOption:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
+        required:
+          type: boolean
+        maxAllowed:
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.FldCompleteDetails:
+      type: object
+      properties:
+        externalReferenceId:
+          type: integer
+          format: int32
+        externalClientOrderReference:
+          type:
+          - string
+          - 'null'
+        transactionType:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.Insurful.DecisionTransactionType'
+        workflowType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderWorkflowType'
+        fullLegalDescription:
+          type:
+          - string
+          - 'null'
+        vesting:
+          type:
+          - string
+          - 'null'
+        curativeItems:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.FldCurativeItem'
+        documents:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.TemporaryDocument'
+        decisionDocuments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.TemporaryDocument'
+        cancellationReason:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderCancellationReason'
+        orderProcessingType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProcessingType'
+        tcrEnhanced:
+          type:
+          - string
+          - 'null'
+        tcrEnhancedData:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            $ref: '#/components/schemas/Newtonsoft.Json.Linq.JToken'
+        decisionTransmissionError:
+          type:
+          - string
+          - 'null'
+        txmTransmissionError:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Titlefy.Data.Entities.DTOs.EnhancedOrderSubmission:
       type: object
       properties:
@@ -771,6 +1601,22 @@ components:
           type: integer
           format: int32
       additionalProperties: false
+    Titlefy.Data.Entities.DTOs.AdditionalServiceOption:
+      type: object
+      properties:
+        additionalServiceId:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.ServiceOption'
+        additionalServiceDesc:
+          type:
+          - string
+          - 'null'
+        additionalServiceHelpInfo:
+          type:
+          - string
+          - 'null'
+        isDefault:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
+      additionalProperties: false
     Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
       enum:
       - 0
@@ -779,6 +1625,18 @@ components:
       - 3
       - 4
       - 5
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.Orders.OrderProductSubType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
       type: integer
       format: int32
     Titlefy.Data.Entities.DTOs.OrderSubmissionDocument:
@@ -800,251 +1658,31 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Titlefy.Data.Entities.Orders.TemporaryDocument:
+    Titlefy.Data.Entities.Orders.Payoff:
       type: object
       properties:
-        id:
-          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
-        createdDate:
-          type: string
-          format: date-time
-        createdByUser:
-          type:
-          - string
-          - 'null'
-        lastUpdatedDate:
-          type: string
-          format: date-time
-        lastUpdatedByUser:
-          type:
-          - string
-          - 'null'
-        tempDocId:
+        loanBalance:
           type: integer
           format: int32
-        documentType:
-          type: integer
-          format: int32
-        documentTypeDescription:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        filename:
-          type:
-          - string
-          - 'null'
-        fileExtension:
-          type:
-          - string
-          - 'null'
-        documentId:
-          type:
-          - string
-          - 'null'
-        documentUrl:
-          type:
-          - string
-          - 'null'
-        transmissionError:
-          type:
-          - string
-          - 'null'
-        docBytes:
-          type:
-          - string
-          - 'null'
-          format: byte
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.LoanType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.Orders.OrderingParty:
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      format: int32
-    Titlefy.Models.Orders.CheckDuplicateOrderRequest:
-      type: object
-      properties:
-        propertyId:
-          type: integer
-          format: int32
-        partnerId:
-          type: integer
-          format: int32
-        externalReferenceId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
-    Titlefy.Core.Constants.IndustryType:
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.Orders.FldCurativeItem:
-      type: object
-      properties:
-        curativeName:
-          type:
-          - string
-          - 'null'
-        grade:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderCurativeGrade'
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.Loan:
-      type: object
-      properties:
-        lenderName:
-          type:
-          - string
-          - 'null'
         loanNumber:
           type:
           - string
           - 'null'
-        loanNumberHash:
+        lender:
           type:
           - string
           - 'null'
-          format: byte
-        loanAmount:
-          type: number
-          format: double
-        loanType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.LoanType'
-        loanTypeDescription:
-          type:
-          - string
-          - 'null'
-        lienPosition:
+        position:
           type: integer
           format: int32
-        loanApplicationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        loanApprovalDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        rate:
-          type: number
-          format: double
-        term:
-          type: integer
-          format: int32
-        termType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.TermType'
-        unpaidPrincipalBalance:
-          type: number
-          format: double
-        originalLoanAmount:
-          type: number
-          format: double
-        cashOutAmount:
-          type: number
-          format: double
-        contactEmail:
-          type:
-          - string
-          - 'null'
-        contactFirstName:
-          type:
-          - string
-          - 'null'
-        contactLastName:
-          type:
-          - string
-          - 'null'
-        company:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.LoanCompany'
       additionalProperties: false
-    Flueid.Pro.Constants.OrderConstants.OrderSubType:
-      enum:
-      - 0
-      - 100
-      - 101
-      - 102
-      - 104
-      - 105
-      - 106
-      - 107
-      - 200
-      - 201
-      - 202
-      - 203
-      - 205
-      - 206
-      - 207
-      - 300
-      - 400
-      - 401
-      - 402
-      - 403
-      - 404
-      - 407
-      - 408
-      - 409
-      - 410
-      - 411
-      - 412
-      - 413
-      - 500
-      - 501
-      - 502
-      - 503
-      - 504
-      - 505
-      - 506
-      - 507
-      - 508
-      - 509
-      - 510
-      - 600
-      - 700
-      - 800
-      type: integer
-      format: int32
+    Titlefy.Models.Orders.CompanyTitleOfficersRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+      additionalProperties: false
     Titlefy.Data.Entities.Orders.DeedOfTrustDetails:
       type: object
       properties:
@@ -1085,605 +1723,14 @@ components:
           - 'null'
           format: double
       additionalProperties: false
-    Titlefy.Data.Entities.Orders.HomeOwnersAssociationInfo:
+    Titlefy.Data.Entities.RelatedUser:
       type: object
       properties:
-        serviceProviderType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
-        orderingParty:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
-        orderingPartyDescription:
-          type:
-          - string
-          - 'null'
-        companyName:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        contactFirstName:
-          type:
-          - string
-          - 'null'
-        contactLastName:
-          type:
-          - string
-          - 'null'
-        address:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
-        hoaName:
-          type:
-          - string
-          - 'null'
-        dues:
-          type: number
-          format: double
-        paymentFrequency:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.PaymentFrequency'
-      additionalProperties: false
-    Titlefy.Models.Orders.OrderSubmissionResult:
-      type: object
-      properties:
-        orderId:
+        userId:
           type: integer
           format: int32
-        serviceSubmissionResults:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderServiceSubmissionResult'
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.DefaultDetails:
-      type: object
-      properties:
-        mersRegistrationNumber:
-          type:
-          - string
-          - 'null'
-        customerReferenceNumber:
-          type:
-          - string
-          - 'null'
-        trustorGrantor:
-          type:
-          - string
-          - 'null'
-        trustee:
-          type:
-          - string
-          - 'null'
-        beneficiaryGrantee:
-          type:
-          - string
-          - 'null'
-        legalDescription:
-          type:
-          - string
-          - 'null'
-        parcelNumber:
-          type:
-          - string
-          - 'null'
-        servicerName:
-          type:
-          - string
-          - 'null'
-        servicerCode:
-          type:
-          - string
-          - 'null'
-        deedOfTrustDetails:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DeedOfTrustDetails'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.ProviderOrderSlim:
-      type: object
-      properties:
-        orderId:
-          type: integer
-          format: int32
-        expiryDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        titlefyCreatorUserId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        titlefyOrderId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        titlefyOrderType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderType'
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.OrderDetails:
-      type: object
-      properties:
-        estimatedCloseDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        customerReference:
-          type:
-          - string
-          - 'null'
-        contractAcceptanceDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        contractExpirationDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        salePrice:
-          type: integer
-          format: int32
-        contingencyRemovalDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        inspectionPeriodEndDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        buyerSignUpDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        buyerWalkthroughDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        escrowReference:
-          type:
-          - string
-          - 'null'
-        defaultDetails:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DefaultDetails'
-      additionalProperties: false
-    Titlefy.Models.Orders.OrderDetailLinkedSection:
-      type: object
-      properties:
-        section:
-          type:
-          - string
-          - 'null'
-        sectionCaption:
-          type:
-          - string
-          - 'null'
-        requiredFields:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.OrderSubmissionProduct:
-      type: object
-      properties:
-        productType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductType'
-        productSubType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
-      additionalProperties: false
-    Titlefy.Models.Orders.CompanyAccountManagersRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.OrderProductSubTypeOption:
-      type: object
-      properties:
-        selectionType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
-        productSubType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
-        productSubTypeDescription:
-          type:
-          - string
-          - 'null'
-        productSubTypeDescriptionSubtext:
-          type:
-          - string
-          - 'null'
-        productSubTypeHelpInfo:
-          type:
-          - string
-          - 'null'
-        isDefault:
+        autoSelect:
           type: boolean
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.InsuranceInfo:
-      type: object
-      properties:
-        serviceProviderType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
-        orderingParty:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
-        orderingPartyDescription:
-          type:
-          - string
-          - 'null'
-        companyName:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        contactFirstName:
-          type:
-          - string
-          - 'null'
-        contactLastName:
-          type:
-          - string
-          - 'null'
-        address:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
-        policyNumber:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.Insurful.DecisionTransactionType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.DTOs.OrderProductCategoryOption:
-      type: object
-      properties:
-        productType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductType'
-        productCategory:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductCategory'
-        productCategoryDescription:
-          type:
-          - string
-          - 'null'
-        subTypeOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderProductSubTypeOption'
-        additionalServiceOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.AdditionalServiceOption'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.OrderSubmissionProperty:
-      type: object
-      properties:
-        propertyId:
-          type: integer
-          format: int32
-        fipsCode:
-          type:
-          - string
-          - 'null'
-        countyName:
-          type:
-          - string
-          - 'null'
-        apn:
-          type:
-          - string
-          - 'null'
-        latitude:
-          type: number
-          format: double
-        longitude:
-          type: number
-          format: double
-        address:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
-        ownerName:
-          type:
-          - string
-          - 'null'
-        propertyType:
-          $ref: '#/components/schemas/Flueid.PropertyDb.Models.Constants.PropertyType'
-        legalDescription:
-          type:
-          - string
-          - 'null'
-        ownerOccupied:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.OrderDetailsOptionsRequest:
-      type: object
-      properties:
-        orderTypeId:
-          type: integer
-          format: int32
-        orderSubTypeId:
-          type: integer
-          format: int32
-        serviceTypes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderServiceType'
-        products:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderSubmissionProduct'
-        propertyState:
-          type:
-          - string
-          - 'null'
-        propertyFipsCode:
-          type:
-          - string
-          - 'null'
-        propertyZip:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.AdditionalServiceOption:
-      type: object
-      properties:
-        additionalServiceId:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.ServiceOption'
-        additionalServiceDesc:
-          type:
-          - string
-          - 'null'
-        additionalServiceHelpInfo:
-          type:
-          - string
-          - 'null'
-        isDefault:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.ServiceOption:
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Titlefy.Models.Orders.OrderTypeOptionsRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        businessSourceUserId:
-          type: integer
-          format: int32
-        propertyState:
-          type:
-          - string
-          - 'null'
-        propertyFipsCode:
-          type:
-          - string
-          - 'null'
-        propertyZip:
-          type:
-          - string
-          - 'null'
-        propertyId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Titlefy.Models.Orders.CalculateCloseDateRequest:
-      type: object
-      properties:
-        orderType:
-          type: integer
-          format: int32
-        openDate:
-          type: string
-          format: date-time
-      additionalProperties: false
-    Titlefy.Core.Constants.UserStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      format: int32
-    Titlefy.Models.DropdownOption:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        text:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.FldCompleteDetails:
-      type: object
-      properties:
-        externalReferenceId:
-          type: integer
-          format: int32
-        externalClientOrderReference:
-          type:
-          - string
-          - 'null'
-        transactionType:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.Insurful.DecisionTransactionType'
-        workflowType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderWorkflowType'
-        fullLegalDescription:
-          type:
-          - string
-          - 'null'
-        vesting:
-          type:
-          - string
-          - 'null'
-        curativeItems:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.FldCurativeItem'
-        documents:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.TemporaryDocument'
-        decisionDocuments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.TemporaryDocument'
-        cancellationReason:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderCancellationReason'
-        orderProcessingType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProcessingType'
-        tcrEnhanced:
-          type:
-          - string
-          - 'null'
-        tcrEnhancedData:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            $ref: '#/components/schemas/Newtonsoft.Json.Linq.JToken'
-        decisionTransmissionError:
-          type:
-          - string
-          - 'null'
-        txmTransmissionError:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderRole:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 4
-      - 5
-      - 6
-      - 7
-      - 11
-      - 12
-      - 14
-      - 15
-      - 16
-      - 17
-      - 18
-      - 19
-      - 20
-      - 21
-      - 22
-      - 23
-      - 29
-      - 50
-      - 51
-      - 52
-      - 53
-      - 54
-      - 55
-      - 99
-      type: integer
-      format: int32
-    Titlefy.Models.Orders.OrderFailReason:
-      type: object
-      properties:
-        failCode:
-          type: integer
-          format: int32
-        failDescription:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.HomeWarrantyInfo:
-      type: object
-      properties:
-        serviceProviderType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
-        orderingParty:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
-        orderingPartyDescription:
-          type:
-          - string
-          - 'null'
-        companyName:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        contactFirstName:
-          type:
-          - string
-          - 'null'
-        contactLastName:
-          type:
-          - string
-          - 'null'
-        address:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
-        licenseNumber:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     Titlefy.Data.Entities.Address:
       type: object
@@ -1724,102 +1771,109 @@ components:
           - 'null'
           readOnly: true
       additionalProperties: false
-    Titlefy.Data.Entities.UserPartnerCompany:
+    Titlefy.Models.Orders.CalculateCloseDateRequest:
       type: object
       properties:
-        companyName:
-          type:
-          - string
-          - 'null'
-        companyId:
-          type: integer
-          format: int32
-        divisionId:
-          type: integer
-          format: int32
-        branchId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Titlefy.Models.Orders.DefaultOrderContactsRequest:
-      type: object
-      properties:
-        bizSrcUserId:
-          type: integer
-          format: int32
         orderType:
           type: integer
           format: int32
-        propertyId:
-          type: integer
-          format: int32
-        orderId:
-          type: integer
-          format: int32
-        includeTEOfficers:
-          type: boolean
+        openDate:
+          type: string
+          format: date-time
       additionalProperties: false
-    Titlefy.Models.Orders.OrderDetailsOptions:
+    Titlefy.Data.Entities.DTOs.OrderProductCategoryOption:
       type: object
       properties:
-        requiredStandaloneFields:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderDetailStandaloneField'
-        optionalStandaloneFields:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderDetailStandaloneField'
-        linkedSections:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderDetailLinkedSection'
-        loanTypeOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-        orderingPartyOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-        documentTypeOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.Payoff:
-      type: object
-      properties:
-        loanBalance:
-          type: integer
-          format: int32
-        loanNumber:
+        productType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductType'
+        productCategory:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductCategory'
+        productCategoryDescription:
           type:
           - string
           - 'null'
-        lender:
+        subTypeOptions:
           type:
-          - string
+          - array
           - 'null'
-        position:
-          type: integer
-          format: int32
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderProductSubTypeOption'
+        additionalServiceOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.AdditionalServiceOption'
       additionalProperties: false
-    Flueid.PropertyDb.Models.Constants.PropertyType:
+    Titlefy.Core.Constants.Orders.OrderProductCategory:
       enum:
       - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.DTOs.OrderDetailsOptionsRequest:
+      type: object
+      properties:
+        orderTypeId:
+          type: integer
+          format: int32
+        orderSubTypeId:
+          type: integer
+          format: int32
+        serviceTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderServiceType'
+        products:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderSubmissionProduct'
+        propertyState:
+          type:
+          - string
+          - 'null'
+        propertyFipsCode:
+          type:
+          - string
+          - 'null'
+        propertyZip:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.TermType:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.Orders.SelectionType:
+      enum:
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.OrderConstants.OrderType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.Orders.OrderProductType:
+      enum:
       - 1
       - 2
       - 3
@@ -1832,306 +1886,22 @@ components:
       - 10
       - 11
       - 12
-      - 50
-      - 70
-      - 100
-      - 200
+      - 13
       type: integer
       format: int32
-    Titlefy.Core.Constants.Orders.SelectionType:
-      enum:
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.DTOs.OrderSubTypeOption:
-      type: object
-      properties:
-        selectionType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
-        orderSubType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderSubType'
-        orderSubTypeDescription:
-          type:
-          - string
-          - 'null'
-        preClosingServiceTypes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderServiceTypeOption'
-        closingServiceTypes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderServiceTypeOption'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderProductSubType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 5
-      - 6
-      - 7
-      - 8
-      type: integer
-      format: int32
-    Titlefy.Models.Orders.OrderServiceSubmissionResult:
-      type: object
-      properties:
-        succeeded:
-          type: boolean
-        orderNumber:
-          type:
-          - string
-          - 'null'
-        orderProviderId:
-          type: integer
-          format: int32
-        orderProviderNumber:
-          type: integer
-          format: int32
-        productionSystemOrderId:
-          type:
-          - string
-          - 'null'
-        serviceType:
-          type: integer
-          format: int32
-        failReasons:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderFailReason'
-      additionalProperties: false
-    Titlefy.Models.Orders.RelatedOfficersRequest:
-      type: object
-      properties:
-        subjectUserId:
-          type: integer
-          format: int32
-        partnerId:
-          type: integer
-          format: int32
-        relatedRoleId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Titlefy.Data.Entities.RelatedUser:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int32
-        autoSelect:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderProductCategory:
+    Titlefy.Core.Constants.Orders.YesNoType:
       enum:
       - 0
       - 1
       - 2
       type: integer
       format: int32
-    Titlefy.Models.Orders.CheckDuplicateOrderResponse:
-      type: object
-      properties:
-        orderId:
-          type: integer
-          format: int32
-        orderNumber:
-          type:
-          - string
-          - 'null'
-        isDuplicate:
-          type: boolean
-        openDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        orderType:
-          type: integer
-          format: int32
-        orderTypeDescription:
-          type:
-          - string
-          - 'null'
-        productionSystemOrderId:
-          type:
-          - string
-          - 'null'
-        loanNumber:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderCancellationReason:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.Orders.OrderServiceProviderType:
+    Titlefy.Core.Constants.Orders.OrderingParty:
       enum:
       - 1
       - 2
       - 3
       - 4
-      - 5
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.Orders.OrderWorkflowType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.UserPartnerAssociation:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        divisionId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        branchId:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        isDefault:
-          type: boolean
-        accountManagers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        escrowOfficers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        titleOfficers:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        logoMainUrl:
-          type:
-          - string
-          - 'null'
-        companyName:
-          type:
-          - string
-          - 'null'
-        internalUser:
-          type: boolean
-        assistants:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
-        status:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
-        groups:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        company:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerCompany'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.OrderTypeOption:
-      type: object
-      properties:
-        selectionType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
-        orderType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderType'
-        orderTypeDescription:
-          type:
-          - string
-          - 'null'
-        subTypeOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderSubTypeOption'
-        closingServicesIsBlocked:
-          type: boolean
-        closingServicesBlockedMessage:
-          type:
-          - string
-          - 'null'
-        defaultOrderServiceType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderServiceType'
-        defaultEscrowOrderProductSubType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
-        defaultTitleOrderProductSubType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
-        defaultTitleOrderServiceOption:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.ServiceOption'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.ContactCommunicationPref:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.DTOs.OrderContactOption:
-      type: object
-      properties:
-        role:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
-        required:
-          type: boolean
-        maxAllowed:
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderStatus:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.Orders.PaymentFrequency:
-      enum:
-      - 1
-      - 2
-      - 3
       type: integer
       format: int32
     Titlefy.Data.Entities.Orders.LoanCompany:
@@ -2172,44 +1942,13 @@ components:
         contactType:
           $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
       additionalProperties: false
-    Titlefy.Data.Entities.Orders.PropertyDisclosureInfo:
-      type: object
-      properties:
-        serviceProviderType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
-        orderingParty:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
-        orderingPartyDescription:
-          type:
-          - string
-          - 'null'
-        companyName:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        contactFirstName:
-          type:
-          - string
-          - 'null'
-        contactLastName:
-          type:
-          - string
-          - 'null'
-        address:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
-      additionalProperties: false
-    Newtonsoft.Json.Linq.JToken:
-      type: array
-      items:
-        $ref: '#/components/schemas/Newtonsoft.Json.Linq.JToken'
+    Titlefy.Core.Constants.Orders.PaymentFrequency:
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
     Titlefy.Data.Entities.DTOs.OrderSubmissionService:
       type: object
       properties:
@@ -2221,57 +1960,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderSubmissionProduct'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderCurativeGrade:
-      enum:
-      - 0
-      - 30
-      - 31
-      - 32
-      - 33
-      - 34
-      type: integer
-      format: int32
-    Titlefy.Models.Orders.CompanyTitleOfficersRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Flueid.Pro.Constants.OrderConstants.OrderServiceType:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      - 12
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.DTOs.OrderContactOptionsRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        orderType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderType'
-        orderSubType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderSubType'
-        services:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderService'
       additionalProperties: false
     Titlefy.Data.Entities.Orders.OrderService:
       type: object
@@ -2322,13 +2010,241 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Titlefy.Core.Constants.Orders.YesNoType:
+    Titlefy.Models.Orders.OrderDetailLinkedSection:
+      type: object
+      properties:
+        section:
+          type:
+          - string
+          - 'null'
+        sectionCaption:
+          type:
+          - string
+          - 'null'
+        requiredFields:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      additionalProperties: false
+    Titlefy.Core.Constants.UserStatus:
       enum:
       - 0
       - 1
       - 2
+      - 3
+      - 4
       type: integer
       format: int32
+    Titlefy.Core.Constants.Orders.ServiceOption:
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Orders.PropertyDisclosureInfo:
+      type: object
+      properties:
+        serviceProviderType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
+        orderingParty:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
+        orderingPartyDescription:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        contactFirstName:
+          type:
+          - string
+          - 'null'
+        contactLastName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+      additionalProperties: false
+    Titlefy.Models.Orders.RelatedOfficersRequest:
+      type: object
+      properties:
+        subjectUserId:
+          type: integer
+          format: int32
+        partnerId:
+          type: integer
+          format: int32
+        relatedRoleId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderCurativeGrade:
+      enum:
+      - 0
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.OrderConstants.OrderServiceType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.DTOs.OrderSubmissionContact:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
+        contactType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderContactType'
+        isBusinessSource:
+          type: boolean
+        businessSourceRoles:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
+        userId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        firstName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        suffix:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        publicRecordContactType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderContactType'
+        publicRecordFirstName:
+          type:
+          - string
+          - 'null'
+        publicRecordMiddleName:
+          type:
+          - string
+          - 'null'
+        publicRecordLastName:
+          type:
+          - string
+          - 'null'
+        publicRecordSuffix:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+        forwardingAddress:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+        taxId:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        communicationPreference:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.ContactCommunicationPref'
+        jointGroup:
+          type: integer
+          format: int32
+        referenceNumber:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.Insurful.DecisionTransactionType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      type: integer
+      format: int32
+    Titlefy.Models.Orders.OrderTypeOptionsRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        businessSourceUserId:
+          type: integer
+          format: int32
+        propertyState:
+          type:
+          - string
+          - 'null'
+        propertyFipsCode:
+          type:
+          - string
+          - 'null'
+        propertyZip:
+          type:
+          - string
+          - 'null'
+        propertyId:
+          type: integer
+          format: int32
+      additionalProperties: false
     Titlefy.Data.Entities.DTOs.UserLite:
       type: object
       properties:
@@ -2462,68 +2378,43 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Titlefy.Core.Constants.Orders.TermType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.DTOs.OrderSubmissionContact:
+    Titlefy.Data.Entities.UserPartnerAssociation:
       type: object
       properties:
-        role:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
-        contactType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderContactType'
-        isBusinessSource:
-          type: boolean
-        businessSourceRoles:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
-        userId:
+        partnerId:
+          type: integer
+          format: int32
+        divisionId:
           type:
           - integer
           - 'null'
           format: int32
-        firstName:
+        branchId:
           type:
-          - string
+          - integer
           - 'null'
-        middleName:
+          format: int32
+        isDefault:
+          type: boolean
+        accountManagers:
           type:
-          - string
+          - array
           - 'null'
-        lastName:
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        escrowOfficers:
           type:
-          - string
+          - array
           - 'null'
-        suffix:
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        titleOfficers:
           type:
-          - string
+          - array
           - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        publicRecordContactType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderContactType'
-        publicRecordFirstName:
-          type:
-          - string
-          - 'null'
-        publicRecordMiddleName:
-          type:
-          - string
-          - 'null'
-        publicRecordLastName:
-          type:
-          - string
-          - 'null'
-        publicRecordSuffix:
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        logoMainUrl:
           type:
           - string
           - 'null'
@@ -2531,114 +2422,260 @@ components:
           type:
           - string
           - 'null'
-        address:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
-        forwardingAddress:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
-        taxId:
+        internalUser:
+          type: boolean
+        assistants:
           type:
-          - string
+          - array
           - 'null'
-        phone:
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.RelatedUser'
+        status:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
+        groups:
           type:
-          - string
+          - array
           - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        communicationPreference:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.ContactCommunicationPref'
-        jointGroup:
+          items:
+            type: integer
+            format: int32
+        company:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerCompany'
+      additionalProperties: false
+    Titlefy.Models.Orders.OrderSubmissionResult:
+      type: object
+      properties:
+        orderId:
           type: integer
           format: int32
-        referenceNumber:
+        serviceSubmissionResults:
           type:
-          - string
+          - array
           - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderServiceSubmissionResult'
       additionalProperties: false
-    Titlefy.Data.Entities.Orders.PestControlInfo:
+    Titlefy.Models.Orders.OrderDetailsOptions:
       type: object
       properties:
-        serviceProviderType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderServiceProviderType'
-        orderingParty:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderingParty'
-        orderingPartyDescription:
+        requiredStandaloneFields:
           type:
-          - string
+          - array
           - 'null'
-        companyName:
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderDetailStandaloneField'
+        optionalStandaloneFields:
           type:
-          - string
+          - array
           - 'null'
-        phone:
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderDetailStandaloneField'
+        linkedSections:
           type:
-          - string
+          - array
           - 'null'
-        email:
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Orders.OrderDetailLinkedSection'
+        loanTypeOptions:
           type:
-          - string
+          - array
           - 'null'
-        contactFirstName:
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+        orderingPartyOptions:
           type:
-          - string
+          - array
           - 'null'
-        contactLastName:
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+        documentTypeOptions:
           type:
-          - string
+          - array
           - 'null'
-        address:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Address'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
       additionalProperties: false
-    Titlefy.Data.Entities.Orders.OrderProduct:
+    Titlefy.Core.Constants.Orders.LoanType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.DTOs.OrderProductSubTypeOption:
       type: object
       properties:
-        productCategory:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductCategory'
-        productType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductType'
-        productTypeDescription:
-          type:
-          - string
-          - 'null'
+        selectionType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
         productSubType:
           $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
         productSubTypeDescription:
           type:
           - string
           - 'null'
+        productSubTypeDescriptionSubtext:
+          type:
+          - string
+          - 'null'
+        productSubTypeHelpInfo:
+          type:
+          - string
+          - 'null'
+        isDefault:
+          type: boolean
       additionalProperties: false
-    Titlefy.Models.Orders.OrderDetailStandaloneField:
+    Titlefy.Models.DropdownOption:
       type: object
       properties:
-        field:
+        value:
           type:
           - string
           - 'null'
-        parentSection:
+        text:
           type:
           - string
           - 'null'
       additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderProcessingType:
-      enum:
-      - 0
-      - 2
-      - 4
-      - 5
-      - 6
-      - 9
-      - 10
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.Orders.OrderContactType:
+    Titlefy.Data.Entities.Orders.TemporaryDocument:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        tempDocId:
+          type: integer
+          format: int32
+        documentType:
+          type: integer
+          format: int32
+        documentTypeDescription:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        filename:
+          type:
+          - string
+          - 'null'
+        fileExtension:
+          type:
+          - string
+          - 'null'
+        documentId:
+          type:
+          - string
+          - 'null'
+        documentUrl:
+          type:
+          - string
+          - 'null'
+        transmissionError:
+          type:
+          - string
+          - 'null'
+        docBytes:
+          type:
+          - string
+          - 'null'
+          format: byte
+      additionalProperties: false
+    Newtonsoft.Json.Linq.JToken:
+      type: array
+      items:
+        $ref: '#/components/schemas/Newtonsoft.Json.Linq.JToken'
+    Titlefy.Data.Entities.DTOs.OrderSubmissionProduct:
+      type: object
+      properties:
+        productType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductType'
+        productSubType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.ProviderOrderSlim:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          format: int32
+        expiryDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        titlefyCreatorUserId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        titlefyOrderId:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        titlefyOrderType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderType'
+      additionalProperties: false
+    Titlefy.Models.Orders.OrderFailReason:
+      type: object
+      properties:
+        failCode:
+          type: integer
+          format: int32
+        failDescription:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Models.Orders.CompanyAccountManagersRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderRole:
       enum:
       - 0
       - 1
       - 2
-      - 3
       - 4
+      - 5
+      - 6
+      - 7
+      - 11
+      - 12
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 29
+      - 50
+      - 51
+      - 52
+      - 53
+      - 54
+      - 55
+      - 99
       type: integer
       format: int32
     Titlefy.Data.Entities.DTOs.OrderSubmission:
@@ -2732,27 +2769,17 @@ components:
         fldCompleteDetails:
           $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.FldCompleteDetails'
       additionalProperties: false
-    Titlefy.Data.Entities.DTOs.OrderServiceTypeOption:
-      type: object
-      properties:
-        selectionType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.SelectionType'
-        serviceType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.OrderConstants.OrderServiceType'
-        serviceTypeDescription:
-          type:
-          - string
-          - 'null'
-        existingOrders:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.ProviderOrderSlim'
-        productCategories:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.OrderProductCategoryOption'
-      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderCancellationReason:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      type: integer
+      format: int32
