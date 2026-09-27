@@ -823,101 +823,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Titlefy.Data.Entities.UserPartnerCompany:
-      type: object
-      properties:
-        companyName:
-          type:
-          - string
-          - 'null'
-        companyId:
-          type: integer
-          format: int32
-        divisionId:
-          type: integer
-          format: int32
-        branchId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.UpdatePartnerAssociationRequest:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int32
-        partnerAssociation:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
-      additionalProperties: false
-    Titlefy.Core.Constants.IndustryType:
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.DTOs.UserSettings:
-      type: object
-      properties:
-        pullupCardContent:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PullupCardContent'
-        authorizationSettings:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.AuthorizationSettings'
-        permissions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Permissions.SourcedPermission'
-      additionalProperties: false
-    Titlefy.Core.Constants.SortDirection:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Titlefy.Models.Account.SearchOfficersOrAccountExecsRequest:
-      type: object
-      properties:
-        partnerId:
-          type: integer
-          format: int32
-        roleId:
-          type: integer
-          format: int32
-        searchText:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
     Titlefy.Models.General.Link:
       type: object
       properties:
@@ -929,160 +834,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    Titlefy.Models.Permissions.SourcedPermission:
-      type: object
-      properties:
-        name:
-          type:
-          - string
-          - 'null'
-        value:
-          type: boolean
-        overrideLowerLevels:
-          type: boolean
-        preventOverridebyHigherLevels:
-          type: boolean
-        sourceEntityId:
-          type: integer
-          format: int32
-        sourceEntityType:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.UserLite:
-      type: object
-      properties:
-        lastLoginDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        userId:
-          type: integer
-          format: int32
-        roleId:
-          type: integer
-          format: int32
-        industryType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.IndustryType'
-        userName:
-          type:
-          - string
-          - 'null'
-        fullName:
-          type:
-          - string
-          - 'null'
-        internalUser:
-          type: boolean
-        companyId:
-          type: integer
-          format: int32
-        companyName:
-          type:
-          - string
-          - 'null'
-        divisionId:
-          type: integer
-          format: int32
-        divisionName:
-          type:
-          - string
-          - 'null'
-        branchId:
-          type: integer
-          format: int32
-        branchName:
-          type:
-          - string
-          - 'null'
-        partnerId:
-          type: integer
-          format: int32
-        partnerName:
-          type:
-          - string
-          - 'null'
-        partnerAssociations:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
-        accountManagerId:
-          type: integer
-          format: int32
-        accountManagerName:
-          type:
-          - string
-          - 'null'
-        firstName:
-          type:
-          - string
-          - 'null'
-        middleName:
-          type:
-          - string
-          - 'null'
-        lastName:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        photoUrl:
-          type:
-          - string
-          - 'null'
-        address1:
-          type:
-          - string
-          - 'null'
-        address2:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        zip:
-          type:
-          - string
-          - 'null'
-        groups:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        statusId:
-          type: integer
-          format: int32
-        statusDescription:
-          type:
-          - string
-          - 'null'
-        jointGroup:
-          type: integer
-          format: int32
       additionalProperties: false
     Titlefy.Data.Entities.UserPartnerAssociation:
       type: object
@@ -1148,24 +899,23 @@ components:
         company:
           $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerCompany'
       additionalProperties: false
-    Titlefy.Data.Entities.HierarchySetting:
+    Titlefy.Data.Entities.DTOs.UpdatePartnerAssociationRequest:
       type: object
       properties:
-        name:
-          type:
-          - string
-          - 'null'
-        value:
-          type: boolean
-        overrideLowerLevels:
-          type: boolean
-        preventOverrideByHigherLevels:
-          type: boolean
-        setByEntityType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
-        setByEntityId:
+        userId:
           type: integer
           format: int32
+        partnerAssociation:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+      additionalProperties: false
+    Titlefy.Data.Entities.RelatedUser:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        autoSelect:
+          type: boolean
       additionalProperties: false
     Titlefy.Data.Entities.Branding:
       type: object
@@ -1211,6 +961,49 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    Titlefy.Data.Entities.DTOs.UserFilters:
+      type: object
+      properties:
+        searchString:
+          type:
+          - string
+          - 'null'
+        userStatus:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
+        partnerIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        pageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        pageIndex:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        sortBy:
+          type:
+          - string
+          - 'null'
+        sortDirection:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
+        groups:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Core.Constants.UserGroup'
+      additionalProperties: false
     Titlefy.Data.Entities.PropertyDataAuthSettings:
       type: object
       properties:
@@ -1221,39 +1014,15 @@ components:
         pullTaxRolls:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
       additionalProperties: false
-    Titlefy.Data.Entities.AuthorizationSettings:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
-        createdDate:
-          type: string
-          format: date-time
-        createdByUser:
-          type:
-          - string
-          - 'null'
-        lastUpdatedDate:
-          type: string
-          format: date-time
-        lastUpdatedByUser:
-          type:
-          - string
-          - 'null'
-        entityType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
-        entityId:
-          type: integer
-          format: int32
-        settings:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.AuthSettingsCollection'
-        groups:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.AuthorizationSettingsGroup'
-      additionalProperties: false
+    Titlefy.Core.Constants.UserStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
     Titlefy.Data.Entities.AuthorizationSettingsGroup:
       type: object
       properties:
@@ -1268,82 +1037,55 @@ components:
           items:
             $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
       additionalProperties: false
-    Titlefy.Data.Entities.DTOs.SearchUsersResult:
+    Titlefy.Models.Account.UpdateProfilePhotoRequest:
       type: object
       properties:
-        users:
+        base64Content:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.Division:
+      type: object
+      properties:
+        divisionId:
+          type: integer
+          format: int32
+        divisionName:
+          type:
+          - string
+          - 'null'
+        referenceId:
+          type:
+          - string
+          - 'null'
+        branches:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
-        pageCount:
-          type: integer
-          format: int32
-        usersCount:
-          type: integer
-          format: int64
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
       additionalProperties: false
-    Titlefy.Models.Account.ChangePasswordRequest:
+    Titlefy.Data.Entities.AccountsAuthSettings:
       type: object
       properties:
-        username:
-          type:
-          - string
-          - 'null'
-        sendCopy:
-          type: boolean
-        password:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Models.DropdownOption:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        text:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.GeneralAppSettings:
-      type: object
-      properties:
-        viewFeeCalculators:
+        administerAllUsers:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        uploadFarms:
+        administerAllPartnerUsers:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        hideFarms:
+        administerAllCompanyUsers:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        hideHotProperties:
+        administerAllDivisionUsers:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        canRefreshConfig:
+        administerAllBranchUsers:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        disableEmailNotifications:
+        createUsers:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        viewFDXUI:
+        resendTempPassword:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-      additionalProperties: false
-    Titlefy.Data.Entities.OrdersAuthSettings:
-      type: object
-      properties:
-        showOrdersSection:
+        approveUserSignUps:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        openOrders:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        canBeBusinessSource:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        canModifyDecisionOrder:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        canFullUpdateDecisionOrder:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        canCloseOrders:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        disableOpenOrdersForExternalUsers:
+        userSignUpApprovalsRequireAdminVerification:
           $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
       additionalProperties: false
     Titlefy.Data.Entities.User:
@@ -1531,17 +1273,168 @@ components:
         currentPartner:
           $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
       additionalProperties: false
-    Titlefy.Data.Entities.QuotesSettings:
+    Titlefy.Models.Account.ChangePasswordRequest:
       type: object
       properties:
-        showQuotesSection:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        showNetsheet:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        showBuyersEstimate:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        canCalculateRateQuotes:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        username:
+          type:
+          - string
+          - 'null'
+        sendCopy:
+          type: boolean
+        password:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.SearchUsersResult:
+      type: object
+      properties:
+        users:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+        pageCount:
+          type: integer
+          format: int32
+        usersCount:
+          type: integer
+          format: int64
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.UserLite:
+      type: object
+      properties:
+        lastLoginDate:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        userId:
+          type: integer
+          format: int32
+        roleId:
+          type: integer
+          format: int32
+        industryType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.IndustryType'
+        userName:
+          type:
+          - string
+          - 'null'
+        fullName:
+          type:
+          - string
+          - 'null'
+        internalUser:
+          type: boolean
+        companyId:
+          type: integer
+          format: int32
+        companyName:
+          type:
+          - string
+          - 'null'
+        divisionId:
+          type: integer
+          format: int32
+        divisionName:
+          type:
+          - string
+          - 'null'
+        branchId:
+          type: integer
+          format: int32
+        branchName:
+          type:
+          - string
+          - 'null'
+        partnerId:
+          type: integer
+          format: int32
+        partnerName:
+          type:
+          - string
+          - 'null'
+        partnerAssociations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
+        accountManagerId:
+          type: integer
+          format: int32
+        accountManagerName:
+          type:
+          - string
+          - 'null'
+        firstName:
+          type:
+          - string
+          - 'null'
+        middleName:
+          type:
+          - string
+          - 'null'
+        lastName:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        photoUrl:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        groups:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        statusId:
+          type: integer
+          format: int32
+        statusDescription:
+          type:
+          - string
+          - 'null'
+        jointGroup:
+          type: integer
+          format: int32
       additionalProperties: false
     Titlefy.Data.Entities.Partner:
       type: object
@@ -1624,6 +1517,257 @@ components:
         defaultAccountManager:
           $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
       additionalProperties: false
+    Titlefy.Data.Entities.OrdersAuthSettings:
+      type: object
+      properties:
+        showOrdersSection:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        openOrders:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        canBeBusinessSource:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        canModifyDecisionOrder:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        canFullUpdateDecisionOrder:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        canCloseOrders:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        disableOpenOrdersForExternalUsers:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.UserSettings:
+      type: object
+      properties:
+        pullupCardContent:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.PullupCardContent'
+        authorizationSettings:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.AuthorizationSettings'
+        permissions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Permissions.SourcedPermission'
+      additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    Titlefy.Data.Entities.UserPartnerCompany:
+      type: object
+      properties:
+        companyName:
+          type:
+          - string
+          - 'null'
+        companyId:
+          type: integer
+          format: int32
+        divisionId:
+          type: integer
+          format: int32
+        branchId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Data.Entities.HierarchySetting:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        value:
+          type: boolean
+        overrideLowerLevels:
+          type: boolean
+        preventOverrideByHigherLevels:
+          type: boolean
+        setByEntityType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
+        setByEntityId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Data.Entities.AuthSettingsCollection:
+      type: object
+      properties:
+        orders:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.OrdersAuthSettings'
+        propertyData:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.PropertyDataAuthSettings'
+        accounts:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.AccountsAuthSettings'
+        quotes:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.QuotesSettings'
+        generalAppSettings:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.GeneralAppSettings'
+      additionalProperties: false
+    Titlefy.Core.Constants.IndustryType:
+      enum:
+      - 1
+      - 2
+      - 3
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.AuthorizationSettings:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        entityType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
+        entityId:
+          type: integer
+          format: int32
+        settings:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.AuthSettingsCollection'
+        groups:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.AuthorizationSettingsGroup'
+      additionalProperties: false
+    Titlefy.Data.Entities.Branch:
+      type: object
+      properties:
+        branchId:
+          type: integer
+          format: int32
+        branchName:
+          type:
+          - string
+          - 'null'
+        address1:
+          type:
+          - string
+          - 'null'
+        address2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        zip:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        license:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.GeneralAppSettings:
+      type: object
+      properties:
+        viewFeeCalculators:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        uploadFarms:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        hideFarms:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        hideHotProperties:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        canRefreshConfig:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        disableEmailNotifications:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        viewFDXUI:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.PullupCardContent:
+      type: object
+      properties:
+        industryType:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.IndustryType'
+        userFullName:
+          type:
+          - string
+          - 'null'
+        userTitle:
+          type:
+          - string
+          - 'null'
+        userPhotoUrl:
+          type:
+          - string
+          - 'null'
+        userPhone:
+          type:
+          - string
+          - 'null'
+        userEmail:
+          type:
+          - string
+          - 'null'
+        companyName:
+          type:
+          - string
+          - 'null'
+        partner:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.Partner'
+        accountManager:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+      additionalProperties: false
+    Flueid.Pro.Constants.EntityConstants.EntityType:
+      enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 9999
+      type: integer
+      format: int32
     Titlefy.Models.Account.SignUpRequest:
       type: object
       properties:
@@ -1705,150 +1849,13 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Titlefy.Core.Constants.UserStatus:
+    Titlefy.Core.Constants.SortDirection:
       enum:
       - 0
       - 1
       - 2
-      - 3
-      - 4
       type: integer
       format: int32
-    Titlefy.Data.Entities.DTOs.UserFilters:
-      type: object
-      properties:
-        searchString:
-          type:
-          - string
-          - 'null'
-        userStatus:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Core.Constants.UserStatus'
-        partnerIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        pageSize:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        pageIndex:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        sortBy:
-          type:
-          - string
-          - 'null'
-        sortDirection:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
-        groups:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Core.Constants.UserGroup'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.UpdateUserAssistantsRequest:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int32
-        partnerId:
-          type: integer
-          format: int32
-        assistants:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-      additionalProperties: false
-    Titlefy.Data.Entities.Branch:
-      type: object
-      properties:
-        branchId:
-          type: integer
-          format: int32
-        branchName:
-          type:
-          - string
-          - 'null'
-        address1:
-          type:
-          - string
-          - 'null'
-        address2:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        state:
-          type:
-          - string
-          - 'null'
-        zip:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-        license:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.AuthSettingsCollection:
-      type: object
-      properties:
-        orders:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.OrdersAuthSettings'
-        propertyData:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.PropertyDataAuthSettings'
-        accounts:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.AccountsAuthSettings'
-        quotes:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.QuotesSettings'
-        generalAppSettings:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.GeneralAppSettings'
-      additionalProperties: false
-    Titlefy.Data.Entities.AccountsAuthSettings:
-      type: object
-      properties:
-        administerAllUsers:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        administerAllPartnerUsers:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        administerAllCompanyUsers:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        administerAllDivisionUsers:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        administerAllBranchUsers:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        createUsers:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        resendTempPassword:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        approveUserSignUps:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-        userSignUpApprovalsRequireAdminVerification:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-      additionalProperties: false
     Titlefy.Core.Constants.UserGroup:
       enum:
       - 0
@@ -1883,86 +1890,79 @@ components:
       - 30
       type: integer
       format: int32
-    Flueid.Pro.Constants.EntityConstants.EntityType:
-      enum:
-      - 10
-      - 20
-      - 30
-      - 40
-      - 50
-      - 60
-      - 9999
-      type: integer
-      format: int32
-    Titlefy.Data.Entities.DTOs.PullupCardContent:
+    Titlefy.Data.Entities.QuotesSettings:
       type: object
       properties:
-        industryType:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.IndustryType'
-        userFullName:
-          type:
-          - string
-          - 'null'
-        userTitle:
-          type:
-          - string
-          - 'null'
-        userPhotoUrl:
-          type:
-          - string
-          - 'null'
-        userPhone:
-          type:
-          - string
-          - 'null'
-        userEmail:
-          type:
-          - string
-          - 'null'
-        companyName:
-          type:
-          - string
-          - 'null'
-        partner:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.Partner'
-        accountManager:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.DTOs.UserLite'
+        showQuotesSection:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        showNetsheet:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        showBuyersEstimate:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+        canCalculateRateQuotes:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
       additionalProperties: false
-    Titlefy.Data.Entities.RelatedUser:
+    Titlefy.Models.DropdownOption:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        text:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Models.Account.SearchOfficersOrAccountExecsRequest:
+      type: object
+      properties:
+        partnerId:
+          type: integer
+          format: int32
+        roleId:
+          type: integer
+          format: int32
+        searchText:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Models.Permissions.SourcedPermission:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        value:
+          type: boolean
+        overrideLowerLevels:
+          type: boolean
+        preventOverridebyHigherLevels:
+          type: boolean
+        sourceEntityId:
+          type: integer
+          format: int32
+        sourceEntityType:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.UpdateUserAssistantsRequest:
       type: object
       properties:
         userId:
           type: integer
           format: int32
-        autoSelect:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Models.Account.UpdateProfilePhotoRequest:
-      type: object
-      properties:
-        base64Content:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Titlefy.Data.Entities.Division:
-      type: object
-      properties:
-        divisionId:
+        partnerId:
           type: integer
           format: int32
-        divisionName:
-          type:
-          - string
-          - 'null'
-        referenceId:
-          type:
-          - string
-          - 'null'
-        branches:
+        assistants:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
+            type: integer
+            format: int32
       additionalProperties: false

@@ -47,12 +47,12 @@ created: '2026-08-16'
 modified: '2026-08-16'
 tags:
 - Company
-- Real-Estate
+- Real Estate
 - Title Insurance
 - Mortgage
 - Property Data
 - Verification of Title
-- Financial-Services
+- Financial Services
 - Lending
 - PropTech
 - Settlement Services
@@ -67,6 +67,8 @@ tags_raw:
 - Lending
 - PropTech
 - Settlement Services
+- Real-Estate
+- Financial-Services
 apis:
 - aid: flueid:flueid-account-api
   name: Flueid Account API

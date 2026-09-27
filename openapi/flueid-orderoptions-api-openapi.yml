@@ -125,6 +125,33 @@ components:
           items:
             $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderLookupCodeRole'
       additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
     Titlefy.Core.Constants.Orders.OrderRole:
       enum:
       - 0
@@ -156,33 +183,6 @@ components:
       - 99
       type: integer
       format: int32
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
     Titlefy.Data.Entities.Orders.OrderLookupCodeRole:
       type: object
       properties:

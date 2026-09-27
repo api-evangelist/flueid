@@ -168,6 +168,40 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.Orders.DocumentType__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        items:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DocumentType'
+        pageCount:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
+      additionalProperties: false
+    Flueid.Pro.Constants.EntityConstants.EntityType:
+      enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 9999
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.SortDirection:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
     Titlefy.Core.Constants.UserGroup:
       enum:
       - 0
@@ -202,17 +236,33 @@ components:
       - 30
       type: integer
       format: int32
-    Flueid.Pro.Constants.EntityConstants.EntityType:
-      enum:
-      - 10
-      - 20
-      - 30
-      - 40
-      - 50
-      - 60
-      - 9999
-      type: integer
-      format: int32
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
     Titlefy.Core.Constants.Orders.OrderRole:
       enum:
       - 0
@@ -242,13 +292,6 @@ components:
       - 54
       - 55
       - 99
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.SortDirection:
-      enum:
-      - 0
-      - 1
-      - 2
       type: integer
       format: int32
     Titlefy.Data.Entities.Orders.OrderDocumentTypeSetting:
@@ -333,33 +376,6 @@ components:
         isOverriden:
           type: boolean
       additionalProperties: false
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
     Titlefy.Data.Entities.DTOs.OrderDocumentFilters:
       type: object
       properties:
@@ -390,20 +406,4 @@ components:
           - 'null'
         sortDirection:
           $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
-      additionalProperties: false
-    ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.Orders.DocumentType__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
-    : type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.DocumentType'
-        pageCount:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
       additionalProperties: false

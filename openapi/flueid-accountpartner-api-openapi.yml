@@ -74,30 +74,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Titlefy.Data.Entities.UserPartnerCompany:
-      type: object
-      properties:
-        companyName:
-          type:
-          - string
-          - 'null'
-        companyId:
-          type: integer
-          format: int32
-        divisionId:
-          type: integer
-          format: int32
-        branchId:
-          type: integer
-          format: int32
-      additionalProperties: false
-    Titlefy.Core.Constants.IndustryType:
-      enum:
-      - 1
-      - 2
-      - 3
-      type: integer
-      format: int32
     Titlefy.Data.Entities.UserPartnerAssociation:
       type: object
       properties:
@@ -162,6 +138,68 @@ components:
         company:
           $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerCompany'
       additionalProperties: false
+    Titlefy.Data.Entities.RelatedUser:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int32
+        autoSelect:
+          type: boolean
+      additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    Titlefy.Data.Entities.UserPartnerCompany:
+      type: object
+      properties:
+        companyName:
+          type:
+          - string
+          - 'null'
+        companyId:
+          type: integer
+          format: int32
+        divisionId:
+          type: integer
+          format: int32
+        branchId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Titlefy.Core.Constants.UserStatus:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      format: int32
     Titlefy.Data.Entities.User:
       type: object
       properties:
@@ -347,48 +385,10 @@ components:
         currentPartner:
           $ref: '#/components/schemas/Titlefy.Data.Entities.UserPartnerAssociation'
       additionalProperties: false
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
-    Titlefy.Data.Entities.RelatedUser:
-      type: object
-      properties:
-        userId:
-          type: integer
-          format: int32
-        autoSelect:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Core.Constants.UserStatus:
+    Titlefy.Core.Constants.IndustryType:
       enum:
-      - 0
       - 1
       - 2
       - 3
-      - 4
       type: integer
       format: int32
