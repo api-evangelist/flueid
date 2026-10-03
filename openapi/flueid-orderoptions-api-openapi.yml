@@ -83,17 +83,33 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Flueid.Pro.Constants.EntityConstants.EntityType:
-      enum:
-      - 10
-      - 20
-      - 30
-      - 40
-      - 50
-      - 60
-      - 9999
-      type: integer
-      format: int32
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
     Titlefy.Data.Entities.Orders.OrderLookupCodes:
       type: object
       properties:
@@ -124,33 +140,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderLookupCodeRole'
-      additionalProperties: false
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
       additionalProperties: false
     Titlefy.Core.Constants.Orders.OrderRole:
       enum:
@@ -203,3 +192,14 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    Flueid.Pro.Constants.EntityConstants.EntityType:
+      enum:
+      - 10
+      - 20
+      - 30
+      - 40
+      - 50
+      - 60
+      - 9999
+      type: integer
+      format: int32

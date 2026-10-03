@@ -91,6 +91,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Titlefy.Models.Orders.OrderHistoryItem:
+      type: object
+      properties:
+        eventType:
+          type:
+          - string
+          - 'null'
+        eventDescription:
+          type:
+          - string
+          - 'null'
+        eventTime:
+          type: string
+          format: date-time
+      additionalProperties: false
     Titlefy.Models.Orders.EventSubmission:
       type: object
       properties:
@@ -118,19 +133,4 @@ components:
           - integer
           - 'null'
           format: int32
-      additionalProperties: false
-    Titlefy.Models.Orders.OrderHistoryItem:
-      type: object
-      properties:
-        eventType:
-          type:
-          - string
-          - 'null'
-        eventDescription:
-          type:
-          - string
-          - 'null'
-        eventTime:
-          type: string
-          format: date-time
       additionalProperties: false

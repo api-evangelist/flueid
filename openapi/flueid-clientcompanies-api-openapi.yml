@@ -198,6 +198,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Titlefy.Models.Account.DivisionOption:
+      type: object
+      properties:
+        divisionId:
+          type: integer
+          format: int32
+        branchOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+      additionalProperties: false
     Titlefy.Data.Entities.Branch:
       type: object
       properties:
@@ -237,86 +250,26 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Titlefy.Models.Account.DivisionBranchOptions:
+    Titlefy.Models.DropdownOption:
       type: object
       properties:
-        divisionOptions:
+        value:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-        divisionBranches:
+        text:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Account.DivisionOption'
       additionalProperties: false
-    Titlefy.Data.Entities.Division:
-      type: object
-      properties:
-        divisionId:
-          type: integer
-          format: int32
-        divisionName:
-          type:
-          - string
-          - 'null'
-        referenceId:
-          type:
-          - string
-          - 'null'
-        branches:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
-      additionalProperties: false
-    Titlefy.Data.Entities.DTOs.CompanyFilters:
-      type: object
-      properties:
-        searchString:
-          type:
-          - string
-          - 'null'
-        partnerIds:
-          type:
-          - array
-          - 'null'
-          items:
-            type: integer
-            format: int32
-        pageSize:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        pageIndex:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        sortBy:
-          type:
-          - string
-          - 'null'
-        sortDirection:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.YesNoType:
+    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
       enum:
       - 0
       - 1
       - 2
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.SortDirection:
-      enum:
-      - 0
-      - 1
-      - 2
+      - 3
+      - 4
+      - 5
       type: integer
       format: int32
     MongoDB.Bson.ObjectId:
@@ -355,6 +308,82 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    Titlefy.Models.Account.DivisionBranchOptions:
+      type: object
+      properties:
+        divisionOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+        divisionBranches:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Account.DivisionOption'
+      additionalProperties: false
+    Titlefy.Data.Entities.DTOs.CompanyFilters:
+      type: object
+      properties:
+        searchString:
+          type:
+          - string
+          - 'null'
+        partnerIds:
+          type:
+          - array
+          - 'null'
+          items:
+            type: integer
+            format: int32
+        pageSize:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        pageIndex:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        sortBy:
+          type:
+          - string
+          - 'null'
+        sortDirection:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.SortDirection'
+      additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderProductSubType:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      format: int32
+    Titlefy.Core.Constants.SortDirection:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.OrderOptions:
+      type: object
+      properties:
+        policyDefault:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+        includeENOWrapper:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
+        enableSelectProcessing:
+          type: boolean
       additionalProperties: false
     Titlefy.Data.Entities.ClientCompany:
       type: object
@@ -408,30 +437,26 @@ components:
         orderOptions:
           $ref: '#/components/schemas/Titlefy.Data.Entities.OrderOptions'
       additionalProperties: false
-    Titlefy.Models.Account.DivisionOption:
+    Titlefy.Data.Entities.Division:
       type: object
       properties:
         divisionId:
           type: integer
           format: int32
-        branchOptions:
+        divisionName:
+          type:
+          - string
+          - 'null'
+        referenceId:
+          type:
+          - string
+          - 'null'
+        branches:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-      additionalProperties: false
-    Titlefy.Models.DropdownOption:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        text:
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
       additionalProperties: false
     ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
     : type: object
@@ -449,35 +474,10 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    Titlefy.Data.Entities.OrderOptions:
-      type: object
-      properties:
-        policyDefault:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
-        includeENOWrapper:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
-        enableSelectProcessing:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.OrderProductSubType:
+    Titlefy.Core.Constants.Orders.YesNoType:
       enum:
       - 0
       - 1
       - 2
-      - 3
-      - 5
-      - 6
-      - 7
-      - 8
-      type: integer
-      format: int32
-    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
       type: integer
       format: int32
