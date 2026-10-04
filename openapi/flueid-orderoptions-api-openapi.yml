@@ -83,64 +83,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.OrderLookupCodes:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
-        createdDate:
-          type: string
-          format: date-time
-        createdByUser:
-          type:
-          - string
-          - 'null'
-        lastUpdatedDate:
-          type: string
-          format: date-time
-        lastUpdatedByUser:
-          type:
-          - string
-          - 'null'
-        entityId:
-          type: integer
-          format: int32
-        entityType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
-        lookupCodes:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderLookupCodeRole'
-      additionalProperties: false
     Titlefy.Core.Constants.Orders.OrderRole:
       enum:
       - 0
@@ -172,6 +114,33 @@ components:
       - 99
       type: integer
       format: int32
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
     Titlefy.Data.Entities.Orders.OrderLookupCodeRole:
       type: object
       properties:
@@ -191,6 +160,37 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    Titlefy.Data.Entities.Orders.OrderLookupCodes:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        entityId:
+          type: integer
+          format: int32
+        entityType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
+        lookupCodes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderLookupCodeRole'
       additionalProperties: false
     Flueid.Pro.Constants.EntityConstants.EntityType:
       enum:

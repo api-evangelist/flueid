@@ -137,6 +137,20 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Titlefy.Models.Permissions.UpsertEntityPermissionRequest:
+      type: object
+      properties:
+        entityId:
+          type: integer
+          format: int32
+        entityType:
+          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
+        targetedPartnerId:
+          type: integer
+          format: int32
+        permission:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
+      additionalProperties: false
     Titlefy.Data.Entities.HierarchySetting:
       type: object
       properties:
@@ -156,10 +170,10 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    Titlefy.Models.Permissions.PermissionDisplay:
+    Titlefy.Models.Permissions.EffectivePermissionDisplay:
       type: object
       properties:
-        name:
+        entityLevel:
           type:
           - string
           - 'null'
@@ -167,17 +181,7 @@ components:
           type: boolean
         overrideLowerLevels:
           type: boolean
-        preventOverridebyHigherLevels:
-          type: boolean
-        displayAs:
-          type:
-          - string
-          - 'null'
-        helpInfo:
-          type:
-          - string
-          - 'null'
-        isEnabled:
+        preventOverrideByHigherLevels:
           type: boolean
       additionalProperties: false
     Titlefy.Data.Entities.DTOs.EffectivePermissionRequest:
@@ -212,24 +216,10 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Titlefy.Models.Permissions.UpsertEntityPermissionRequest:
+    Titlefy.Models.Permissions.PermissionDisplay:
       type: object
       properties:
-        entityId:
-          type: integer
-          format: int32
-        entityType:
-          $ref: '#/components/schemas/Flueid.Pro.Constants.EntityConstants.EntityType'
-        targetedPartnerId:
-          type: integer
-          format: int32
-        permission:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.HierarchySetting'
-      additionalProperties: false
-    Titlefy.Models.Permissions.EffectivePermissionDisplay:
-      type: object
-      properties:
-        entityLevel:
+        name:
           type:
           - string
           - 'null'
@@ -237,7 +227,17 @@ components:
           type: boolean
         overrideLowerLevels:
           type: boolean
-        preventOverrideByHigherLevels:
+        preventOverridebyHigherLevels:
+          type: boolean
+        displayAs:
+          type:
+          - string
+          - 'null'
+        helpInfo:
+          type:
+          - string
+          - 'null'
+        isEnabled:
           type: boolean
       additionalProperties: false
     Flueid.Pro.Constants.EntityConstants.EntityType:
