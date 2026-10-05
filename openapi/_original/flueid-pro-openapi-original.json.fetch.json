@@ -1,0 +1,12 @@
+{
+ "url": "https://api.pro.flueid.com/swagger/v1/swagger.json",
+ "requested_url": "https://api.pro.flueid.com/swagger/v1/swagger.json",
+ "status": 200,
+ "content_type": "application/json;charset=utf-8",
+ "bytes": 667863,
+ "sha256": "8893d90fcede9a310f7abb1be40575f0c5f6f3476e36f92a5ecb4d652cae8339",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
