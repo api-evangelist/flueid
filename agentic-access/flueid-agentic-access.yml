@@ -1,23 +1,30 @@
-generated: '2026-08-16'
+generated: '2026-09-23'
 method: generated
-source: openapi/flueid-pro-openapi.yml
+source: openapi/flueid-account-api-openapi.yml, openapi/flueid-accountpartner-api-openapi.yml,
+  openapi/flueid-clientcompanies-api-openapi.yml, openapi/flueid-documents-api-openapi.yml,
+  openapi/flueid-farms-api-openapi.yml, openapi/flueid-neworders-api-openapi.yml, openapi/flueid-order-events-api-openapi.yml,
+  openapi/flueid-orderdocumentsettings-api-openapi.yml, openapi/flueid-orderoptions-api-openapi.yml,
+  openapi/flueid-orders-api-openapi.yml, openapi/flueid-partnerordersettings-api-openapi.yml,
+  openapi/flueid-partners-api-openapi.yml, openapi/flueid-permissions-api-openapi.yml, openapi/flueid-property-data-api-openapi.yml,
+  openapi/flueid-public-api-openapi.yml, openapi/flueid-settings-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 132
   by_action_class:
-    acting: 81
-    connected: 51
+    acting: 79
+    connected: 53
   by_consequence:
-    write: 46
-    read: 51
-    physical: 34
+    write: 45
+    read: 53
+    physical: 33
     safety-critical: 1
   human_in_the_loop_required: 1
 operations:
 - path: /api/Account/SearchUsers
   method: post
+  operationId: postApiAccountSearchUsers
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -33,6 +40,7 @@ operations:
     audit: required
 - path: /api/Account/ValidateUser
   method: get
+  operationId: getApiAccountValidateUser
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -42,6 +50,7 @@ operations:
     audit: none
 - path: /api/Account/PartnerUserRoles
   method: get
+  operationId: getApiAccountPartnerUserRoles
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -51,6 +60,7 @@ operations:
     audit: none
 - path: /api/Account/RealEstateUserRoles
   method: get
+  operationId: getApiAccountRealEstateUserRoles
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -60,6 +70,7 @@ operations:
     audit: none
 - path: /api/Account/FinanceUserRoles
   method: get
+  operationId: getApiAccountFinanceUserRoles
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -69,6 +80,7 @@ operations:
     audit: none
 - path: /api/Account/SearchOfficersOrAccountExecs
   method: post
+  operationId: postApiAccountSearchOfficersOrAccountExecs
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -84,6 +96,7 @@ operations:
     audit: required
 - path: /api/Account/PullUpCardContent
   method: get
+  operationId: getApiAccountPullUpCardContent
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -93,6 +106,7 @@ operations:
     audit: none
 - path: /api/Account/UserSettings
   method: get
+  operationId: getApiAccountUserSettings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -102,6 +116,7 @@ operations:
     audit: none
 - path: /api/Account/GetUserProfile
   method: get
+  operationId: getApiAccountGetUserProfile
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -111,6 +126,7 @@ operations:
     audit: none
 - path: /api/Account/GetUserProfileById
   method: get
+  operationId: getApiAccountGetUserProfileById
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -120,6 +136,7 @@ operations:
     audit: none
 - path: /api/Account/UpdateUserBasicProfile
   method: post
+  operationId: postApiAccountUpdateUserBasicProfile
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -135,6 +152,7 @@ operations:
     audit: required
 - path: /api/Account/UpdateUserCompanySettings
   method: post
+  operationId: postApiAccountUpdateUserCompanySettings
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -150,6 +168,7 @@ operations:
     audit: required
 - path: /api/Account/UpdateUserPhoto
   method: post
+  operationId: postApiAccountUpdateUserPhoto
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -165,6 +184,7 @@ operations:
     audit: required
 - path: /api/Account/UpdateUserCompanyLogo
   method: post
+  operationId: postApiAccountUpdateUserCompanyLogo
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -180,6 +200,7 @@ operations:
     audit: required
 - path: /api/Account/UpdateTermsAcceptance
   method: get
+  operationId: getApiAccountUpdateTermsAcceptance
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -189,6 +210,7 @@ operations:
     audit: none
 - path: /api/Account/UpdatePartnerAssociation
   method: post
+  operationId: postApiAccountUpdatePartnerAssociation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -204,6 +226,7 @@ operations:
     audit: required
 - path: /api/Account/SearchAssistantUsers
   method: get
+  operationId: getApiAccountSearchAssistantUsers
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -213,6 +236,7 @@ operations:
     audit: none
 - path: /api/Account/UpdateUserAssistants
   method: post
+  operationId: postApiAccountUpdateUserAssistants
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -228,6 +252,7 @@ operations:
     audit: required
 - path: /api/Account/SendUsersToDataWarehouse
   method: post
+  operationId: postApiAccountSendUsersToDataWarehouse
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -245,6 +270,7 @@ operations:
     audit: required
 - path: /api/Account/SignUpUser
   method: post
+  operationId: postApiAccountSignUpUser
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -260,6 +286,7 @@ operations:
     audit: required
 - path: /api/Account/ApproveUser
   method: post
+  operationId: postApiAccountApproveUser
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -275,6 +302,7 @@ operations:
     audit: required
 - path: /api/Account/UpdateUserStatus
   method: post
+  operationId: postApiAccountUpdateUserStatus
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -290,6 +318,7 @@ operations:
     audit: required
 - path: /api/Account/ResendTempPassword
   method: post
+  operationId: postApiAccountResendTempPassword
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -307,6 +336,7 @@ operations:
     audit: required
 - path: /api/Account/ResetPassword
   method: post
+  operationId: postApiAccountResetPassword
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -322,6 +352,7 @@ operations:
     audit: required
 - path: /api/AccountPartner/GetActivePartners
   method: get
+  operationId: getApiAccountPartnerGetActivePartners
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -331,6 +362,7 @@ operations:
     audit: none
 - path: /api/AccountPartner/SetCurrentPartner
   method: post
+  operationId: postApiAccountPartnerSetCurrentPartner
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -346,6 +378,7 @@ operations:
     audit: required
 - path: /api/ClientCompanies/ClientCompanyDivisions
   method: get
+  operationId: getApiClientCompaniesClientCompanyDivisions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -355,6 +388,7 @@ operations:
     audit: none
 - path: /api/ClientCompanies/AllClientCompanies
   method: get
+  operationId: getApiClientCompaniesAllClientCompanies
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -364,6 +398,7 @@ operations:
     audit: none
 - path: /api/ClientCompanies/SearchClientCompanies
   method: post
+  operationId: postApiClientCompaniesSearchClientCompanies
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -379,6 +414,7 @@ operations:
     audit: required
 - path: /api/ClientCompanies/ClientCompany
   method: get
+  operationId: getApiClientCompaniesClientCompany
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -388,6 +424,7 @@ operations:
     audit: none
 - path: /api/ClientCompanies/SaveClientCompany
   method: post
+  operationId: postApiClientCompaniesSaveClientCompany
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -403,6 +440,7 @@ operations:
     audit: required
 - path: /api/Documents/GetHyperLinkedDocuments
   method: get
+  operationId: getApiDocumentsGetHyperLinkedDocuments
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -412,6 +450,7 @@ operations:
     audit: none
 - path: /api/Farms/SearchFarmGeoPoints
   method: post
+  operationId: postApiFarmsSearchFarmGeoPoints
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -427,6 +466,7 @@ operations:
     audit: required
 - path: /api/Farms/SearchFarmProps
   method: post
+  operationId: postApiFarmsSearchFarmProps
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -442,6 +482,7 @@ operations:
     audit: required
 - path: /api/Farms/FarmOverview
   method: post
+  operationId: postApiFarmsFarmOverview
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -457,6 +498,7 @@ operations:
     audit: required
 - path: /api/Farms/SaveFarm
   method: post
+  operationId: postApiFarmsSaveFarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -472,6 +514,7 @@ operations:
     audit: required
 - path: /api/Farms/GetFarm
   method: get
+  operationId: getApiFarmsGetFarm
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -481,6 +524,7 @@ operations:
     audit: none
 - path: /api/Farms/GetAllFarms
   method: get
+  operationId: getApiFarmsGetAllFarms
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -490,6 +534,7 @@ operations:
     audit: none
 - path: /api/Farms/SaveFarmProperty
   method: post
+  operationId: postApiFarmsSaveFarmProperty
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -505,6 +550,7 @@ operations:
     audit: required
 - path: /api/Farms/RenameFarm
   method: post
+  operationId: postApiFarmsRenameFarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -520,6 +566,7 @@ operations:
     audit: required
 - path: /api/Farms/DeleteFarm
   method: post
+  operationId: postApiFarmsDeleteFarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -535,6 +582,7 @@ operations:
     audit: required
 - path: /api/Farms/FarmFilters
   method: get
+  operationId: getApiFarmsFarmFilters
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -544,6 +592,7 @@ operations:
     audit: none
 - path: /api/Farms/SaveFarmFilter
   method: post
+  operationId: postApiFarmsSaveFarmFilter
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -559,6 +608,7 @@ operations:
     audit: required
 - path: /api/Farms/DeleteFarmFilter
   method: post
+  operationId: postApiFarmsDeleteFarmFilter
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -574,6 +624,7 @@ operations:
     audit: required
 - path: /api/Farms/FarmReport
   method: get
+  operationId: getApiFarmsFarmReport
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -583,6 +634,7 @@ operations:
     audit: none
 - path: /api/Farms/UploadExcelFarm
   method: post
+  operationId: postApiFarmsUploadExcelFarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -598,6 +650,7 @@ operations:
     audit: required
 - path: /api/Farms/FixNotFoundPropertyForFarm
   method: post
+  operationId: postApiFarmsFixNotFoundPropertyForFarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -613,6 +666,7 @@ operations:
     audit: required
 - path: /api/Farms/AddPropertyToFarm
   method: post
+  operationId: postApiFarmsAddPropertyToFarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -628,6 +682,7 @@ operations:
     audit: required
 - path: /api/Farms/DeletePropertyFromFarm
   method: post
+  operationId: postApiFarmsDeletePropertyFromFarm
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -643,6 +698,7 @@ operations:
     audit: required
 - path: /api/Farms/MarkFarmUploadViewed
   method: post
+  operationId: postApiFarmsMarkFarmUploadViewed
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -658,6 +714,7 @@ operations:
     audit: required
 - path: /api/NewOrders/CreateOrder
   method: post
+  operationId: postApiNewOrdersCreateOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -675,6 +732,7 @@ operations:
     audit: required
 - path: /api/NewOrders/RetrieveOrderSubmission
   method: get
+  operationId: getApiNewOrdersRetrieveOrderSubmission
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -684,6 +742,7 @@ operations:
     audit: none
 - path: /api/NewOrders/CheckDuplicateOrder
   method: post
+  operationId: postApiNewOrdersCheckDuplicateOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -701,6 +760,7 @@ operations:
     audit: required
 - path: /api/NewOrders/SearchRelatedBizSrcUsers
   method: get
+  operationId: getApiNewOrdersSearchRelatedBizSrcUsers
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -710,6 +770,7 @@ operations:
     audit: none
 - path: /api/NewOrders/SearchOrderContact
   method: get
+  operationId: getApiNewOrdersSearchOrderContact
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -719,6 +780,7 @@ operations:
     audit: none
 - path: /api/NewOrders/DefaultOrderContacts
   method: post
+  operationId: postApiNewOrdersDefaultOrderContacts
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -736,6 +798,7 @@ operations:
     audit: required
 - path: /api/NewOrders/BusinessSourceRoles
   method: get
+  operationId: getApiNewOrdersBusinessSourceRoles
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -745,6 +808,7 @@ operations:
     audit: none
 - path: /api/NewOrders/RelatedAssistants
   method: get
+  operationId: getApiNewOrdersRelatedAssistants
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -754,6 +818,7 @@ operations:
     audit: none
 - path: /api/NewOrders/RelatedOfficers
   method: post
+  operationId: postApiNewOrdersRelatedOfficers
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -771,6 +836,7 @@ operations:
     audit: required
 - path: /api/NewOrders/CompanyAccountManagers
   method: post
+  operationId: postApiNewOrdersCompanyAccountManagers
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -788,6 +854,7 @@ operations:
     audit: required
 - path: /api/NewOrders/OrderTypeOptions
   method: post
+  operationId: postApiNewOrdersOrderTypeOptions
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -805,6 +872,7 @@ operations:
     audit: required
 - path: /api/NewOrders/OrderContactOptions
   method: post
+  operationId: postApiNewOrdersOrderContactOptions
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -822,6 +890,7 @@ operations:
     audit: required
 - path: /api/NewOrders/OrderDetailsOptions
   method: post
+  operationId: postApiNewOrdersOrderDetailsOptions
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -839,6 +908,7 @@ operations:
     audit: required
 - path: /api/NewOrders/CalculateCloseDate
   method: post
+  operationId: postApiNewOrdersCalculateCloseDate
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -856,6 +926,27 @@ operations:
     audit: required
 - path: /api/NewOrders/CompanyTitleOfficers
   method: post
+  operationId: postApiNewOrdersCompanyTitleOfficers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/OrderEvents/OrderHistory
+  method: get
+  operationId: getApiOrderEventsOrderHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/OrderEvents/PostDocument
+  method: post
+  operationId: postApiOrderEventsPostDocument
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -873,6 +964,7 @@ operations:
     audit: required
 - path: /api/OrderDocumentSettings/GetOrderDocumentList
   method: post
+  operationId: postApiOrderDocumentSettingsGetOrderDocumentList
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -890,6 +982,7 @@ operations:
     audit: required
 - path: /api/OrderDocumentSettings/SaveOrderDocument
   method: post
+  operationId: postApiOrderDocumentSettingsSaveOrderDocument
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -907,6 +1000,7 @@ operations:
     audit: required
 - path: /api/OrderDocumentSettings/DeleteOrderDocument
   method: post
+  operationId: postApiOrderDocumentSettingsDeleteOrderDocument
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -924,6 +1018,7 @@ operations:
     audit: required
 - path: /api/OrderDocumentSettings/SaveOrderDocumentTypeSetting
   method: post
+  operationId: postApiOrderDocumentSettingsSaveOrderDocumentTypeSetting
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -941,32 +1036,7 @@ operations:
     audit: required
 - path: /api/OrderDocumentSettings/DeleteOrderDocumentTypeSetting
   method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /api/OrderEvents/OrderHistory
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /api/OrderEvents/PostDocument
-  method: post
+  operationId: postApiOrderDocumentSettingsDeleteOrderDocumentTypeSetting
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -984,6 +1054,7 @@ operations:
     audit: required
 - path: /api/OrderOptions/GetAllLookupCodesForCompany
   method: get
+  operationId: getApiOrderOptionsGetAllLookupCodesForCompany
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -993,6 +1064,7 @@ operations:
     audit: none
 - path: /api/OrderOptions/SaveEntityLookupCodes
   method: post
+  operationId: postApiOrderOptionsSaveEntityLookupCodes
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1010,6 +1082,7 @@ operations:
     audit: required
 - path: /api/Orders/SearchOrders
   method: post
+  operationId: postApiOrdersSearchOrders
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1027,6 +1100,7 @@ operations:
     audit: required
 - path: /api/Orders/OrderDetail
   method: get
+  operationId: getApiOrdersOrderDetail
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1036,6 +1110,7 @@ operations:
     audit: none
 - path: /api/Orders/RunFullUpdate
   method: post
+  operationId: postApiOrdersRunFullUpdate
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1053,6 +1128,7 @@ operations:
     audit: required
 - path: /api/Orders/RunDateDownUpdate
   method: post
+  operationId: postApiOrdersRunDateDownUpdate
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1070,6 +1146,7 @@ operations:
     audit: required
 - path: /api/Orders/GetDocument
   method: post
+  operationId: postApiOrdersGetDocument
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1087,6 +1164,7 @@ operations:
     audit: required
 - path: /api/Orders/UpdateOrderStatus
   method: post
+  operationId: postApiOrdersUpdateOrderStatus
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1104,6 +1182,7 @@ operations:
     audit: required
 - path: /api/Orders/GetDecisionOrderData
   method: get
+  operationId: getApiOrdersGetDecisionOrderData
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1113,6 +1192,7 @@ operations:
     audit: none
 - path: /api/Orders/ModifyDecisionOrderData
   method: post
+  operationId: postApiOrdersModifyDecisionOrderData
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1130,6 +1210,7 @@ operations:
     audit: required
 - path: /api/Orders/DecisionReplaceBuyers
   method: post
+  operationId: postApiOrdersDecisionReplaceBuyers
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1147,6 +1228,7 @@ operations:
     audit: required
 - path: /api/Orders/DownloadTrailingDocument
   method: post
+  operationId: postApiOrdersDownloadTrailingDocument
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1164,6 +1246,7 @@ operations:
     audit: required
 - path: /api/PartnerOrderSettings/PartnerOrderSettings
   method: get
+  operationId: getApiPartnerOrderSettingsPartnerOrderSettings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1173,6 +1256,7 @@ operations:
     audit: none
 - path: /api/PartnerOrderSettings/SetPartnerOrderSettings
   method: post
+  operationId: postApiPartnerOrderSettingsSetPartnerOrderSettings
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1190,6 +1274,7 @@ operations:
     audit: required
 - path: /api/PartnerOrderSettings/TxmSettings
   method: get
+  operationId: getApiPartnerOrderSettingsTxmSettings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1199,6 +1284,7 @@ operations:
     audit: none
 - path: /api/PartnerOrderSettings/SetTxmSettings
   method: post
+  operationId: postApiPartnerOrderSettingsSetTxmSettings
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1216,6 +1302,7 @@ operations:
     audit: required
 - path: /api/PartnerOrderSettings/DecisionSettings
   method: get
+  operationId: getApiPartnerOrderSettingsDecisionSettings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1225,6 +1312,7 @@ operations:
     audit: none
 - path: /api/PartnerOrderSettings/SetDecisionSettings
   method: post
+  operationId: postApiPartnerOrderSettingsSetDecisionSettings
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1242,6 +1330,7 @@ operations:
     audit: required
 - path: /api/PartnerOrderSettings/D4aSettings
   method: get
+  operationId: getApiPartnerOrderSettingsD4aSettings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1251,6 +1340,7 @@ operations:
     audit: none
 - path: /api/PartnerOrderSettings/SetD4aSettings
   method: post
+  operationId: postApiPartnerOrderSettingsSetD4aSettings
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1268,6 +1358,7 @@ operations:
     audit: required
 - path: /api/PartnerOrderSettings/HilSettings
   method: get
+  operationId: getApiPartnerOrderSettingsHilSettings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1277,6 +1368,7 @@ operations:
     audit: none
 - path: /api/PartnerOrderSettings/SetHilSettings
   method: post
+  operationId: postApiPartnerOrderSettingsSetHilSettings
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1294,6 +1386,7 @@ operations:
     audit: required
 - path: /api/Partners/SearchPartners
   method: post
+  operationId: postApiPartnersSearchPartners
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1309,6 +1402,7 @@ operations:
     audit: required
 - path: /api/Partners/Partner
   method: get
+  operationId: getApiPartnersPartner
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1318,6 +1412,7 @@ operations:
     audit: none
 - path: /api/Partners/PartnerDivisions
   method: get
+  operationId: getApiPartnersPartnerDivisions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1327,6 +1422,7 @@ operations:
     audit: none
 - path: /api/Partners/AllPartners
   method: get
+  operationId: getApiPartnersAllPartners
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1336,6 +1432,7 @@ operations:
     audit: none
 - path: /api/Partners/PartnerBrandingByUrl
   method: get
+  operationId: getApiPartnersPartnerBrandingByUrl
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1345,6 +1442,7 @@ operations:
     audit: none
 - path: /api/Partners/SavePartner
   method: post
+  operationId: postApiPartnersSavePartner
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1360,6 +1458,7 @@ operations:
     audit: required
 - path: /api/Partners/SavePartnerOrderSettings
   method: post
+  operationId: postApiPartnersSavePartnerOrderSettings
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1377,6 +1476,7 @@ operations:
     audit: required
 - path: /api/Partners/PartnerOrderSettings
   method: get
+  operationId: getApiPartnersPartnerOrderSettings
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1386,6 +1486,7 @@ operations:
     audit: none
 - path: /api/Partners/PartnerOrderOptions
   method: get
+  operationId: getApiPartnersPartnerOrderOptions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1395,6 +1496,7 @@ operations:
     audit: none
 - path: /api/Partners/SavePartnerOrderOptions
   method: post
+  operationId: postApiPartnersSavePartnerOrderOptions
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1412,6 +1514,7 @@ operations:
     audit: required
 - path: /api/Partners/UploadPartnerLogo
   method: post
+  operationId: postApiPartnersUploadPartnerLogo
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1427,6 +1530,7 @@ operations:
     audit: required
 - path: /api/Permissions/SaveAndReturnPermission
   method: post
+  operationId: postApiPermissionsSaveAndReturnPermission
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1442,21 +1546,17 @@ operations:
     audit: required
 - path: /api/Permissions/GetEntityPermissions
   method: post
+  operationId: postApiPermissionsGetEntityPermissions
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /api/Permissions/GetEffectivePermissionsDisplay
   method: post
+  operationId: postApiPermissionsGetEffectivePermissionsDisplay
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1472,6 +1572,7 @@ operations:
     audit: required
 - path: /api/PropertyData/PropertySearchSuggestions
   method: post
+  operationId: postApiPropertyDataPropertySearchSuggestions
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1487,6 +1588,7 @@ operations:
     audit: required
 - path: /api/PropertyData/PropertiesNearby
   method: post
+  operationId: postApiPropertyDataPropertiesNearby
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1502,6 +1604,7 @@ operations:
     audit: required
 - path: /api/PropertyData/PropertyById
   method: get
+  operationId: getApiPropertyDataPropertyById
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1511,6 +1614,7 @@ operations:
     audit: none
 - path: /api/PropertyData/PropertiesByIds
   method: post
+  operationId: postApiPropertyDataPropertiesByIds
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1526,6 +1630,7 @@ operations:
     audit: required
 - path: /api/PropertyData/PropertyDetail
   method: get
+  operationId: getApiPropertyDataPropertyDetail
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1535,6 +1640,7 @@ operations:
     audit: none
 - path: /api/PropertyData/PropertyHistory
   method: get
+  operationId: getApiPropertyDataPropertyHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1544,6 +1650,7 @@ operations:
     audit: none
 - path: /api/PropertyData/BookmarkProperty
   method: post
+  operationId: postApiPropertyDataBookmarkProperty
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1559,6 +1666,7 @@ operations:
     audit: required
 - path: /api/PropertyData/UnBookmarkProperty
   method: post
+  operationId: postApiPropertyDataUnBookmarkProperty
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1574,6 +1682,7 @@ operations:
     audit: required
 - path: /api/PropertyData/SalesComps
   method: post
+  operationId: postApiPropertyDataSalesComps
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1589,6 +1698,7 @@ operations:
     audit: required
 - path: /api/PropertyData/MarketAnalysis
   method: get
+  operationId: getApiPropertyDataMarketAnalysis
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1598,6 +1708,7 @@ operations:
     audit: none
 - path: /api/PropertyData/PropertyProfileReportBase64
   method: post
+  operationId: postApiPropertyDataPropertyProfileReportBase64
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1613,6 +1724,7 @@ operations:
     audit: required
 - path: /api/PropertyData/AllTrackedProperties
   method: get
+  operationId: getApiPropertyDataAllTrackedProperties
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1622,6 +1734,7 @@ operations:
     audit: none
 - path: /api/PropertyData/ZillowValuation
   method: post
+  operationId: postApiPropertyDataZillowValuation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1637,6 +1750,7 @@ operations:
     audit: required
 - path: /api/PropertyData/RealtorDotComUrl
   method: post
+  operationId: postApiPropertyDataRealtorDotComUrl
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1652,6 +1766,7 @@ operations:
     audit: required
 - path: /api/PropertyData/MlsCoverage
   method: get
+  operationId: getApiPropertyDataMlsCoverage
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1661,6 +1776,7 @@ operations:
     audit: none
 - path: /api/PropertyData/FindProperties
   method: post
+  operationId: postApiPropertyDataFindProperties
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1676,6 +1792,7 @@ operations:
     audit: required
 - path: /api/PropertyData/CheckDocumentImagesCapability
   method: get
+  operationId: getApiPropertyDataCheckDocumentImagesCapability
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1685,6 +1802,7 @@ operations:
     audit: none
 - path: /api/PropertyData/GetPropertyDocumentImages
   method: get
+  operationId: getApiPropertyDataGetPropertyDocumentImages
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1694,6 +1812,7 @@ operations:
     audit: none
 - path: /api/PropertyData/RequestDocumentImage
   method: get
+  operationId: getApiPropertyDataRequestDocumentImage
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1703,6 +1822,7 @@ operations:
     audit: none
 - path: /api/PropertyData/DeleteDocumentImageRequest
   method: get
+  operationId: getApiPropertyDataDeleteDocumentImageRequest
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1712,6 +1832,7 @@ operations:
     audit: none
 - path: /api/PropertyData/SignMapUrl
   method: post
+  operationId: postApiPropertyDataSignMapUrl
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1727,6 +1848,7 @@ operations:
     audit: required
 - path: /api/PropertyData/GetPropertyTaxRolls
   method: get
+  operationId: getApiPropertyDataGetPropertyTaxRolls
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1736,6 +1858,7 @@ operations:
     audit: none
 - path: /api/Public/ContactUs
   method: post
+  operationId: postApiPublicContactUs
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1751,6 +1874,7 @@ operations:
     audit: required
 - path: /api/Settings/FeeCalculatorLinks
   method: get
+  operationId: getApiSettingsFeeCalculatorLinks
   x-agentic-access:
     action-class: connected
     consequence: read
