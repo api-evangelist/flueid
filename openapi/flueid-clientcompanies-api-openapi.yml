@@ -198,61 +198,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Titlefy.Models.DropdownOption:
-      type: object
-      properties:
-        value:
-          type:
-          - string
-          - 'null'
-        text:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
-    ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
-    : type: object
-      properties:
-        items:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
-        pageCount:
-          type: integer
-          format: int32
-        totalCount:
-          type: integer
-          format: int64
-      additionalProperties: false
     Titlefy.Core.Constants.Orders.OrderProductSubType:
       enum:
       - 0
@@ -265,6 +210,122 @@ components:
       - 8
       type: integer
       format: int32
+    Titlefy.Core.Constants.SortDirection:
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      format: int32
+    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      type: integer
+      format: int32
+    Titlefy.Data.Entities.Division:
+      type: object
+      properties:
+        divisionId:
+          type: integer
+          format: int32
+        divisionName:
+          type:
+          - string
+          - 'null'
+        referenceId:
+          type:
+          - string
+          - 'null'
+        branches:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
+      additionalProperties: false
+    Titlefy.Data.Entities.ClientCompany:
+      type: object
+      properties:
+        id:
+          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
+        createdDate:
+          type: string
+          format: date-time
+        createdByUser:
+          type:
+          - string
+          - 'null'
+        lastUpdatedDate:
+          type: string
+          format: date-time
+        lastUpdatedByUser:
+          type:
+          - string
+          - 'null'
+        partnerId:
+          type: integer
+          format: int32
+        companyId:
+          type: integer
+          format: int32
+        companyName:
+          type:
+          - string
+          - 'null'
+        divisions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.Division'
+        orderProviderIds:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompanyProviderId'
+        partnerName:
+          type:
+          - string
+          - 'null'
+        disabled:
+          type: boolean
+        isAffiliate:
+          type: boolean
+        orderOptions:
+          $ref: '#/components/schemas/Titlefy.Data.Entities.OrderOptions'
+      additionalProperties: false
+    Titlefy.Data.Entities.OrderOptions:
+      type: object
+      properties:
+        policyDefault:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
+        includeENOWrapper:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
+        enableSelectProcessing:
+          type: boolean
+      additionalProperties: false
+    Titlefy.Models.Account.DivisionBranchOptions:
+      type: object
+      properties:
+        divisionOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
+        divisionBranches:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Titlefy.Models.Account.DivisionOption'
+      additionalProperties: false
     Titlefy.Data.Entities.DTOs.CompanyFilters:
       type: object
       properties:
@@ -335,16 +396,25 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Flueid.Pro.Constants.PartnerOrderSettingsConstants.OrderProvider:
+    Titlefy.Core.Constants.Orders.YesNoType:
       enum:
       - 0
       - 1
       - 2
-      - 3
-      - 4
-      - 5
       type: integer
       format: int32
+    Titlefy.Models.DropdownOption:
+      type: object
+      properties:
+        value:
+          type:
+          - string
+          - 'null'
+        text:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     Titlefy.Data.Entities.ClientCompanyProviderId:
       type: object
       properties:
@@ -355,97 +425,48 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Titlefy.Data.Entities.OrderOptions:
+    MongoDB.Bson.ObjectId:
       type: object
       properties:
-        policyDefault:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderProductSubType'
-        includeENOWrapper:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.YesNoType'
-        enableSelectProcessing:
-          type: boolean
-      additionalProperties: false
-    Titlefy.Core.Constants.Orders.YesNoType:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Titlefy.Core.Constants.SortDirection:
-      enum:
-      - 0
-      - 1
-      - 2
-      type: integer
-      format: int32
-    Titlefy.Models.Account.DivisionBranchOptions:
-      type: object
-      properties:
-        divisionOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-        divisionBranches:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Models.Account.DivisionOption'
-      additionalProperties: false
-    Titlefy.Data.Entities.ClientCompany:
-      type: object
-      properties:
-        id:
-          $ref: '#/components/schemas/MongoDB.Bson.ObjectId'
-        createdDate:
-          type: string
-          format: date-time
-        createdByUser:
-          type:
-          - string
-          - 'null'
-        lastUpdatedDate:
-          type: string
-          format: date-time
-        lastUpdatedByUser:
-          type:
-          - string
-          - 'null'
-        partnerId:
+        timestamp:
           type: integer
           format: int32
-        companyId:
+          readOnly: true
+        machine:
           type: integer
           format: int32
-        companyName:
-          type:
-          - string
-          - 'null'
-        divisions:
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
+    ? Titlefy.Data.Entities.DTOs.PaginatedSearchResult_1__Titlefy.Data.Entities.ClientCompany__Titlefy.Data__Version_1.0.0.0__Culture_neutral__PublicKeyToken_null
+    : type: object
+      properties:
+        items:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Division'
-        orderProviderIds:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompanyProviderId'
-        partnerName:
-          type:
-          - string
-          - 'null'
-        disabled:
-          type: boolean
-        isAffiliate:
-          type: boolean
-        orderOptions:
-          $ref: '#/components/schemas/Titlefy.Data.Entities.OrderOptions'
+            $ref: '#/components/schemas/Titlefy.Data.Entities.ClientCompany'
+        pageCount:
+          type: integer
+          format: int32
+        totalCount:
+          type: integer
+          format: int64
       additionalProperties: false
     Titlefy.Models.Account.DivisionOption:
       type: object
@@ -459,25 +480,4 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/Titlefy.Models.DropdownOption'
-      additionalProperties: false
-    Titlefy.Data.Entities.Division:
-      type: object
-      properties:
-        divisionId:
-          type: integer
-          format: int32
-        divisionName:
-          type:
-          - string
-          - 'null'
-        referenceId:
-          type:
-          - string
-          - 'null'
-        branches:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Titlefy.Data.Entities.Branch'
       additionalProperties: false

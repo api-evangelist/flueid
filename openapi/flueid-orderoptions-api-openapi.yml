@@ -83,84 +83,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Titlefy.Core.Constants.Orders.OrderRole:
-      enum:
-      - 0
-      - 1
-      - 2
-      - 4
-      - 5
-      - 6
-      - 7
-      - 11
-      - 12
-      - 14
-      - 15
-      - 16
-      - 17
-      - 18
-      - 19
-      - 20
-      - 21
-      - 22
-      - 23
-      - 29
-      - 50
-      - 51
-      - 52
-      - 53
-      - 54
-      - 55
-      - 99
-      type: integer
-      format: int32
-    MongoDB.Bson.ObjectId:
-      type: object
-      properties:
-        timestamp:
-          type: integer
-          format: int32
-          readOnly: true
-        machine:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        pid:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        increment:
-          type: integer
-          format: int32
-          readOnly: true
-          deprecated: true
-        creationTime:
-          type: string
-          format: date-time
-          readOnly: true
-      additionalProperties: false
-    Titlefy.Data.Entities.Orders.OrderLookupCodeRole:
-      type: object
-      properties:
-        orderRole:
-          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
-        orderRoleDescription:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        orderRoleAbbreviation:
-          type:
-          - string
-          - 'null'
-          readOnly: true
-        lookupCode:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     Titlefy.Data.Entities.Orders.OrderLookupCodes:
       type: object
       properties:
@@ -192,6 +114,37 @@ components:
           items:
             $ref: '#/components/schemas/Titlefy.Data.Entities.Orders.OrderLookupCodeRole'
       additionalProperties: false
+    Titlefy.Core.Constants.Orders.OrderRole:
+      enum:
+      - 0
+      - 1
+      - 2
+      - 4
+      - 5
+      - 6
+      - 7
+      - 11
+      - 12
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 29
+      - 50
+      - 51
+      - 52
+      - 53
+      - 54
+      - 55
+      - 99
+      type: integer
+      format: int32
     Flueid.Pro.Constants.EntityConstants.EntityType:
       enum:
       - 10
@@ -203,3 +156,50 @@ components:
       - 9999
       type: integer
       format: int32
+    Titlefy.Data.Entities.Orders.OrderLookupCodeRole:
+      type: object
+      properties:
+        orderRole:
+          $ref: '#/components/schemas/Titlefy.Core.Constants.Orders.OrderRole'
+        orderRoleDescription:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        orderRoleAbbreviation:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        lookupCode:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    MongoDB.Bson.ObjectId:
+      type: object
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+          readOnly: true
+        machine:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        pid:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        increment:
+          type: integer
+          format: int32
+          readOnly: true
+          deprecated: true
+        creationTime:
+          type: string
+          format: date-time
+          readOnly: true
+      additionalProperties: false
