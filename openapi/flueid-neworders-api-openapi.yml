@@ -2783,3 +2783,9 @@ components:
       - 2
       type: integer
       format: int32
+x-provenance:
+  method: harvested
+  publisher: Flueid
+  source: https://api.pro.flueid.com/swagger/v1/swagger.json
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
