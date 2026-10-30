@@ -64,22 +64,138 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-# Flueid
-
 Flueid is an Austin, Texas real estate technology company, founded in 2017, that built the Verification of Title (VOT) category — digitizing the legacy title search, examination and underwriting risk process so title status can be returned as data rather than a manual report. Its platform spans Flueid Decision (the patented VOT decisioning engine used by mortgage lenders, servicers, title underwriters and secondary-market investors), Flueid Transact (workflow and settlement orchestration) and Flueid Pro (a property research, data and lead-discovery workspace for real estate agents, loan officers and title agents). Flueid Pro exposes a public OpenAPI 3.0.1 contract at api.pro.flueid.com covering orders, property data, farms, partners, documents and account management; the Decision and Transact platform APIs are token-based partner integrations negotiated under contract rather than self-service.
 
-## APIs
+**Areas:** Company · Real Estate · Title Insurance · Mortgage · Property Data · Verification of Title · Financial Services · Lending · PropTech · Settlement Services
 
-- **Flueid Pro API** — `https://api.pro.flueid.com` · [https://pro.flueid.com/](https://pro.flueid.com/)
+## Flueid on APIs.io
 
-## Links
+Everything profiled for Flueid is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/flueid/](https://apis.io/providers/flueid/)** — or go straight to one of the APIs or properties below.
 
-- Website: https://www.flueid.com/
-- Documentation: https://api.pro.flueid.com/swagger
-- APIReference: https://api.pro.flueid.com/swagger
-- SignUp: https://pro.flueid.com/
-- Support: https://www.flueid.com/contact
-- Blog: https://www.flueid.com/media
-- PrivacyPolicy: https://www.flueid.com/privacy
-- StatusPage: https://status.flueid.com/
-- Compliance: https://www.flueid.com/security
+### APIs (16)
+
+- [Flueid Account API](https://apis.io/apis/flueid/flueid-account-api/) — The Account API from Flueid — 24 operation(s) for account.
+- [Flueid Account Partner API](https://apis.io/apis/flueid/flueid-accountpartner-api/) — The AccountPartner API from Flueid — 2 operation(s) for accountpartner.
+- [Flueid Client Companies API](https://apis.io/apis/flueid/flueid-clientcompanies-api/) — The ClientCompanies API from Flueid — 5 operation(s) for clientcompanies.
+- [Flueid Documents API](https://apis.io/apis/flueid/flueid-documents-api/) — The Documents API from Flueid — 1 operation(s) for documents.
+- [Flueid Farms API](https://apis.io/apis/flueid/flueid-farms-api/) — The Farms API from Flueid — 18 operation(s) for farms.
+- [Flueid New Orders API](https://apis.io/apis/flueid/flueid-neworders-api/) — The NewOrders API from Flueid — 15 operation(s) for neworders.
+- [Flueid Order Document Settings API](https://apis.io/apis/flueid/flueid-orderdocumentsettings-api/) — The OrderDocumentSettings API from Flueid — 5 operation(s) for orderdocumentsettings.
+- [Flueid Order Options API](https://apis.io/apis/flueid/flueid-orderoptions-api/) — The OrderOptions API from Flueid — 2 operation(s) for orderoptions.
+- [Flueid Orders API](https://apis.io/apis/flueid/flueid-orders-api/) — The Orders API from Flueid — 10 operation(s) for orders.
+- [Flueid Partner Order Settings API](https://apis.io/apis/flueid/flueid-partnerordersettings-api/) — The PartnerOrderSettings API from Flueid — 10 operation(s) for partnerordersettings.
+- [Flueid Partners API](https://apis.io/apis/flueid/flueid-partners-api/) — The Partners API from Flueid — 11 operation(s) for partners.
+- [Flueid Permissions API](https://apis.io/apis/flueid/flueid-permissions-api/) — The Permissions API from Flueid — 3 operation(s) for permissions.
+- [Flueid Public API](https://apis.io/apis/flueid/flueid-public-api/) — The Public API from Flueid — 1 operation(s) for public.
+- [Flueid Settings API](https://apis.io/apis/flueid/flueid-settings-api/) — The Settings API from Flueid — 1 operation(s) for settings.
+- [Flueid Order Events API](https://apis.io/apis/flueid/flueid-order-events-api/) — The Order Events API from Flueid — 2 operation(s) for order events.
+- [Flueid Property Data API](https://apis.io/apis/flueid/flueid-property-data-api/) — The Property Data API from Flueid — 22 operation(s) for property data.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [flueid-pro](https://apis.io/servers/flueid/flueid-pro/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Flueid Agentic Access](https://apis.io/agentic-access/flueid/flueid-agentic-access/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Flueid Pro Overlay](https://apis.io/overlays/flueid/flueid-pro-overlay/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Flueid Authentication](https://apis.io/security/flueid/flueid-authentication/)
+- [Flueid Domain Security](https://apis.io/security/flueid/flueid-domain-security/)
+- [Flueid Trust Center](https://apis.io/security/flueid/flueid-trust-center/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Flueid Plans Pricing](https://apis.io/plans/flueid/flueid-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Flueid Rate Limits](https://apis.io/rate-limits/flueid/flueid-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.flueid.com/)
+- [Documentation](https://api.pro.flueid.com/swagger)
+- [API reference](https://api.pro.flueid.com/swagger)
+- [Sign up](https://pro.flueid.com/)
+- [Support](https://www.flueid.com/contact)
+- [Blog](https://www.flueid.com/media)
+- [Compliance](https://www.flueid.com/security)
+- [Privacy policy](https://www.flueid.com/privacy)
+- [Status](https://status.flueid.com/)
+
+## API Evangelist rating
+
+**Kin Score 29.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 33.8 |
+| Contract governance | 18.2 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 30.4 |
+| Access clarity | 7.9 |
+
+**Agent readiness 21.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 14.9** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/flueid/](https://apis.io/providers/flueid/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Flueid: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/flueid/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
